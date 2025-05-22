@@ -1,0 +1,10 @@
+<mat-card class="category-card category-card{{ category.id }}" (click)="onSelect()">
+  <mat-card-content>
+    <mat-icon>{{ category.icon }}</mat-icon>
+    <h3>{{ category.name | titlecase }}</h3>
+    <p class="description">{{ category.description }}</p>
+  </mat-card-content>
+</mat-card>
+
+
+

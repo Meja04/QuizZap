@@ -1,0 +1,47 @@
+<div class="page-container">
+
+
+
+  <main>
+    <div class="content-wrapper">
+      <h1 class="main-title">Trivia Quiz Game</h1>
+
+      @if (!playerName) {
+      <div class="player-form">
+        <h2 class="form-title">Inserisci il tuo nome per iniziare</h2>
+        <div class="form-container">
+          <mat-form-field appearance="fill" class="name-input">
+            <mat-label>Il tuo nome</mat-label>
+            <input matInput [(ngModel)]="inputName" (keyup.enter)="saveName()">
+          </mat-form-field>
+          <button mat-flat-button color="primary" class="start-button" (click)="saveName()" [disabled]="!inputName">
+            Inizia
+          </button>
+        </div>
+      </div>
+      }
+
+      <div class="welcome-message">
+        @if (playerName) {
+        <mat-card class="welcome-card">
+          <mat-card-header>
+            <mat-card-title>Benvenuto, {{ playerName }}!</mat-card-title>
+            <mat-card-subtitle>Scegli una categoria per iniziare il quiz</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+        <div class="categories-grid">
+          <mat-grid-list cols="3" rowHeight="3:2" gutterSize="10px">
+            @for (category of categories; track category.name) {
+            <mat-grid-tile>
+              <app-category [category]="category"></app-category>
+            </mat-grid-tile>
+            }
+          </mat-grid-list>
+        </div>
+        }
+      </div>
+    </div>
+  </main>
+
+
+</div>

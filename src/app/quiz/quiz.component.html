@@ -1,0 +1,28 @@
+<main class="quiz-container">
+
+  <!-- Timer Component (placeholder) -->
+ <app-timer></app-timer>
+<!--   <app-timer (timeExpired)="handleTimeExpired()"></app-timer>
+ -->
+  <!-- Mostra domanda -->
+  @if (currentQuestion) {
+    <h2>Domanda {{ currentQuestionIndex + 1 }}</h2>
+    <p class="question-text">{{ currentQuestion.question }}</p>
+
+    <div class="options-grid">
+      @for (option of currentQuestion.options; track option) {
+        <mat-card class="option-card">
+          {{ option }}
+        </mat-card>
+      }
+    </div>
+  }
+
+  <!-- Paginator Component -->
+  <app-paginator
+    [total]="questions.length"
+    [current]="currentQuestionIndex"
+    (change)="onPageChange($event)"
+  ></app-paginator>
+
+</main>

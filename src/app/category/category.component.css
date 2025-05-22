@@ -1,0 +1,56 @@
+.category-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 15px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Colori diversi per ogni categoria */
+.category-card1:hover {
+  background-color: #c77bd480;
+}
+
+.category-card2:hover {
+  background-color: #f7c06d80;
+}
+
+.category-card3:hover {
+  background-color: #7cd5ff80;
+}
+
+.category-card4:hover {
+  background-color: #f7ee6e80;
+}
+
+.category-card5:hover {
+  background-color: #fa6f5680;
+}
+
+.category-card6:hover {
+  background-color: #aed58180;
+}
+
+
+mat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+mat-card-content {
+  text-align: center;
+}
+
+h3 {
+  color: #333;
+}
+
+.description {
+  color: #666;
+  font-size: 0.9rem;
+}

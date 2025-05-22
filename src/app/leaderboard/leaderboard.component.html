@@ -1,0 +1,36 @@
+<main>
+  <h1>Leaderboard: {{ selectedCategory | titlecase }}</h1>
+
+  @if (categories.length > 0) {
+    <label for="category">Seleziona categoria:</label>
+    <select id="category" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+      @for (category of categories; track category.name) {
+        <option [value]="category.name">{{ category.name | titlecase }}</option>
+      }
+    </select>
+
+    <div class="leaderboard-table">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Giocatore</th>
+            <th>Punteggio</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (score of scores; let i = $index; track score) {
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td>{{ score.username }}</td>
+              <td>{{ score.score }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  } @else {
+    <p>Caricamento categorie...</p>
+  }
+</main>
+

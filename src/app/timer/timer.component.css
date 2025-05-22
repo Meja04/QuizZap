@@ -1,0 +1,18 @@
+.mat-progress-bar.timer1 .mat-progress-bar-fill::after {
+  background-color: #c77bd4;
+}
+.mat-progress-bar.timer2 .mat-progress-bar-fill::after {
+  background-color: #f7c06d;
+}
+.mat-progress-bar.timer3 .mat-progress-bar-fill::after {
+  background-color: #7cd5ff;
+}
+.mat-progress-bar.timer4 .mat-progress-bar-fill::after {
+  background-color: #f7ee6e;
+}
+.mat-progress-bar.timer5 .mat-progress-bar-fill::after {
+  background-color: #fa6f56;
+}
+.mat-progress-bar.timer6 .mat-progress-bar-fill::after {
+  background-color: #aed581;
+}

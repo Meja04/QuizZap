@@ -1,0 +1,19 @@
+<mat-toolbar color="primary" class="header">
+  <div class="header-content">
+    <img src="../../assets/logo.png" alt="Logo" class="logo-image" />
+    <span class="logo">QuizZap</span>
+    
+    <div class="nav-buttons">
+      <a mat-button routerLink="/" routerLinkActive="active-link" 
+      [routerLinkActiveOptions]="{ exact: true }">
+        <mat-icon>home</mat-icon>
+        Home
+      </a>
+      <a mat-button routerLink="/leaderboard" routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{ exact: false }">
+        <mat-icon>leaderboard</mat-icon>
+        Leaderboard
+      </a>
+    </div>
+  </div>
+</mat-toolbar>

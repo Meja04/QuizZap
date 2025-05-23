@@ -1,40 +1,47 @@
-/* header.component.css */
+/* header.component.css - Bootstrap Version */
 .header {
   position: sticky;
   top: 0;
-  z-index: 100;
-}
-
-.header-content {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  z-index: 1020; /* Bootstrap z-index for sticky elements */
 }
 
 .logo {
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: 500;
+  font-family: 'Fugaz One', cursive;
+  color: #333;
 }
 
-.nav-buttons button {
-  margin-left: 16px;
+.logo-image {
+  height: 48px;
+  vertical-align: middle;
 }
 
-.nav-buttons button.active {
-  background: rgba(255,255,255,0.2);
+.nav-buttons .nav-link {
+  color: #333 !important;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
 }
-/* header.component.css */
-.active-link {
+
+.nav-buttons .nav-link:hover {
+  color: #333 !important;
+  background: rgba(41, 41, 41, 0.1);
+  border-radius: 0.25rem;
+}
+
+.nav-buttons .nav-link.active,
+.nav-buttons .active-link {
   font-weight: bold;
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(107, 107, 107, 0.15) !important;
+  color: #333 !important;
+  border-radius: 0.25rem;
 }
 
-mat-icon {
+.nav-buttons .nav-link i,
+.nav-buttons .nav-link .material-icons {
   margin-right: 8px;
   vertical-align: middle;
+  font-size: 1.1rem;
 }

@@ -1,10 +1,9 @@
-<mat-card class="category-card category-card{{ category.id }}" (click)="onSelect()">
-  <mat-card-content>
-    <mat-icon>{{ category.icon }}</mat-icon>
+<div class="card category-card category-card{{ category.id }}" (click)="onSelect()">
+  <div class="card-body">
+    <i class="material-icons mat-icon{{ category.id }}">{{ category.icon }}</i>
     <h3>{{ category.name | titlecase }}</h3>
     <p class="description">{{ category.description }}</p>
-  </mat-card-content>
-</mat-card>
-
+  </div>
+</div>
 
 

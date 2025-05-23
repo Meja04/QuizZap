@@ -1,17 +1,18 @@
 .category-card {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 15px;
+  padding: 16px;
+  margin: 12px;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
   min-height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: white;
 }
 
-/* Colori diversi per ogni categoria */
+/* Colori diversi per ogni categoria al hover */
 .category-card1:hover {
   background-color: var(--videogames-color-light);
 }
@@ -36,21 +37,55 @@
   background-color: var(--science-color-light);
 }
 
-
-mat-card:hover {
+.category-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-mat-card-content {
+.category-card .card-body {
   text-align: center;
+  padding: 1rem;
 }
 
-h3 {
+.category-card h3 {
+  color: #333;
+  margin: 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.category-card .description {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.category-card i,
+.category-card .material-icons {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
   color: #333;
 }
 
-.description {
-  color: #666;
-  font-size: 0.9rem;
+/* Stili specifici per le icone Material Icons se utilizzate */
+.material-icons {
+  vertical-align: middle;
+}
+
+.mat-icon1 {
+  color: var(--videogames-color-dark) !important
+}
+.mat-icon2 {
+  color: var(--cinema-color-dark) !important;
+}
+.mat-icon3 {
+  color: var(--geography-color-dark) !important;
+}
+.mat-icon4 {
+  color: var(--history-color-dark) !important;
+}
+.mat-icon5 {
+  color: var(--art-color-dark) !important;
+}
+.mat-icon6 {
+  color: var(--science-color-dark) !important;
 }

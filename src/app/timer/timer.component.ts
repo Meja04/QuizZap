@@ -1,47 +1,68 @@
-import { Component, Input, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { CommonModule } from '@angular/common';
-import { interval, Subscription } from 'rxjs';
-import { takeWhile, map } from 'rxjs/operators';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
+import { CommonModule, DatePipe } from '@angular/common';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 @Component({
   selector: 'app-timer',
   standalone: true,
+  imports: [CommonModule, ProgressBarModule, DatePipe],
   templateUrl: './timer.component.html',
-  styleUrl: './timer.component.css',
-  imports: [CommonModule, MatProgressBarModule],
+  styleUrls: ['./timer.component.css']
 })
 export class TimerComponent implements OnInit, OnDestroy {
-  @Input() duration = 120; // Durata del timer in secondi (2 minuti)
-  progress = 100; // Valore iniziale della progress bar (100%)
-  private timerSubscription!: Subscription;
-
+  @Input() duration = 120;
+  @Input() categoryId!: number;
   @Output() timeExpired = new EventEmitter<void>();
+  @Output() timeUpdate = new EventEmitter<number>();
+
+  progress = 100;
+  currentTime: number = 0;
+  private intervalId: any;
+  private isRunning = false;
 
   ngOnInit(): void {
     this.startTimer();
   }
 
-  startTimer(): void {
-    let remainingTime = this.duration;
+  private startTimer(): void {
+    if (this.isRunning) return;
     
-    this.timerSubscription = interval(1000).pipe(
-      map(() => --remainingTime),
-      takeWhile(time => time >= 0)
-    ).subscribe({
-      next: (time) => {
-        this.progress = (time / this.duration) * 100;
-      },
-      complete: () => {
-  this.progress = 0;
-  this.timeExpired.emit();
-}
-    });
+    this.isRunning = true;
+    this.currentTime = this.duration;
+    
+    this.intervalId = setInterval(() => {
+      this.currentTime--;
+      this.progress = (this.currentTime / this.duration) * 100;
+      
+      this.timeUpdate.emit(this.currentTime);
+
+      if (this.currentTime <= 0) {
+        this.stopTimer();
+        this.timeExpired.emit();
+      }
+    }, 1000);
+  }
+
+  stopTimer(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+      this.isRunning = false;
+    }
+  }
+
+  resetTimer(): void {
+    this.progress = 100;
+    this.currentTime = this.duration;
+    this.startTimer();
+  }
+
+
+  getRemainingTime(): number {
+    return this.currentTime;
   }
 
   ngOnDestroy(): void {
-    if (this.timerSubscription) {
-      this.timerSubscription.unsubscribe();
-    }
+    this.stopTimer();
   }
 }

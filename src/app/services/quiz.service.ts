@@ -9,6 +9,7 @@ import { Score } from '../interfaces/score.interface';
   providedIn: 'root'
 })
 export class QuizService {
+  // Stoplight
   private apiUrl = 'https://stoplight.io/mocks/rubino/test/861759111';
 
   // JSON server

@@ -13,27 +13,27 @@
 
 /* Colori diversi per ogni categoria */
 .category-card1:hover {
-  background-color: #c77bd480;
+  background-color: var(--videogames-color-light);
 }
 
 .category-card2:hover {
-  background-color: #f7c06d80;
+  background-color: var(--cinema-color-light);
 }
 
 .category-card3:hover {
-  background-color: #7cd5ff80;
+  background-color: var(--geography-color-light);
 }
 
 .category-card4:hover {
-  background-color: #f7ee6e80;
+  background-color: var(--history-color-light);
 }
 
 .category-card5:hover {
-  background-color: #fa6f5680;
+  background-color: var(--art-color-light);
 }
 
 .category-card6:hover {
-  background-color: #aed58180;
+  background-color: var(--science-color-light);
 }
 
 

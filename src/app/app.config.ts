@@ -6,6 +6,25 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 
 import { provideHttpClient } from '@angular/common/http';
 
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { providePrimeNG } from 'primeng/config';
+
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay()), provideHttpClient(),]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideClientHydration(withEventReplay()),
+    provideHttpClient(),
+    provideAnimationsAsync(),
+            providePrimeNG({
+            theme: {
+                preset: 'material',
+                options: {
+                    prefix: 'p',
+                    darkModeSelector: 'class',
+                    cssLayer: false
+                }
+            }
+        })
+  ]
 };

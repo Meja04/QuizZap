@@ -1,0 +1,25 @@
+.custom-paginator {
+  background: transparent;
+  padding: 0.5rem 0;
+}
+
+.custom-paginator .p-paginator-pages .p-paginator-page {
+  min-width: 2rem;
+  height: 2rem;
+  margin: 0 0.1rem;
+  border-radius: 50%;
+}
+
+.custom-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: #6366f1;
+  color: white;
+}
+
+.custom-paginator .p-paginator-next,
+.custom-paginator .p-paginator-last {
+  margin-left: 0.5rem;
+}
+
+.custom-paginator .p-disabled {
+  opacity: 0.5;
+}

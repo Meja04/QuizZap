@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
 html, body { 
   height: 100%; 
@@ -7,3 +7,20 @@ html, body {
 body { 
   margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
+:root{  
+  --videogames-color: #c77bd4;
+  --cinema-color: #f7c06d;
+  --geography-color: #7cd5ff;
+  --history-color: #f7ee6e;
+  --art-color: #fa6f56;
+  --science-color: #aed581;
+
+  --videogames-color-light: #c77bd480;
+  --cinema-color-light: #f7c06d80;
+  --geography-color-light: #7cd5ff80;
+  --history-color-light: #f7ee6e80;
+  --art-color-light: #fa6f5680;
+  --science-color-light: #aed58180;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

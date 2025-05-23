@@ -1,37 +1,37 @@
 {
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "videogames",
       "description": "If you love video games, this is the category for you",
       "icon": "sports_esports"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "cinema",
       "description": "How much do you know about movies, directors, and actors?",
       "icon": "movie"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "geography",
       "description": "Explore the world by answering geography questions",
       "icon": "public"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "history",
       "description": "Travel through time with questions about world history",
       "icon": "history_edu"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "art",
       "description": "Test your knowledge about painting, sculpture, and artistic movements",
       "icon": "palette"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "science",
       "description": "Challenge your scientific knowledge with questions from various fields",
       "icon": "science"
@@ -39,7 +39,7 @@
   ],
   "questions": [
     {
-      "id": 1,
+      "id": "1",
       "question": "Which game features the character Mugman?",
       "options": [
         "Cuphead",
@@ -51,7 +51,7 @@
       "category": "videogames"
     },
     {
-      "id": 2,
+      "id": "2",
       "question": "What is the best-selling video game of all time?",
       "options": [
         "Minecraft",
@@ -63,7 +63,7 @@
       "category": "videogames"
     },
     {
-      "id": 3,
+      "id": "3",
       "question": "Which company developed The Legend of Zelda?",
       "options": [
         "Sony",
@@ -75,7 +75,7 @@
       "category": "videogames"
     },
     {
-      "id": 4,
+      "id": "4",
       "question": "What year was the first PlayStation released?",
       "options": [
         "1992",
@@ -87,7 +87,7 @@
       "category": "videogames"
     },
     {
-      "id": 5,
+      "id": "5",
       "question": "In the Pokémon universe, what is the name of the electric-type Pokémon that evolves from Pikachu?",
       "options": [
         "Pichu",
@@ -99,7 +99,7 @@
       "category": "videogames"
     },
     {
-      "id": 6,
+      "id": "6",
       "question": "What is the main currency in World of Warcraft?",
       "options": [
         "Gil",
@@ -111,7 +111,7 @@
       "category": "videogames"
     },
     {
-      "id": 7,
+      "id": "7",
       "question": "Which game popularized the battle royale genre?",
       "options": [
         "Fortnite",
@@ -123,7 +123,7 @@
       "category": "videogames"
     },
     {
-      "id": 8,
+      "id": "8",
       "question": "What is the name of the protagonist in Red Dead Redemption 2?",
       "options": [
         "John Marston",
@@ -135,7 +135,7 @@
       "category": "videogames"
     },
     {
-      "id": 9,
+      "id": "9",
       "question": "Which console has the highest sales of all time?",
       "options": [
         "PlayStation 2",
@@ -147,7 +147,7 @@
       "category": "videogames"
     },
     {
-      "id": 10,
+      "id": "10",
       "question": "In Overwatch, what is the ultimate ability of Tracer called?",
       "options": [
         "Pulse Bomb",
@@ -159,7 +159,7 @@
       "category": "videogames"
     },
     {
-      "id": 11,
+      "id": "11",
       "question": "Which of these games is a MMORPG?",
       "options": [
         "The Witcher 3",
@@ -171,7 +171,7 @@
       "category": "videogames"
     },
     {
-      "id": 12,
+      "id": "12",
       "question": "How many games are in the Unchartd series?",
       "options": [
         "3",
@@ -183,7 +183,7 @@
       "category": "videogames"
     },
     {
-      "id": 13,
+      "id": "13",
       "question": "Which game studio developed The Elder Scrolls V: Skyrim?",
       "options": [
         "CD Projekt Red",
@@ -195,7 +195,7 @@
       "category": "videogames"
     },
     {
-      "id": 14,
+      "id": "14",
       "question": "In Minecraft, what is the Nether?",
       "options": [
         "A type of ore",
@@ -207,7 +207,7 @@
       "category": "videogames"
     },
     {
-      "id": 15,
+      "id": "15",
       "question": "Which fighting game features characters like Ryu and Ken?",
       "options": [
         "Tekken",
@@ -219,7 +219,7 @@
       "category": "videogames"
     },
     {
-      "id": 16,
+      "id": "16",
       "question": "What is the name of the virus in the Last of Us?",
       "options": [
         "Cordyceps",
@@ -231,7 +231,7 @@
       "category": "videogames"
     },
     {
-      "id": 17,
+      "id": "17",
       "question": "Which game features a character named Geralt of Rivia?",
       "options": [
         "Dragon Age",
@@ -243,7 +243,7 @@
       "category": "videogames"
     },
     {
-      "id": 18,
+      "id": "18",
       "question": "What is the main protagonist's name in the Assassin's Creed series?",
       "options": [
         "Ezio",
@@ -255,7 +255,7 @@
       "category": "videogames"
     },
     {
-      "id": 19,
+      "id": "19",
       "question": "Which of these is NOT a real video game genre?",
       "options": [
         "Souls-like",
@@ -267,7 +267,7 @@
       "category": "videogames"
     },
     {
-      "id": 20,
+      "id": "20",
       "question": "What does 'NPC' stand for in gaming?",
       "options": [
         "Non-Player Character",
@@ -279,7 +279,7 @@
       "category": "videogames"
     },
     {
-      "id": 21,
+      "id": "21",
       "question": "Who directed the movie Inception?",
       "options": [
         "Christopher Nolan",
@@ -291,7 +291,7 @@
       "category": "cinema"
     },
     {
-      "id": 22,
+      "id": "22",
       "question": "Which actor played Jack in Titanic?",
       "options": [
         "Leonardo DiCaprio",
@@ -303,7 +303,7 @@
       "category": "cinema"
     },
     {
-      "id": 23,
+      "id": "23",
       "question": "Which film won Best Picture at the 2020 Oscars?",
       "options": [
         "1917",
@@ -315,7 +315,7 @@
       "category": "cinema"
     },
     {
-      "id": 24,
+      "id": "24",
       "question": "Who played the role of Tony Stark in the Marvel Cinematic Universe?",
       "options": [
         "Chris Evans",
@@ -327,7 +327,7 @@
       "category": "cinema"
     },
     {
-      "id": 25,
+      "id": "25",
       "question": "Whats the name of the protagonist alter ego in the movie 'The Matrix'?",
       "options": [
         "Neo",
@@ -339,7 +339,7 @@
       "category": "cinema"
     },
     {
-      "id": 26,
+      "id": "26",
       "question": "What was the first feature-length animated film?",
       "options": [
         "Snow White and the Seven Dwarfs",
@@ -351,7 +351,7 @@
       "category": "cinema"
     },
     {
-      "id": 27,
+      "id": "27",
       "question": "Which director is known for his distinctive visual style and frequent collaborations with Johnny Depp?",
       "options": [
         "Quentin Tarantino",
@@ -363,7 +363,7 @@
       "category": "cinema"
     },
     {
-      "id": 28,
+      "id": "28",
       "question": "Which movie features the fictional sport of Quidditch?",
       "options": [
         "The Lord of the Rings",
@@ -375,7 +375,7 @@
       "category": "cinema"
     },
     {
-      "id": 29,
+      "id": "29",
       "question": "What is the highest-grossing film of all time?",
       "options": [
         "Avatar",
@@ -387,7 +387,7 @@
       "category": "cinema"
     },
     {
-      "id": 30,
+      "id": "30",
       "question": "Which actress has won the most Academy Awards?",
       "options": [
         "Meryl Streep",
@@ -399,7 +399,7 @@
       "category": "cinema"
     },
     {
-      "id": 31,
+      "id": "31",
       "question": "Which movie features the character Mr. Fox?",
       "options": [
         "Fantastic Mr. Fox",
@@ -411,7 +411,7 @@
       "category": "cinema"
     },
     {
-      "id": 32,
+      "id": "32",
       "question": "Who directed the Star Wars original trilogy?",
       "options": [
         "Steven Spielberg",
@@ -423,7 +423,7 @@
       "category": "cinema"
     },
     {
-      "id": 33,
+      "id": "33",
       "question": "Which movie is set in the dystopian city of Neo Tokyo?",
       "options": [
         "Ghost in the Shell",
@@ -435,7 +435,7 @@
       "category": "cinema"
     },
     {
-      "id": 34,
+      "id": "34",
       "question": "What is the name of the fictional theme park in Jurassic Park?",
       "options": [
         "Isla Nublar",
@@ -447,7 +447,7 @@
       "category": "cinema"
     },
     {
-      "id": 35,
+      "id": "35",
       "question": "Which actor played the Joker in The Dark Knight?",
       "options": [
         "Jack Nicholson",
@@ -459,7 +459,7 @@
       "category": "cinema"
     },
     {
-      "id": 36,
+      "id": "36",
       "question": "What song is in the ending of the movie Fight Club?",
       "options": [
         "Where Is My Mind?",
@@ -471,7 +471,7 @@
       "category": "cinema"
     },
     {
-      "id": 37,
+      "id": "37",
       "question": "What is the name of the hobbit played by Elijah Wood in Lord of the Rings?",
       "options": [
         "Samwise",
@@ -483,7 +483,7 @@
       "category": "cinema"
     },
     {
-      "id": 38,
+      "id": "38",
       "question": "what is the name of the villain played by Alfred Molina in Spider-Man 2?",
       "options": [
         "Doctor Octopus",
@@ -495,7 +495,7 @@
       "category": "cinema"
     },
     {
-      "id": 39,
+      "id": "39",
       "question": "What is the name of the protagonist in The Boy and the Heron?",
       "options": [
         "Mahito",
@@ -507,7 +507,7 @@
       "category": "cinema"
     },
     {
-      "id": 40,
+      "id": "40",
       "question": "Who directed the movie Pulp Fiction?",
       "options": [
         "Martin Scorsese",
@@ -519,7 +519,7 @@
       "category": "cinema"
     },
     {
-      "id": 41,
+      "id": "41",
       "question": "What is the capital of Australia?",
       "options": [
         "Sydney",
@@ -531,7 +531,7 @@
       "category": "geography"
     },
     {
-      "id": 42,
+      "id": "42",
       "question": "Which river is the longest in the world?",
       "options": [
         "Nile",
@@ -543,7 +543,7 @@
       "category": "geography"
     },
     {
-      "id": 43,
+      "id": "43",
       "question": "Mount Everest is located in which mountain range?",
       "options": [
         "Andes",
@@ -555,7 +555,7 @@
       "category": "geography"
     },
     {
-      "id": 44,
+      "id": "44",
       "question": "Which country has the most natural lakes?",
       "options": [
         "Russia",
@@ -567,7 +567,7 @@
       "category": "geography"
     },
     {
-      "id": 45,
+      "id": "45",
       "question": "What is the smallest country in the world?",
       "options": [
         "Monaco",
@@ -579,7 +579,7 @@
       "category": "geography"
     },
     {
-      "id": 46,
+      "id": "46",
       "question": "Which desert is the largest in the world?",
       "options": [
         "Sahara",
@@ -591,7 +591,7 @@
       "category": "geography"
     },
     {
-      "id": 47,
+      "id": "47",
       "question": "The Great Barrier Reef is located off the coast of which country?",
       "options": [
         "Brazil",
@@ -603,7 +603,7 @@
       "category": "geography"
     },
     {
-      "id": 48,
+      "id": "48",
       "question": "Which of these countries is landlocked?",
       "options": [
         "Uruguay",
@@ -615,7 +615,7 @@
       "category": "geography"
     },
     {
-      "id": 49,
+      "id": "49",
       "question": "What is the capital of Canada?",
       "options": [
         "Toronto",
@@ -627,7 +627,7 @@
       "category": "geography"
     },
     {
-      "id": 50,
+      "id": "50",
       "question": "Which continent contains the most countries?",
       "options": [
         "Asia",
@@ -639,7 +639,7 @@
       "category": "geography"
     },
     {
-      "id": 51,
+      "id": "51",
       "question": "Which US state is known as the 'Sunshine State'?",
       "options": [
         "California",
@@ -651,7 +651,7 @@
       "category": "geography"
     },
     {
-      "id": 52,
+      "id": "52",
       "question": "Which country is shaped like a boot?",
       "options": [
         "Greece",
@@ -663,7 +663,7 @@
       "category": "geography"
     },
     {
-      "id": 53,
+      "id": "53",
       "question": "What is the longest mountain range in the world?",
       "options": [
         "Rockies",
@@ -675,7 +675,7 @@
       "category": "geography"
     },
     {
-      "id": 54,
+      "id": "54",
       "question": "Which of these cities is NOT a national capital?",
       "options": [
         "Sydney",
@@ -687,7 +687,7 @@
       "category": "geography"
     },
     {
-      "id": 55,
+      "id": "55",
       "question": "Which ocean is the largest?",
       "options": [
         "Atlantic",
@@ -699,7 +699,7 @@
       "category": "geography"
     },
     {
-      "id": 56,
+      "id": "56",
       "question": "Which country has the longest coastline?",
       "options": [
         "Russia",
@@ -711,7 +711,7 @@
       "category": "geography"
     },
     {
-      "id": 57,
+      "id": "57",
       "question": "What is the capital of South Africa?",
       "options": [
         "Johannesburg",
@@ -723,7 +723,7 @@
       "category": "geography"
     },
     {
-      "id": 58,
+      "id": "58",
       "question": "Which country is both in Europe and Asia?",
       "options": [
         "Turkey",
@@ -735,7 +735,7 @@
       "category": "geography"
     },
     {
-      "id": 59,
+      "id": "59",
       "question": "Which African country was never colonized?",
       "options": [
         "Ethiopia",
@@ -747,7 +747,7 @@
       "category": "geography"
     },
     {
-      "id": 60,
+      "id": "60",
       "question": "What is the most populous country in the world?",
       "options": [
         "India",
@@ -759,7 +759,7 @@
       "category": "geography"
     },
     {
-      "id": 61,
+      "id": "61",
       "question": "Who painted the Mona Lisa?",
       "options": [
         "Leonardo da Vinci",
@@ -771,7 +771,7 @@
       "category": "art"
     },
     {
-      "id": 62,
+      "id": "62",
       "question": "In which city is the Louvre Museum located?",
       "options": [
         "Rome",
@@ -783,7 +783,7 @@
       "category": "art"
     },
     {
-      "id": 63,
+      "id": "63",
       "question": "Which art movement is Salvador Dalí associated with?",
       "options": [
         "Cubism",
@@ -795,7 +795,7 @@
       "category": "art"
     },
     {
-      "id": 64,
+      "id": "64",
       "question": "Who painted 'The Starry Night'?",
       "options": [
         "Pablo Picasso",
@@ -807,7 +807,7 @@
       "category": "art"
     },
     {
-      "id": 65,
+      "id": "65",
       "question": "Which artist is known for his 'Campbell's Soup Cans' artwork?",
       "options": [
         "Andy Warhol",
@@ -819,7 +819,7 @@
       "category": "art"
     },
     {
-      "id": 66,
+      "id": "66",
       "question": "What is the name of Michelangelo's famous sculpture of David?",
       "options": [
         "The Thinker",
@@ -831,7 +831,7 @@
       "category": "art"
     },
     {
-      "id": 67,
+      "id": "67",
       "question": "Which art movement is characterized by small dots of color?",
       "options": [
         "Impressionism",
@@ -843,7 +843,7 @@
       "category": "art"
     },
     {
-      "id": 68,
+      "id": "68",
       "question": "Who painted the ceiling of the Sistine Chapel?",
       "options": [
         "Leonardo da Vinci",
@@ -855,7 +855,7 @@
       "category": "art"
     },
     {
-      "id": 69,
+      "id": "69",
       "question": "Which of these is NOT a primary color?",
       "options": [
         "Red",
@@ -867,7 +867,7 @@
       "category": "art"
     },
     {
-      "id": 70,
+      "id": "70",
       "question": "What material was used to create the Terracotta Army?",
       "options": [
         "Marble",
@@ -879,7 +879,7 @@
       "category": "art"
     },
     {
-      "id": 71,
+      "id": "71",
       "question": "Which artist cut off part of his own ear?",
       "options": [
         "Pablo Picasso",
@@ -891,7 +891,7 @@
       "category": "art"
     },
     {
-      "id": 72,
+      "id": "72",
       "question": "What is the name of the famous painting by Edvard Munch that depicts a figure screaming?",
       "options": [
         "The Scream",
@@ -903,7 +903,7 @@
       "category": "art"
     },
     {
-      "id": 73,
+      "id": "73",
       "question": "Which art movement was founded by Pablo Picasso and Georges Braque?",
       "options": [
         "Surrealism",
@@ -915,7 +915,7 @@
       "category": "art"
     },
     {
-      "id": 74,
+      "id": "74",
       "question": "What is the main medium used in watercolor painting?",
       "options": [
         "Oil",
@@ -927,7 +927,7 @@
       "category": "art"
     },
     {
-      "id": 75,
+      "id": "75",
       "question": "Which famous art museum is located in Madrid?",
       "options": [
         "The Louvre",
@@ -939,7 +939,7 @@
       "category": "art"
     },
     {
-      "id": 76,
+      "id": "76",
       "question": "Who created the sculpture 'The Thinker'?",
       "options": [
         "Michelangelo",
@@ -951,7 +951,7 @@
       "category": "art"
     },
     {
-      "id": 77,
+      "id": "77",
       "question": "Which art movement is characterized by dream-like scenes?",
       "options": [
         "Impressionism",
@@ -963,7 +963,7 @@
       "category": "art"
     },
     {
-      "id": 78,
+      "id": "78",
       "question": "What is the name of the famous painting by Grant Wood featuring a farmer and his daughter?",
       "options": [
         "American Gothic",
@@ -975,7 +975,7 @@
       "category": "art"
     },
     {
-      "id": 79,
+      "id": "79",
       "question": "Which artist is known for his 'drip paintings'?",
       "options": [
         "Jackson Pollock",
@@ -987,7 +987,7 @@
       "category": "art"
     },
     {
-      "id": 80,
+      "id": "80",
       "question": "What is the name of the famous ancient Greek statue depicting the goddess of love?",
       "options": [
         "Venus de Milo",
@@ -999,7 +999,7 @@
       "category": "art"
     },
     {
-      "id": 81,
+      "id": "81",
       "question": "In which year did World War II end?",
       "options": [
         "1945",
@@ -1011,7 +1011,7 @@
       "category": "history"
     },
     {
-      "id": 82,
+      "id": "82",
       "question": "Who was the first emperor of Rome?",
       "options": [
         "Julius Caesar",
@@ -1023,7 +1023,7 @@
       "category": "history"
     },
     {
-      "id": 83,
+      "id": "83",
       "question": "The Renaissance began in which country?",
       "options": [
         "France",
@@ -1035,7 +1035,7 @@
       "category": "history"
     },
     {
-      "id": 84,
+      "id": "84",
       "question": "Who was the first president of the United States?",
       "options": [
         "Thomas Jefferson",
@@ -1047,7 +1047,7 @@
       "category": "history"
     },
     {
-      "id": 85,
+      "id": "85",
       "question": "Which ancient civilization built the pyramids?",
       "options": [
         "Greeks",
@@ -1059,7 +1059,7 @@
       "category": "history"
     },
     {
-      "id": 86,
+      "id": "86",
       "question": "In which year did the Titanic sink?",
       "options": [
         "1905",
@@ -1071,7 +1071,7 @@
       "category": "history"
     },
     {
-      "id": 87,
+      "id": "87",
       "question": "Who wrote the 'Communist Manifesto'?",
       "options": [
         "Vladimir Lenin",
@@ -1083,7 +1083,7 @@
       "category": "history"
     },
     {
-      "id": 88,
+      "id": "88",
       "question": "Which empire was ruled by Genghis Khan?",
       "options": [
         "Ottoman",
@@ -1095,7 +1095,7 @@
       "category": "history"
     },
     {
-      "id": 89,
+      "id": "89",
       "question": "What was the name of the ship that brought the Pilgrims to America?",
       "options": [
         "Santa Maria",
@@ -1107,7 +1107,7 @@
       "category": "history"
     },
     {
-      "id": 90,
+      "id": "90",
       "question": "Who discovered America in 1492?",
       "options": [
         "Vasco da Gama",
@@ -1119,7 +1119,7 @@
       "category": "history"
     },
     {
-      "id": 91,
+      "id": "91",
       "question": "Which war was fought between the North and South in the United States?",
       "options": [
         "Revolutionary War",
@@ -1131,7 +1131,7 @@
       "category": "history"
     },
     {
-      "id": 92,
+      "id": "92",
       "question": "Who was the leader of Nazi Germany during World War II?",
       "options": [
         "Benito Mussolini",
@@ -1143,7 +1143,7 @@
       "category": "history"
     },
     {
-      "id": 93,
+      "id": "93",
       "question": "Which ancient wonder was located in Alexandria, Egypt?",
       "options": [
         "Hanging Gardens",
@@ -1155,7 +1155,7 @@
       "category": "history"
     },
     {
-      "id": 94,
+      "id": "94",
       "question": "What was the main cause of the Black Death in the 14th century?",
       "options": [
         "Virus",
@@ -1167,7 +1167,7 @@
       "category": "history"
     },
     {
-      "id": 95,
+      "id": "95",
       "question": "Which country was NOT part of the Axis powers in WWII?",
       "options": [
         "Germany",
@@ -1179,7 +1179,7 @@
       "category": "history"
     },
     {
-      "id": 96,
+      "id": "96",
       "question": "Who was the first woman to win a Nobel Prize?",
       "options": [
         "Marie Curie",
@@ -1191,7 +1191,7 @@
       "category": "history"
     },
     {
-      "id": 97,
+      "id": "97",
       "question": "Which ancient civilization developed the concept of zero?",
       "options": [
         "Greeks",
@@ -1203,7 +1203,7 @@
       "category": "history"
     },
     {
-      "id": 98,
+      "id": "98",
       "question": "What was the name of the first permanent English settlement in America?",
       "options": [
         "Plymouth",
@@ -1215,7 +1215,7 @@
       "category": "history"
     },
     {
-      "id": 99,
+      "id": "99",
       "question": "Which revolution began in 1789?",
       "options": [
         "American Revolution",
@@ -1227,7 +1227,7 @@
       "category": "history"
     },
     {
-      "id": 100,
+      "id": "100",
       "question": "Who invented the printing press?",
       "options": [
         "Leonardo da Vinci",
@@ -1239,7 +1239,7 @@
       "category": "history"
     },
     {
-      "id": 101,
+      "id": "101",
       "question": "What is the chemical symbol for Gold?",
       "options": [
         "Ag",
@@ -1251,7 +1251,7 @@
       "category": "science"
     },
     {
-      "id": 102,
+      "id": "102",
       "question": "How many planets are in the Solar System?",
       "options": [
         "7",
@@ -1263,7 +1263,7 @@
       "category": "science"
     },
     {
-      "id": 103,
+      "id": "103",
       "question": "What gas do plants absorb from the atmosphere?",
       "options": [
         "Oxygen",
@@ -1275,7 +1275,7 @@
       "category": "science"
     },
     {
-      "id": 104,
+      "id": "104",
       "question": "What is the hardest natural substance on Earth?",
       "options": [
         "Gold",
@@ -1287,7 +1287,7 @@
       "category": "science"
     },
     {
-      "id": 105,
+      "id": "105",
       "question": "What is the chemical symbol for Silver?",
       "options": [
         "Si",
@@ -1299,7 +1299,7 @@
       "category": "science"
     },
     {
-      "id": 106,
+      "id": "106",
       "question": "Which planet is known as the Red Planet?",
       "options": [
         "Venus",
@@ -1311,7 +1311,7 @@
       "category": "science"
     },
     {
-      "id": 107,
+      "id": "107",
       "question": "What is the largest organ of the human body?",
       "options": [
         "Liver",
@@ -1323,7 +1323,7 @@
       "category": "science"
     },
     {
-      "id": 108,
+      "id": "108",
       "question": "What force keeps planets in orbit around the sun?",
       "options": [
         "Electromagnetism",
@@ -1335,7 +1335,7 @@
       "category": "science"
     },
     {
-      "id": 109,
+      "id": "109",
       "question": "What is the speed of light?",
       "options": [
         "300,000 km/s",
@@ -1347,7 +1347,7 @@
       "category": "science"
     },
     {
-      "id": 110,
+      "id": "110",
       "question": "What is the main gas found in the air we breathe?",
       "options": [
         "Oxygen",
@@ -1359,7 +1359,7 @@
       "category": "science"
     },
     {
-      "id": 111,
+      "id": "111",
       "question": "What is the boiling point of water?",
       "options": [
         "100°C",
@@ -1371,7 +1371,7 @@
       "category": "science"
     },
     {
-      "id": 112,
+      "id": "112",
       "question": "What is the chemical formula for water?",
       "options": [
         "H2O",
@@ -1383,7 +1383,7 @@
       "category": "science"
     },
     {
-      "id": 113,
+      "id": "113",
       "question": "What is the main component of the sun?",
       "options": [
         "Oxygen",
@@ -1395,7 +1395,7 @@
       "category": "science"
     },
     {
-      "id": 114,
+      "id": "114",
       "question": "What is the smallest unit of life?",
       "options": [
         "Atom",
@@ -1407,7 +1407,7 @@
       "category": "science"
     },
     {
-      "id": 115,
+      "id": "115",
       "question": "What is the process by which plants make their own food?",
       "options": [
         "Photosynthesis",
@@ -1419,7 +1419,7 @@
       "category": "science"
     },
     {
-      "id": 116,
+      "id": "116",
       "question": "What is the main organ of the circulatory system?",
       "options": [
         "Liver",
@@ -1431,7 +1431,7 @@
       "category": "science"
     },
     {
-      "id": 117,
+      "id": "117",
       "question": "What is the chemical symbol for Iron?",
       "options": [
         "Fe",
@@ -1443,7 +1443,7 @@
       "category": "science"
     },
     {
-      "id": 118,
+      "id": "118",
       "question": "What planet is known for its rings?",
       "options": [
         "Jupiter",
@@ -1455,7 +1455,7 @@
       "category": "science"
     },
     {
-      "id": 119,
+      "id": "119",
       "question": "What is the chemical symbol for Gold?",
       "options": [
         "Au",
@@ -1467,7 +1467,7 @@
       "category": "science"
     },
     {
-      "id": 120,
+      "id": "120",
       "question": "In which year the man first landed on the moon?",
       "options": [
         "1965",
@@ -1481,221 +1481,242 @@
   ],
   "scores": [
     {
-      "id": 1,
+      "id": "1",
       "username": "Player123",
       "category": "videogames",
       "score": 870,
       "date": "2025-05-10"
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "Player456",
       "category": "videogames",
       "score": 920,
       "date": "2025-05-11"
     },
     {
-      "id": 3,
+      "id": "3",
       "username": "Player789",
       "category": "videogames",
       "score": 850,
       "date": "2025-05-12"
     },
     {
-      "id": 4,
+      "id": "4",
       "username": "Player321",
       "category": "videogames",
       "score": 880,
       "date": "2025-05-13"
     },
     {
-      "id": 5,
+      "id": "5",
       "username": "Player654",
       "category": "videogames",
       "score": 910,
       "date": "2025-05-14"
     },
     {
-      "id": 6,
+      "id": "6",
       "username": "Player111",
       "category": "history",
       "score": 860,
       "date": "2025-05-10"
     },
     {
-      "id": 7,
+      "id": "7",
       "username": "Player222",
       "category": "history",
       "score": 895,
       "date": "2025-05-11"
     },
     {
-      "id": 8,
+      "id": "8",
       "username": "Player333",
       "category": "history",
       "score": 875,
       "date": "2025-05-12"
     },
     {
-      "id": 9,
+      "id": "9",
       "username": "Player444",
       "category": "history",
       "score": 910,
       "date": "2025-05-13"
     },
     {
-      "id": 10,
+      "id": "10",
       "username": "Player555",
       "category": "history",
       "score": 840,
       "date": "2025-05-14"
     },
     {
-      "id": 11,
+      "id": "11",
       "username": "Player666",
       "category": "geography",
       "score": 920,
       "date": "2025-05-10"
     },
     {
-      "id": 12,
+      "id": "12",
       "username": "Player777",
       "category": "geography",
       "score": 875,
       "date": "2025-05-11"
     },
     {
-      "id": 13,
+      "id": "13",
       "username": "Player888",
       "category": "geography",
       "score": 900,
       "date": "2025-05-12"
     },
     {
-      "id": 14,
+      "id": "14",
       "username": "Player999",
       "category": "geography",
       "score": 860,
       "date": "2025-05-13"
     },
     {
-      "id": 15,
+      "id": "15",
       "username": "Player123",
       "category": "geography",
       "score": 890,
       "date": "2025-05-14"
     },
     {
-      "id": 16,
+      "id": "16",
       "username": "Player222",
       "category": "cinema",
       "score": 910,
       "date": "2025-05-15"
     },
     {
-      "id": 17,
+      "id": "17",
       "username": "Player456",
       "category": "cinema",
       "score": 865,
       "date": "2025-05-16"
     },
     {
-      "id": 18,
+      "id": "18",
       "username": "Player654",
       "category": "cinema",
       "score": 940,
       "date": "2025-05-17"
     },
     {
-      "id": 19,
+      "id": "19",
       "username": "Player888",
       "category": "cinema",
       "score": 875,
       "date": "2025-05-18"
     },
     {
-      "id": 20,
+      "id": "20",
       "username": "Player111",
       "category": "cinema",
       "score": 890,
       "date": "2025-05-19"
     },
     {
-      "id": 21,
+      "id": "21",
       "username": "Player789",
       "category": "art",
       "score": 880,
       "date": "2025-05-20"
     },
     {
-      "id": 22,
+      "id": "22",
       "username": "Player321",
       "category": "art",
       "score": 870,
       "date": "2025-05-21"
     },
     {
-      "id": 23,
+      "id": "23",
       "username": "Player999",
       "category": "art",
       "score": 915,
       "date": "2025-05-22"
     },
     {
-      "id": 24,
+      "id": "24",
       "username": "Player555",
       "category": "art",
       "score": 860,
       "date": "2025-05-23"
     },
     {
-      "id": 25,
+      "id": "25",
       "username": "Player777",
       "category": "art",
       "score": 900,
       "date": "2025-05-24"
     },
     {
-      "id": 26,
+      "id": "26",
       "username": "Player444",
       "category": "science",
       "score": 910,
       "date": "2025-05-25"
     },
     {
-      "id": 27,
+      "id": "27",
       "username": "Player666",
       "category": "science",
       "score": 885,
       "date": "2025-05-26"
     },
     {
-      "id": 28,
+      "id": "28",
       "username": "Player321",
       "category": "science",
       "score": 895,
       "date": "2025-05-27"
     },
     {
-      "id": 29,
+      "id": "29",
       "username": "Player123",
       "category": "science",
       "score": 875,
       "date": "2025-05-28"
     },
     {
-      "id": 30,
+      "id": "30",
       "username": "Player888",
       "category": "science",
       "score": 920,
       "date": "2025-05-29"
     },
     {
-      "id": 7,
+      "id": "7",
       "username": "Player000",
       "category": "art",
       "score": 999999,
       "date": "2023-10-09"
+    },
+    {
+      "id": 0,
+      "username": "ugguu",
+      "category": "videogames",
+      "score": 98,
+      "date": "2025-05-23T10:19:54.810Z"
+    },
+    {
+      "id": "0b2f",
+      "username": "ugguu",
+      "category": "cinema",
+      "score": 0,
+      "date": "2025-05-23T10:28:41.050Z"
+    },
+    {
+      "id": "da67",
+      "username": "ugguu",
+      "category": "cinema",
+      "score": 206,
+      "date": "2025-05-23T13:24:12.865Z"
     }
   ]
 }

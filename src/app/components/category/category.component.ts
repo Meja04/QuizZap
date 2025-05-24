@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { Category } from '../interfaces/category.interface';
+import { Category } from '../../interfaces/category.interface';
 
 @Component({
   selector: 'app-category',
@@ -19,7 +19,9 @@ export class CategoryComponent {
   constructor(private router: Router) { }
 
   onSelect(): void {
-    this.router.navigate(['/quiz', this.category.name]);
+    this.router.navigate(['/quiz', this.category.name], {
+      queryParams: { categoryId: this.category.id } // Passa l'ID della categoria come parametro di query
+    });
   }
 
 

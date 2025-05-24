@@ -3,13 +3,13 @@
     {
       "id": "1",
       "name": "videogames",
-      "description": "If you love video games, this is the category for you",
+      "description": "If you love video games, this is the right category for you",
       "icon": "sports_esports"
     },
     {
       "id": "2",
       "name": "cinema",
-      "description": "How much do you know about movies, directors, and actors?",
+      "description": "Find out how much you know about movies and actors",
       "icon": "movie"
     },
     {
@@ -27,13 +27,13 @@
     {
       "id": "5",
       "name": "art",
-      "description": "Test your knowledge about painting, sculpture, and artistic movements",
+      "description": "Test your knowledge about painting and artistic movements",
       "icon": "palette"
     },
     {
       "id": "6",
       "name": "science",
-      "description": "Challenge your scientific knowledge with questions from various fields",
+      "description": "Challenge your scientific knowledge in various fields",
       "icon": "science"
     }
   ],
@@ -172,7 +172,7 @@
     },
     {
       "id": "12",
-      "question": "How many games are in the Unchartd series?",
+      "question": "How many games are in the Uncharted series?",
       "options": [
         "3",
         "4",

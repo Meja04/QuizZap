@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QuizService } from '../services/quiz.service';
+import { QuizService } from '../../services/quiz.service';
 import { FormsModule } from '@angular/forms';
-import { Score } from '../interfaces/score.interface';
-import { Category } from '../interfaces/category.interface';
+import { Score } from '../../interfaces/score.interface';
+import { Category } from '../../interfaces/category.interface';
 
 @Component({
   selector: 'app-leaderboard',

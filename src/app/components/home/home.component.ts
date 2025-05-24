@@ -10,8 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { CategoryComponent } from '../category/category.component';
-import { Category } from '../interfaces/category.interface';
-import { QuizService } from '../services/quiz.service';
+import { Category } from '../../interfaces/category.interface';
+import { QuizService } from '../../services/quiz.service';
 
 @Component({
   selector: 'app-home',

@@ -1,0 +1,130 @@
+<div class="quiz-container">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10">
+        <div class="card quiz-main-card shadow border-0">
+
+          <!-- Quiz Header -->
+          <div class="quiz-header">
+            <h1>{{ selectedCategory | titlecase }} Quiz</h1>
+          </div>
+
+
+
+
+          <div class="quiz-content">
+            @if (!showResult && questions.length > 0) {
+            <!-- Timer Component -->
+            <div class="quiz-timer">
+              <app-timer [duration]="120" [categoryId]="currentCategoryId"
+                (timeExpired)="handleTimeExpired()" (timeUpdate)="updateRemainingTime($event)">
+              </app-timer>
+            </div>
+            }
+
+            <!-- Mostra domanda durante il quiz -->
+            @if (currentQuestion && !showResult) {
+            <div class="quiz-question-container">
+              <h2>Domanda {{ currentQuestionIndex + 1 }} di {{ questions.length }}</h2>
+              <p class="question-text">{{ currentQuestion.question }}</p>
+
+              <div class="options-container">
+                @for (option of currentQuestion.options; track $index) {
+                <div class="card option-card" [class.selected]="currentQuestion.currentAnswer === $index"
+                  [class]="'option-card-' + currentCategoryId" (click)="selectAnswer($index)">
+                  <div class="card-body">
+                    {{ option }}
+                  </div>
+                </div>
+                }
+              </div>
+            </div>
+            }
+
+            <!-- Paginator Component (solo durante il quiz) -->
+            @if (!showResult && questions.length > 0) {
+            <div class="quiz-paginator">
+              <app-paginator [total]="questions.length" [current]="currentQuestionIndex"
+                (change)="onPageChange($event)">
+              </app-paginator>
+            </div>
+            }
+          </div>
+
+          <!-- Pulsante Fine Quiz -->
+          @if (currentQuestion && !showResult) {
+          <div class="quiz-actions">
+            <button type="button" class="btn btn-light" [disabled]="!allQuestionsAnswered" (click)="finishQuiz()">
+              Finish Quiz
+            </button>
+          </div>
+          }
+
+          <!-- Risultati del Quiz -->
+          @if (showResult && isQuizCompleted) {
+          <div class="quiz-results">
+            <h2>{{ getScoreMessage() }}</h2>
+
+            <div class="score-summary">
+              <div class="score-item">
+                <strong>Risposte Corrette:</strong> {{ correctAnswers }} / {{ questions.length }}
+              </div>
+              <div class="score-item">
+                <strong>Punteggio Finale:</strong> {{ finalScore }} punti
+              </div>
+              <div class="score-item">
+                <strong>Tempo Rimanente:</strong> {{ (remainingTime * 1000) | date:'mm:ss':'UTC' }}
+              </div>
+              <button mat-button (click)="saveScore()" [disabled]="scoreSaved">Salva Punteggio</button>
+            </div>
+
+            <!-- Revisione Risposte -->
+            <div class="answers-review">
+              <h3>Revisione Risposte</h3>
+              @for (question of questions; track question.id; let i = $index) {
+              <div class="question-review">
+                <h4>Domanda {{ i + 1 }}: {{ question.question }}</h4>
+
+                <div class="review-options">
+                  @for (option of question.options; track $index; let optionIndex = $index) {
+                  <div class="review-option" [ngClass]="{
+                      'correct': optionIndex === question.correctOptionIndex,
+                      'wrong': optionIndex === question.currentAnswer && !isAnswerCorrect(i)
+                    }">
+                    {{ option }}
+                    @if (optionIndex === question.correctOptionIndex) {
+                    <span class="correct-label">(Corretta)</span>
+                    }
+                    @if (optionIndex === question.currentAnswer && !isAnswerCorrect(i)) {
+                    <span class="wrong-label">(La tua risposta)</span>
+                    }
+                  </div>
+                  }
+                </div>
+              </div>
+              }
+            </div>
+
+            <!-- Azioni Finali -->
+            <div class="final-actions">
+              <button mat-button (click)="restartQuiz()">
+                Rifai Quiz
+              </button>
+
+              <button mat-button (click)="viewCategoryLeaderboard()">
+                Classifica {{ selectedCategory }}
+              </button>
+
+              <button mat-button (click)="goBackToCategories()">
+                Torna alle Categorie
+              </button>
+            </div>
+          </div>
+          }
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

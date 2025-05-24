@@ -5,12 +5,12 @@ import { ProgressBarModule } from 'primeng/progressbar';
 @Component({
   selector: 'app-timer',
   standalone: true,
-  imports: [CommonModule, ProgressBarModule, DatePipe],
   templateUrl: './timer.component.html',
-  styleUrls: ['./timer.component.css']
+  styleUrls: ['./timer.component.css'],
+  imports: [CommonModule, ProgressBarModule, DatePipe]
 })
 export class TimerComponent implements OnInit, OnDestroy {
-  @Input() duration = 120;
+  @Input() duration!: number;
   @Input() categoryId!: number;
   @Output() timeExpired = new EventEmitter<void>();
   @Output() timeUpdate = new EventEmitter<number>();

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -10,11 +10,11 @@ import { FormsModule } from '@angular/forms';
 import { PaginatorComponent } from '../paginator/paginator.component';
 import { TimerComponent } from '../timer/timer.component';
 
-import { Question } from '../interfaces/question.interface';
-import { Score } from '../interfaces/score.interface';
+import { Question } from '../../interfaces/question.interface';
+import { Score } from '../../interfaces/score.interface';
 
-import { QuizService } from '../services/quiz.service';
-import { ScoreService } from '../services/score.service';
+import { QuizService } from '../../services/quiz.service';
+import { ScoreService } from '../../services/score.service';
 
 @Component({
   selector: 'app-quiz',
@@ -34,6 +34,7 @@ import { ScoreService } from '../services/score.service';
 })
 export class QuizComponent implements OnInit {
   @ViewChild('quizTimer') timerComponent!: TimerComponent;
+  @Input() categoryId!: number;
 
   // Proprietà esistenti
   questions: Question[] = [];

@@ -1698,7 +1698,7 @@
       "date": "2023-10-09"
     },
     {
-      "id": 0,
+      "id": "0",
       "username": "ugguu",
       "category": "videogames",
       "score": 98,
@@ -1731,6 +1731,62 @@
       "category": "geography",
       "score": 84,
       "date": "2025-05-23T16:15:39.183Z"
+    },
+    {
+      "id": "8e99",
+      "username": "alfredo",
+      "category": "cinema",
+      "score": 0,
+      "date": "2025-05-25T15:18:02.684Z"
+    },
+    {
+      "id": "c647",
+      "username": "alfredo",
+      "category": "cinema",
+      "score": 428,
+      "date": "2025-05-25T15:18:13.380Z"
+    },
+    {
+      "id": "0eb5",
+      "username": "alfredo",
+      "category": "cinema",
+      "score": 0,
+      "date": "2025-05-25T15:18:28.734Z"
+    },
+    {
+      "id": "6e10",
+      "username": "alfredo",
+      "category": "cinema",
+      "score": 0,
+      "date": "2025-05-25T15:26:31.556Z"
+    },
+    {
+      "id": "06e5",
+      "username": "alfredo",
+      "category": "cinema",
+      "score": 429,
+      "date": "2025-05-25T15:26:41.812Z"
+    },
+    {
+      "id": "6464",
+      "username": "alfredo",
+      "category": "cinema",
+      "score": 429,
+      "date": "2025-05-25T15:39:14.237Z"
+    },
+    {
+      "id": "a372",
+      "username": "alfredo",
+      "category": "geography",
+      "score": 858,
+      "date": "2025-05-25T16:17:41.743Z"
+    },
+    {
+      "id": "5c40",
+      "username": "alfredo",
+      "category": "geography",
+      "score": 846,
+      "date": "2025-05-25T18:17:42.568Z"
     }
   ]
 }

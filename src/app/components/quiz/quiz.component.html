@@ -16,8 +16,8 @@
             @if (!showResult && questions.length > 0) {
             <!-- Timer Component -->
             <div class="quiz-timer">
-              <app-timer [duration]="120" [categoryId]="currentCategoryId"
-                (timeExpired)="handleTimeExpired()" (timeUpdate)="updateRemainingTime($event)">
+              <app-timer [duration]="1200" [categoryId]="currentCategoryId" (timeExpired)="handleTimeExpired()"
+                (timeUpdate)="updateRemainingTime($event)">
               </app-timer>
             </div>
             }
@@ -25,7 +25,7 @@
             <!-- Mostra domanda durante il quiz -->
             @if (currentQuestion && !showResult) {
             <div class="quiz-question-container">
-              <h2>Domanda {{ currentQuestionIndex + 1 }} di {{ questions.length }}</h2>
+              <h2>Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</h2>
               <p class="question-text">{{ currentQuestion.question }}</p>
 
               <div class="options-container">
@@ -63,27 +63,30 @@
           <!-- Risultati del Quiz -->
           @if (showResult && isQuizCompleted) {
           <div class="quiz-results">
-            <h2>{{ getScoreMessage() }}</h2>
+            <h3>{{ getScoreMessage() }}</h3>
 
-            <div class="score-summary">
+            <div class="score-summary mb-0 mt-0">
               <div class="score-item">
-                <strong>Risposte Corrette:</strong> {{ correctAnswers }} / {{ questions.length }}
+                <strong>Correct Answers:</strong> {{ correctAnswers }} / {{ questions.length }}
               </div>
               <div class="score-item">
-                <strong>Punteggio Finale:</strong> {{ finalScore }} punti
+                <strong>Final Score:</strong> {{ finalScore }} points
               </div>
               <div class="score-item">
-                <strong>Tempo Rimanente:</strong> {{ (remainingTime * 1000) | date:'mm:ss':'UTC' }}
+                <strong>Remaining Time:</strong> {{ (remainingTime * 1000) | date:'mm:ss':'UTC' }}
               </div>
-              <button mat-button (click)="saveScore()" [disabled]="scoreSaved">Salva Punteggio</button>
+              <div class="score-actions">
+                <button type="button" class="btn btn-light" [disabled]="scoreSaved" (click)="saveScore()">Save
+                  Score</button>
+              </div>
             </div>
 
             <!-- Revisione Risposte -->
-            <div class="answers-review">
-              <h3>Revisione Risposte</h3>
+            <div class="answers-review mt-4 mb-0">
+              <h2>Answers review:</h2>
               @for (question of questions; track question.id; let i = $index) {
               <div class="question-review">
-                <h4>Domanda {{ i + 1 }}: {{ question.question }}</h4>
+                <h4>Question {{ i + 1 }}: {{ question.question }}</h4>
 
                 <div class="review-options">
                   @for (option of question.options; track $index; let optionIndex = $index) {
@@ -93,10 +96,10 @@
                     }">
                     {{ option }}
                     @if (optionIndex === question.correctOptionIndex) {
-                    <span class="correct-label">(Corretta)</span>
+                    <span class="correct-label">(Correct)</span>
                     }
                     @if (optionIndex === question.currentAnswer && !isAnswerCorrect(i)) {
-                    <span class="wrong-label">(La tua risposta)</span>
+                    <span class="wrong-label">(Your answer)</span>
                     }
                   </div>
                   }
@@ -107,21 +110,19 @@
 
             <!-- Azioni Finali -->
             <div class="final-actions">
-              <button mat-button (click)="restartQuiz()">
-                Rifai Quiz
+              <button type="button" class="btn btn-light" (click)="viewCategoryLeaderboard()">
+                {{ selectedCategory | titlecase }} Leaderboard
               </button>
-
-              <button mat-button (click)="viewCategoryLeaderboard()">
-                Classifica {{ selectedCategory }}
+              <button type="button" class="btn btn-light" (click)="restartQuiz()">
+                Restart Quiz
               </button>
-
-              <button mat-button (click)="goBackToCategories()">
-                Torna alle Categorie
+              <button type="button" class="btn btn-light" (click)="goBackToCategories()">
+                Back to Categories
               </button>
             </div>
+
           </div>
           }
-
 
         </div>
       </div>

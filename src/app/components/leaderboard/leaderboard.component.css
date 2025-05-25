@@ -1,0 +1,260 @@
+/* leaderboard.component.css - Bootstrap Version */
+.leaderboard-container {
+  min-height: 100vh;
+  background-color: #eeeeee;
+  padding: 2rem;
+}
+
+.leaderboard-main-card {
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: none;
+  overflow: hidden;
+}
+
+.leaderboard-header {
+  padding: 1.2rem;
+  text-align: center;
+  border-bottom: 1px solid #e0e3e6;
+}
+
+.leaderboard-header h1 {
+  color: var(--text-color);
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.leaderboard-content {
+  padding: 2rem 3rem;
+}
+
+.category-selector {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.category-selector label {
+  color: var(--secondary-text-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.category-selector select {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #afafaf;
+  border-radius: 8px;
+  background-color: white;
+  color: var(--text-color);
+  min-width: 250px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-selector select:focus {
+  outline: none;
+  border-color: var(--text-color);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Bootstrap Table Customization */
+.table-container {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #afafaf;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.table thead th {
+  background-color: #eeeeee;
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 1rem;
+  vertical-align: middle;
+  border-bottom: #afafaf 1px solid;
+}
+
+.table tbody td {
+  color: var(--text-color);
+  font-size: 1rem;
+  padding: 1rem;
+  vertical-align: middle;
+  border-bottom: #afafaf 1px solid;
+}
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+.table-hover tbody tr:hover {
+  background-color: #f8f9fa;
+  transition: background-color 0.2s ease;
+}
+
+.score-badge {
+  color: white;
+  border-radius: 8px;
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+}
+
+.badge-1 {
+  background-color: var(--videogames-color);
+}
+.badge-2 {
+  background-color: var(--cinema-color);
+}
+.badge-3 {
+  background-color: var(--geography-color);
+}
+.badge-4 {
+  background-color: var(--history-color);
+}
+.badge-5 {
+  background-color: var(--art-color);
+}
+.badge-6 {
+  background-color: var(--science-color);
+}
+
+/* Posizione numero */
+.position-cell {
+  font-weight: 600;
+  font-size: 1.1rem;
+  width: 80px;
+}
+
+.table tbody tr:nth-child(1) .position-cell {
+  color: #b8860b;
+}
+.table tbody tr:nth-child(2) .position-cell {
+  color: #747b81;
+}
+.table tbody tr:nth-child(3) .position-cell {
+  color: #cd7f32;
+}
+
+.table tbody tr:nth-child(1) .username-cell {
+  color: #b8860b;
+}
+.table tbody tr:nth-child(2) .username-cell {
+  color: #747b81;
+}
+.table tbody tr:nth-child(3) .username-cell {
+  color: #cd7f32;
+}
+
+
+/* Data column styling */
+.date-cell {
+  font-size: 0.9rem;
+  color: var(--secondary-text-color);
+  white-space: nowrap;
+}
+
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top i {
+  font-size: 1.2rem;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .leaderboard-container {
+    padding: 1rem 0;
+  }
+
+  .leaderboard-content {
+    padding: 1.5rem;
+  }
+
+  .leaderboard-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .category-selector select {
+    min-width: 200px;
+  }
+
+  .table thead th,
+  .table tbody td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .table thead th {
+    font-size: 1rem;
+  }
+
+  .date-cell {
+    font-size: 0.8rem;
+  }
+
+  .leaderboard-actions button {
+    margin: 0.25rem;
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .back-to-top {
+    bottom: 1rem;
+    right: 1rem;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 576px) {
+  .table-responsive {
+    font-size: 0.85rem;
+  }
+  
+  .position-cell {
+    width: 50px;
+  }
+
+  .date-cell {
+    display: none;
+  }
+
+  .table thead th:nth-child(4),
+  .table tbody td:nth-child(4) {
+    display: none;
+  }
+}

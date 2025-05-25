@@ -17,13 +17,8 @@
 
 .welcome-title {
   font-size: 2rem;
-  color: var(--secondary-text-color);
-  font-weight: 600;
-}
-
-.player-name {
   color: var(--text-color);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .welcome-subtitle {

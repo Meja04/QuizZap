@@ -150,10 +150,10 @@ export class QuizComponent implements OnInit {
 
   getScoreMessage(): string {
     const percentage = Math.round((this.correctAnswers / this.questions.length) * 100);
-    if (percentage >= 90) return 'Eccellente!';
-    if (percentage >= 70) return 'Ottimo lavoro!';
-    if (percentage >= 50) return 'Buon risultato!';
-    return 'Continua così!';
+    if (percentage >= 90) return 'Excellent!';
+    if (percentage >= 70) return 'Great job!';
+    if (percentage >= 50) return 'Good result!';
+    return 'Keep going!';
   }
 
   // Salva il punteggio usando il ScoreService
@@ -170,9 +170,6 @@ export class QuizComponent implements OnInit {
     };
 
     this.scoreService.saveScore(scoreData).subscribe({
-      next: () => {
-        this.scoreSaved = true;
-      },
     });
   }
   

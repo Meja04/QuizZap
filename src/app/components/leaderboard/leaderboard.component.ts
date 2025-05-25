@@ -16,6 +16,7 @@ export class LeaderboardComponent implements OnInit {
   categories: Category[] = [];
   selectedCategory = '';
   scores: Score[] = [];
+  currentCategoryId = '';
 
   constructor(private quizService: QuizService) { }
 
@@ -24,6 +25,7 @@ export class LeaderboardComponent implements OnInit {
       this.categories = data;
       if (data.length > 0) {
         this.selectedCategory = data[0].name;
+        this.currentCategoryId = data[0].id.toString();
         this.loadScores();
       }
     });

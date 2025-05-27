@@ -1,6 +1,6 @@
-<div class="card category-card category-card{{ category.id }}" (click)="onSelect()">
+<div class="card category-card category-card{{ category.id%6 }}" (click)="onSelect()">
   <div class="card-body">
-    <i class="material-icons mat-icon{{ category.id }}">{{ category.icon }}</i>
+    <i class="material-icons mat-icon{{ category.id%6 }}">{{ category.icon }}</i>
     <h3>{{ category.name | titlecase }}</h3>
     <p class="description">{{ category.description }}</p>
   </div>

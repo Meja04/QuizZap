@@ -59,6 +59,7 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+
 /* Bootstrap Table Customization */
 .table-container {
   background-color: white;
@@ -86,6 +87,7 @@
   vertical-align: middle;
   border-bottom: #afafaf 1px solid;
 }
+
 .table tbody tr:last-child td {
   border-bottom: none;
 }
@@ -103,23 +105,28 @@
   font-size: 1rem;
 }
 
+.badge-0 {
+  background-color: var(--category-color-0);
+}
+
 .badge-1 {
-  background-color: var(--videogames-color);
+  background-color: var(--category-color-1);
 }
+
 .badge-2 {
-  background-color: var(--cinema-color);
+  background-color: var(--category-color-2);
 }
+
 .badge-3 {
-  background-color: var(--geography-color);
+  background-color: var(--category-color-3);
 }
+
 .badge-4 {
-  background-color: var(--history-color);
+  background-color: var(--category-color-4);
 }
+
 .badge-5 {
-  background-color: var(--art-color);
-}
-.badge-6 {
-  background-color: var(--science-color);
+  background-color: var(--category-color-5);
 }
 
 /* Posizione numero */
@@ -132,9 +139,11 @@
 .table tbody tr:nth-child(1) .position-cell {
   color: #b8860b;
 }
+
 .table tbody tr:nth-child(2) .position-cell {
   color: #747b81;
 }
+
 .table tbody tr:nth-child(3) .position-cell {
   color: #cd7f32;
 }
@@ -142,9 +151,11 @@
 .table tbody tr:nth-child(1) .username-cell {
   color: #b8860b;
 }
+
 .table tbody tr:nth-child(2) .username-cell {
   color: #747b81;
 }
+
 .table tbody tr:nth-child(3) .username-cell {
   color: #cd7f32;
 }
@@ -159,36 +170,16 @@
 
 /* Back to top button */
 .back-to-top {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 1000;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
+  text-align: center;
+  padding: 1.5rem 0;
 }
 
-.back-to-top.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.back-to-top:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-.back-to-top i {
-  font-size: 1.2rem;
+.back-to-top button {
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: 1px solid #afafaf;
+  transition: background-color 0.2s ease;
 }
 
 
@@ -224,27 +215,13 @@
     font-size: 0.8rem;
   }
 
-  .leaderboard-actions button {
-    margin: 0.25rem;
-    width: 80%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .back-to-top {
-    bottom: 1rem;
-    right: 1rem;
-    width: 45px;
-    height: 45px;
-  }
 }
 
 @media (max-width: 576px) {
   .table-responsive {
     font-size: 0.85rem;
   }
-  
+
   .position-cell {
     width: 50px;
   }

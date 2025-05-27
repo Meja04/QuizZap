@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from '../../services/quiz.service';
 import { FormsModule } from '@angular/forms';
 import { Score } from '../../interfaces/score.interface';
@@ -13,26 +14,34 @@ import { Category } from '../../interfaces/category.interface';
   imports: [CommonModule, FormsModule],
 })
 export class LeaderboardComponent implements OnInit {
-  categories: Category[] = [];
-  selectedCategory = '';
-  scores: Score[] = [];
-  currentCategoryId = '';
 
-  constructor(private quizService: QuizService) { }
+  scores: Score[] = [];
+  categories: Category[] = [];
+  currentCategoryId!: number;
+  selectedCategory: string = '';
+
+  constructor(
+    private quizService: QuizService, 
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.quizService.getCategories().subscribe((data) => {
       this.categories = data;
-      if (data.length > 0) {
-        this.selectedCategory = data[0].name;
-        this.currentCategoryId = data[0].id.toString();
-        this.loadScores();
-      }
+      
+      this.route.paramMap.subscribe(params => {
+        const categoryName = params.get('category');
+        if (categoryName) {
+          this.selectedCategory = categoryName;
+          const foundCategory = data.find(c => c.name === categoryName);
+          if (foundCategory) {
+            this.currentCategoryId = foundCategory.id;
+          }
+          this.loadScores(); // Fixed: added parentheses to call the method
+        }
+      });
     });
-  }
-
-  onCategoryChange(): void {
-    this.loadScores();
   }
 
   loadScores(): void {
@@ -41,6 +50,12 @@ export class LeaderboardComponent implements OnInit {
     });
   }
 
+  onCategoryChange(): void {
+    // Navigate to the new leaderboard URL with the selected category
+    this.router.navigate(['/leaderboard', this.selectedCategory]);
+  }
 
-
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }

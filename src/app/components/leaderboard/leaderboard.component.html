@@ -13,7 +13,7 @@
             @if (categories.length > 0) {
             <!-- Category Selector -->
             <div class="category-selector">
-              <label for="category">Seleziona categoria:</label>
+              <label for="category">Select a category:</label>
               <select id="category" class="form-select" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
                 @for (category of categories; track category.name) {
                 <option [value]="category.name">{{ category.name | titlecase }}</option>
@@ -40,7 +40,7 @@
                       <td class="position-cell text-center">{{ i + 1 }}</td>
                       <td class="username-cell text-center"><strong>{{ score.username }}</strong></td>
                       <td class="text-center">
-                        <span [class]="'badge-' + currentCategoryId" class="badge score-badge">{{ score.score
+                        <span [class]="'badge-' + currentCategoryId%6" class="badge score-badge">{{ score.score
                           }}</span>
                       </td>
                       <td class="date-cell text-center">{{ score.date | date:'dd/MM/yyyy' }}</td>
@@ -51,6 +51,16 @@
               </div>
             </div>
             }
+
+            <!-- Back to Top Button -->
+            <div class="back-to-top">
+              <button type="button" class="btn btn-light" (click)="scrollToTop()" title="Torna su">
+                <i class="material-icons">keyboard_arrow_up</i>
+                Torna su
+              </button>
+              
+            </div>
+
             }
           </div>
 
@@ -58,14 +68,4 @@
       </div>
     </div>
   </div>
-
-  <!-- Back to Top Button -->
-  <!--   <button 
-    type="button" 
-    class="btn btn-primary back-to-top" 
-    [class.show]="showBackToTop"
-    (click)="scrollToTop()"
-    title="Torna su">
-    <i class="material-icons">keyboard_arrow_up</i>
-  </button> -->
 </div>

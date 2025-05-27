@@ -20,8 +20,7 @@ export class CategoryComponent {
 
   onSelect(): void {
     this.router.navigate(['/quiz', this.category.name], {
-      queryParams: { categoryId: this.category.id } // Passa l'ID della categoria come parametro di query
-    });
+});
   }
 
 

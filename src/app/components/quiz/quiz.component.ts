@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -11,8 +11,6 @@ import { PaginatorComponent } from '../paginator/paginator.component';
 import { TimerComponent } from '../timer/timer.component';
 
 import { Question } from '../../interfaces/question.interface';
-import { Score } from '../../interfaces/score.interface';
-
 import { QuizService } from '../../services/quiz.service';
 import { ScoreService } from '../../services/score.service';
 
@@ -34,44 +32,33 @@ import { ScoreService } from '../../services/score.service';
 })
 export class QuizComponent implements OnInit {
   @ViewChild('quizTimer') timerComponent!: TimerComponent;
-  @Input() categoryId!: number;
 
-  // Proprietà esistenti
   questions: Question[] = [];
-  showResult = false;
-  selectedCategory: string = '';
   currentQuestionIndex = 0;
   currentCategoryId!: number;
-
-  // Proprietà per il punteggio
+  selectedCategory: string = '';
+  
+  // Proprietà per il calcolo del punteggio
   correctAnswers = 0;
   finalScore = 0;
   remainingTime = 0;
   isQuizCompleted = false;
   allQuestionsAnswered = false;
 
-  // Proprietà per il salvataggio del punteggio
-  playerName!: string;
-  scoreSaved = false;
-
-
   constructor(
     private quizService: QuizService,
-    private scoreService: ScoreService, // Inietta il nuovo servizio
+    private scoreService: ScoreService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-
-    this.playerName = localStorage.getItem('playerName') || '';
-
-    this.quizService.getCategories().subscribe((categories) => {
+    this.quizService.getCategories().subscribe((data) => {
       this.route.paramMap.subscribe(params => {
         const categoryName = params.get('category');
         if (categoryName) {
           this.selectedCategory = categoryName;
-          const foundCategory = categories.find(c => c.name === categoryName);
+          const foundCategory = data.find(c => c.name === categoryName);
           if (foundCategory) {
             this.currentCategoryId = foundCategory.id;
           }
@@ -105,32 +92,32 @@ export class QuizComponent implements OnInit {
     this.currentQuestionIndex = index;
   }
 
-  selectAnswer(optionIndex: number): void { //seleziona la risposta
+  selectAnswer(optionIndex: number): void {
     if (this.currentQuestion && !this.isQuizCompleted) {
       this.currentQuestion.currentAnswer = optionIndex;
-      this.checkAllQuestionsAnswered(); //controlla se tutte le domande hanno una risposta
+      this.checkAllQuestionsAnswered();
     }
   }
 
   checkAllQuestionsAnswered(): void {
-    this.allQuestionsAnswered = this.questions.every(q => q.currentAnswer !== null);  //verifica che per ogni domanda q nell'array questions la proprietà currentAnswer non sia null
+    this.allQuestionsAnswered = this.questions.every(q => q.currentAnswer !== null);
   }
 
   updateRemainingTime(seconds: number): void {
     this.remainingTime = seconds;
   }
 
-  handleTimeExpired(): void { //chiamata quando il timer scade
+  handleTimeExpired(): void {
     this.finishQuiz();
   }
 
-  finishQuiz(): void { // chiamata direttamente dal pulsante termina quiz
+  finishQuiz(): void {console.log('Finishing quiz...');
     if (this.isQuizCompleted) return;
 
     this.isQuizCompleted = true;
     this.timerComponent?.stopTimer();
     this.calculateScore();
-    this.showResult = true;
+    this.navigateToResults();
   }
 
   calculateScore(): void {
@@ -142,89 +129,19 @@ export class QuizComponent implements OnInit {
       this.correctAnswers,
       Math.max(0, this.remainingTime)
     );
-
-    console.log(`Risposte corrette: ${this.correctAnswers}`);
-    console.log(`Tempo rimanente: ${this.remainingTime} secondi`);
-    console.log(`Punteggio finale: ${this.finalScore}`);
   }
 
-  getScoreMessage(): string {
-    const percentage = Math.round((this.correctAnswers / this.questions.length) * 100);
-    if (percentage >= 90) return 'Excellent!';
-    if (percentage >= 70) return 'Great job!';
-    if (percentage >= 50) return 'Good result!';
-    return 'Keep going!';
-  }
-
-  // Salva il punteggio usando il ScoreService
-  saveScore(): void {
-
-    this.scoreSaved = true;
-
-    const scoreData = {
-      
-      username: this.playerName,
-      category: this.selectedCategory,
-      score: this.finalScore,
-      date: new Date()
-    };
-
-    this.scoreService.saveScore(scoreData).subscribe({
+  navigateToResults(): void {
+    // Naviga alla pagina dei risultati passando i dati necessari
+    this.router.navigate(['/results', this.selectedCategory], {
+      state: {
+        questions: this.questions,
+        correctAnswers: this.correctAnswers,
+        finalScore: this.finalScore,
+        remainingTime: this.remainingTime,
+        selectedCategory: this.selectedCategory,
+        currentCategoryId: this.currentCategoryId
+      }
     });
   }
-  
-  isAnswerCorrect(questionIndex: number): boolean {
-    const question = this.questions[questionIndex];
-    return question.currentAnswer === question.correctOptionIndex;
-  }
-
-  getOptionClass(questionIndex: number, optionIndex: number): string {
-    const question = this.questions[questionIndex];
-
-    // durante il quiz mostra solo la selezione
-    if (!this.showResult) {
-      return question.currentAnswer === optionIndex ? 'selected' : '';
-    }
-
-    // nella revisione finale mostra corretta/sbagliata
-    if (optionIndex === question.correctOptionIndex) {
-      return 'correct';
-    }
-    if (optionIndex === question.currentAnswer && !this.isAnswerCorrect(questionIndex)) {
-      return 'wrong';
-    }
-    return '';
-  }
-
-
-
-
-  //pulsanti finali
-
-  restartQuiz(): void { //reset di tutte le proprietà
-    this.questions = []
-    this.showResult = false;
-    this.currentQuestionIndex = 0;
-    this.correctAnswers = 0;
-    this.finalScore = 0;
-    this.remainingTime = 0;
-    this.isQuizCompleted = false;
-    this.allQuestionsAnswered = false;
-    this.scoreSaved = false;
-
-    // Ricarica le domande
-    this.loadCategory(this.selectedCategory);
-
-    // Riavvia il timer se necessario
-    this.timerComponent?.resetTimer();
-  }
-
-  viewCategoryLeaderboard(): void {
-    this.router.navigate(['/leaderboard']);
-  }
-
-  goBackToCategories(): void {
-    this.router.navigate(['/']);
-  }
 }
-

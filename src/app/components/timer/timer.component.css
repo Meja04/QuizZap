@@ -11,28 +11,28 @@
   padding: 4px;
 }
 
+.time-value0 {
+  color: var(--category-color-0);
+}
+
 .time-value1 {
-  color: var(--videogames-color);
+  color: var(--category-color-1);
 }
 
 .time-value2 {
-  color: var(--cinema-color);
+  color: var(--category-color-2);
 }
 
 .time-value3 {
-  color: var(--geography-color);
+  color: var(--category-color-3);
 }
 
 .time-value4 {
-  color: var(--history-color);
+  color: var(--category-color-4);
 }
 
 .time-value5 {
-  color: var(--art-color);
-}
-
-.time-value6 {
-  color: var(--science-color);
+  color: var(--category-color-5);
 }
 
 
@@ -42,21 +42,21 @@
 }
 
 
+:host ::ng-deep .category-0 .p-progressbar-value {
+  background-color: var(--category-color-0);
+}
 :host ::ng-deep .category-1 .p-progressbar-value {
-  background-color: var(--videogames-color);
+  background-color: var(--category-color-1);
 }
 :host ::ng-deep .category-2 .p-progressbar-value {
-  background-color: var(--cinema-color);
+  background-color: var(--category-color-2);
 }
 :host ::ng-deep .category-3 .p-progressbar-value {
-  background-color: var(--geography-color);
+  background-color: var(--category-color-3);
 }
 :host ::ng-deep .category-4 .p-progressbar-value {
-  background-color: var(--history-color);
+  background-color: var(--category-color-4);
 }
 :host ::ng-deep .category-5 .p-progressbar-value {
-  background-color: var(--art-color);
-}
-:host ::ng-deep .category-6 .p-progressbar-value {
-  background-color: var(--science-color);
+  background-color: var(--category-color-5);
 }

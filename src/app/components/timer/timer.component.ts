@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angu
 import { CommonModule, DatePipe } from '@angular/common';
 import { ProgressBarModule } from 'primeng/progressbar';
 
+
 @Component({
   selector: 'app-timer',
   standalone: true,
@@ -19,6 +20,7 @@ export class TimerComponent implements OnInit, OnDestroy {
   currentTime: number = 0;
   private intervalId: any;
   private isRunning = false;
+  showModal = false;
 
   ngOnInit(): void {
     this.startTimer();
@@ -26,22 +28,24 @@ export class TimerComponent implements OnInit, OnDestroy {
 
   private startTimer(): void {
     if (this.isRunning) return;
-    
+
     this.isRunning = true;
     this.currentTime = this.duration;
-    
+
     this.intervalId = setInterval(() => {
       this.currentTime--;
       this.progress = (this.currentTime / this.duration) * 100;
-      
+
       this.timeUpdate.emit(this.currentTime);
 
       if (this.currentTime <= 0) {
         this.stopTimer();
         this.timeExpired.emit();
+        this.showModal = true;
       }
     }, 1000);
   }
+
 
   stopTimer(): void {
     if (this.intervalId) {

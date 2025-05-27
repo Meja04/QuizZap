@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Controllo se esiste già un nome utente nel localStorage
     
 
     // Prendo le categorie dal servizio

@@ -1,43 +1,55 @@
 {
   "categories": [
     {
-      "id": "1",
+      "id": "0",
       "name": "videogames",
       "description": "If you love video games, this is the right category for you",
       "icon": "sports_esports"
     },
     {
-      "id": "2",
+      "id": "1",
       "name": "cinema",
       "description": "Find out how much you know about movies and actors",
       "icon": "movie"
     },
     {
-      "id": "3",
+      "id": "2",
       "name": "geography",
       "description": "Explore the world by answering geography questions",
       "icon": "public"
     },
     {
-      "id": "4",
+      "id": "3",
       "name": "history",
       "description": "Travel through time with questions about world history",
       "icon": "history_edu"
     },
     {
-      "id": "5",
+      "id": "4",
       "name": "art",
       "description": "Test your knowledge about painting and artistic movements",
       "icon": "palette"
     },
     {
-      "id": "6",
+      "id": "5",
       "name": "science",
       "description": "Challenge your scientific knowledge in various fields",
       "icon": "science"
     }
   ],
   "questions": [
+    {
+      "id": "1",
+      "question": "Which game features the character Mugman?",
+      "options": [
+        "Cuphead",
+        "Undertale",
+        "Hollow Knight",
+        "Celeste"
+      ],
+      "correctOptionIndex": 1,
+      "category": "computer"
+    },
     {
       "id": "1",
       "question": "Which game features the character Mugman?",
@@ -1712,81 +1724,207 @@
       "date": "2025-05-23T10:28:41.050Z"
     },
     {
-      "id": "da67",
-      "username": "ugguu",
-      "category": "cinema",
-      "score": 206,
-      "date": "2025-05-23T13:24:12.865Z"
-    },
-    {
-      "id": "2447",
-      "username": "ugguu",
-      "category": "cinema",
-      "score": 0,
-      "date": "2025-05-23T16:11:32.392Z"
-    },
-    {
-      "id": "5328",
-      "username": "ugguu",
+      "id": "4a95",
+      "username": "edede",
       "category": "geography",
-      "score": 84,
-      "date": "2025-05-23T16:15:39.183Z"
+      "score": 0,
+      "date": "2025-05-26T14:43:22.765Z"
     },
     {
-      "id": "8e99",
-      "username": "alfredo",
+      "id": "3799",
+      "username": "edede",
+      "category": "art",
+      "score": 855,
+      "date": "2025-05-26T14:57:43.725Z"
+    },
+    {
+      "id": "8ab6",
+      "username": "edede",
+      "category": "art",
+      "score": 855,
+      "date": "2025-05-26T14:57:47.933Z"
+    },
+    {
+      "id": "f442",
+      "username": "momomomo",
+      "category": "art",
+      "score": 856,
+      "date": "2025-05-26T14:59:00.734Z"
+    },
+    {
+      "id": "a330",
+      "username": "momomomo",
+      "category": "art",
+      "score": 856,
+      "date": "2025-05-26T15:02:20.656Z"
+    },
+    {
+      "id": "24d2",
+      "username": "momomomo",
       "category": "cinema",
       "score": 0,
-      "date": "2025-05-25T15:18:02.684Z"
+      "date": "2025-05-26T15:37:10.357Z"
     },
     {
-      "id": "c647",
-      "username": "alfredo",
-      "category": "cinema",
-      "score": 428,
-      "date": "2025-05-25T15:18:13.380Z"
-    },
-    {
-      "id": "0eb5",
-      "username": "alfredo",
-      "category": "cinema",
+      "id": "9b91",
+      "username": "momomomo",
+      "category": "art",
       "score": 0,
-      "date": "2025-05-25T15:18:28.734Z"
+      "date": "2025-05-26T15:56:14.853Z"
     },
     {
-      "id": "6e10",
-      "username": "alfredo",
-      "category": "cinema",
-      "score": 0,
-      "date": "2025-05-25T15:26:31.556Z"
-    },
-    {
-      "id": "06e5",
-      "username": "alfredo",
-      "category": "cinema",
-      "score": 429,
-      "date": "2025-05-25T15:26:41.812Z"
-    },
-    {
-      "id": "6464",
-      "username": "alfredo",
-      "category": "cinema",
-      "score": 429,
-      "date": "2025-05-25T15:39:14.237Z"
-    },
-    {
-      "id": "a372",
+      "id": "d150",
       "username": "alfredo",
       "category": "geography",
-      "score": 858,
-      "date": "2025-05-25T16:17:41.743Z"
+      "score": 0,
+      "date": "2025-05-27T07:24:35.528Z"
     },
     {
-      "id": "5c40",
+      "id": "a5b7",
       "username": "alfredo",
       "category": "geography",
-      "score": 846,
-      "date": "2025-05-25T18:17:42.568Z"
+      "score": 0,
+      "date": "2025-05-27T07:24:38.042Z"
+    },
+    {
+      "id": "19ef",
+      "username": "alfredo",
+      "category": "geography",
+      "score": 0,
+      "date": "2025-05-27T07:25:05.961Z"
+    },
+    {
+      "id": "a894",
+      "username": "alfredo",
+      "category": "geography",
+      "score": 0,
+      "date": "2025-05-27T07:25:22.601Z"
+    },
+    {
+      "id": "5e13",
+      "username": "alfredo",
+      "category": "geography",
+      "score": 0,
+      "date": "2025-05-27T07:25:24.303Z"
+    },
+    {
+      "id": "ac2f",
+      "username": "alfredo",
+      "category": "geography",
+      "score": 0,
+      "date": "2025-05-27T07:26:46.872Z"
+    },
+    {
+      "id": "fa20",
+      "username": "alfredo",
+      "category": "geography",
+      "score": 0,
+      "date": "2025-05-27T07:26:57.074Z"
+    },
+    {
+      "id": "df62",
+      "username": "alfredo",
+      "category": "geography",
+      "score": 0,
+      "date": "2025-05-27T07:27:06.417Z"
+    },
+    {
+      "id": "f296",
+      "username": "alfredo",
+      "category": "geography",
+      "score": 0,
+      "date": "2025-05-27T07:27:08.480Z"
+    },
+    {
+      "id": "f50c",
+      "username": "alfredo",
+      "category": "geography",
+      "score": 0,
+      "date": "2025-05-27T07:36:10.691Z"
+    },
+    {
+      "id": "642a",
+      "username": "alfredo",
+      "category": "geography",
+      "score": 0,
+      "date": "2025-05-27T07:37:05.262Z"
+    },
+    {
+      "id": "13a7",
+      "username": "alfredo",
+      "category": "geography",
+      "score": 0,
+      "date": "2025-05-27T07:37:35.443Z"
+    },
+    {
+      "id": "f702",
+      "username": "alfredo",
+      "category": "cinema",
+      "score": 143,
+      "date": "2025-05-27T07:44:56.679Z"
+    },
+    {
+      "id": "0141",
+      "username": "alfredo",
+      "category": "videogames",
+      "score": 0,
+      "date": "2025-05-27T07:45:59.024Z"
+    },
+    {
+      "id": "31a6",
+      "username": "alfredo",
+      "category": "cinema",
+      "score": 0,
+      "date": "2025-05-27T07:47:13.895Z"
+    },
+    {
+      "id": "2510",
+      "username": "alfredo",
+      "category": "cinema",
+      "score": 0,
+      "date": "2025-05-27T07:49:21.687Z"
+    },
+    {
+      "id": "5473",
+      "username": "alfredo",
+      "category": "cinema",
+      "score": 0,
+      "date": "2025-05-27T07:49:24.744Z"
+    },
+    {
+      "id": "8b3b",
+      "username": "alfredo",
+      "category": "cinema",
+      "score": 0,
+      "date": "2025-05-27T07:49:31.479Z"
+    },
+    {
+      "id": "97a0",
+      "username": "alfredo",
+      "category": "cinema",
+      "score": 0,
+      "date": "2025-05-27T07:49:33.071Z"
+    },
+    {
+      "id": "4e0f",
+      "username": "alfredo",
+      "category": "cinema",
+      "score": 0,
+      "date": "2025-05-27T07:50:09.816Z"
+    },
+    {
+      "id": "f7ad",
+      "username": "alfredo",
+      "category": "cinema",
+      "score": 0,
+      "date": "2025-05-27T07:50:25.609Z"
+    },
+    {
+      "id": "bed9",
+      "username": "alfredo",
+      "category": "cinema",
+      "score": 0,
+      "date": "2025-05-27T07:50:27.544Z"
     }
   ]
 }

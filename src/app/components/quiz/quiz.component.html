@@ -9,21 +9,18 @@
             <h1>{{ selectedCategory | titlecase }} Quiz</h1>
           </div>
 
-
-
-
           <div class="quiz-content">
-            @if (!showResult && questions.length > 0) {
+            @if (questions.length > 0) {
             <!-- Timer Component -->
             <div class="quiz-timer">
-              <app-timer [duration]="1200" [categoryId]="currentCategoryId" (timeExpired)="handleTimeExpired()"
-                (timeUpdate)="updateRemainingTime($event)">
+              <app-timer [duration]="12" [categoryId]="currentCategoryId" (timeExpired)="handleTimeExpired()"
+                (timeUpdate)="updateRemainingTime($event)" #quizTimer>
               </app-timer>
             </div>
             }
 
             <!-- Mostra domanda durante il quiz -->
-            @if (currentQuestion && !showResult) {
+            @if (currentQuestion) {
             <div class="quiz-question-container">
               <h2>Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</h2>
               <p class="question-text">{{ currentQuestion.question }}</p>
@@ -31,7 +28,7 @@
               <div class="options-container">
                 @for (option of currentQuestion.options; track $index) {
                 <div class="card option-card" [class.selected]="currentQuestion.currentAnswer === $index"
-                  [class]="'option-card-' + currentCategoryId" (click)="selectAnswer($index)">
+                  [class]="'option-card-' + currentCategoryId%6" (click)="selectAnswer($index)">
                   <div class="card-body">
                     {{ option }}
                   </div>
@@ -41,8 +38,8 @@
             </div>
             }
 
-            <!-- Paginator Component (solo durante il quiz) -->
-            @if (!showResult && questions.length > 0) {
+            <!-- Paginator Component -->
+            @if (questions.length > 0) {
             <div class="quiz-paginator">
               <app-paginator [total]="questions.length" [current]="currentQuestionIndex"
                 (change)="onPageChange($event)">
@@ -52,75 +49,16 @@
           </div>
 
           <!-- Pulsante Fine Quiz -->
-          @if (currentQuestion && !showResult) {
+          @if (currentQuestion) {
           <div class="quiz-actions">
-            <button type="button" class="btn btn-light" [disabled]="!allQuestionsAnswered" (click)="finishQuiz()">
+            <button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top"
+        data-bs-custom-class="custom-tooltip"
+        data-bs-title="This top tooltip is themed via CSS variables." [disabled]="!allQuestionsAnswered" (click)="finishQuiz()">
               Finish Quiz
             </button>
-          </div>
-          }
 
-          <!-- Risultati del Quiz -->
-          @if (showResult && isQuizCompleted) {
-          <div class="quiz-results">
-            <h3>{{ getScoreMessage() }}</h3>
-
-            <div class="score-summary mb-0 mt-0">
-              <div class="score-item">
-                <strong>Correct Answers:</strong> {{ correctAnswers }} / {{ questions.length }}
-              </div>
-              <div class="score-item">
-                <strong>Final Score:</strong> {{ finalScore }} points
-              </div>
-              <div class="score-item">
-                <strong>Remaining Time:</strong> {{ (remainingTime * 1000) | date:'mm:ss':'UTC' }}
-              </div>
-              <div class="score-actions">
-                <button type="button" class="btn btn-light" [disabled]="scoreSaved" (click)="saveScore()">Save
-                  Score</button>
-              </div>
-            </div>
-
-            <!-- Revisione Risposte -->
-            <div class="answers-review mt-4 mb-0">
-              <h2>Answers review:</h2>
-              @for (question of questions; track question.id; let i = $index) {
-              <div class="question-review">
-                <h4>Question {{ i + 1 }}: {{ question.question }}</h4>
-
-                <div class="review-options">
-                  @for (option of question.options; track $index; let optionIndex = $index) {
-                  <div class="review-option" [ngClass]="{
-                      'correct': optionIndex === question.correctOptionIndex,
-                      'wrong': optionIndex === question.currentAnswer && !isAnswerCorrect(i)
-                    }">
-                    {{ option }}
-                    @if (optionIndex === question.correctOptionIndex) {
-                    <span class="correct-label">(Correct)</span>
-                    }
-                    @if (optionIndex === question.currentAnswer && !isAnswerCorrect(i)) {
-                    <span class="wrong-label">(Your answer)</span>
-                    }
-                  </div>
-                  }
-                </div>
-              </div>
-              }
-            </div>
-
-            <!-- Azioni Finali -->
-            <div class="final-actions">
-              <button type="button" class="btn btn-light" (click)="viewCategoryLeaderboard()">
-                {{ selectedCategory | titlecase }} Leaderboard
-              </button>
-              <button type="button" class="btn btn-light" (click)="restartQuiz()">
-                Restart Quiz
-              </button>
-              <button type="button" class="btn btn-light" (click)="goBackToCategories()">
-                Back to Categories
-              </button>
-            </div>
-
+            <button id="button" aria-describedby="tooltip">I'm a button</button>
+<div id="tooltip" role="tooltip">I'm a tooltip</div>
           </div>
           }
 

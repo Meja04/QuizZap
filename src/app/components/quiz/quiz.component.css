@@ -82,60 +82,59 @@
   color: var(--text-color);
 }
 
+.option-card-0:hover {
+  border-color: var(--category-color-0);
+}
+
+.option-card-0.selected {
+  background-color: var(--category-color-0-light);
+  border-color: var(--category-color-0);
+}
+
 .option-card-1:hover {
-  border-color: var(--videogames-color);
+  border-color: var(--category-color-1);
 }
 
 .option-card-1.selected {
-  background-color: var(--videogames-color-light);
-  border-color: var(--videogames-color);
+  background-color: var(--category-color-1-light);
+  border-color: var(--category-color-1);
 }
 
 .option-card-2:hover {
-  border-color: var(--cinema-color);
+  border-color: var(--category-color-2);
 }
 
 .option-card-2.selected {
-  background-color: var(--cinema-color-light);
-  border-color: var(--cinema-color);
+  background-color: var(--category-color-2-light);
+  border-color: var(--category-color-2);
 }
 
 .option-card-3:hover {
-  border-color: var(--geography-color);
+  border-color: var(--category-color-3);
 }
 
 .option-card-3.selected {
-  background-color: var(--geography-color-light);
-  border-color: var(--geography-color);
+  background-color: var(--category-color-3-light);
+  border-color: var(--category-color-3);
 }
 
 .option-card-4:hover {
-  border-color: var(--history-color);
+  border-color: var(--category-color-4);
 }
 
 .option-card-4.selected {
-  background-color: var(--history-color-light);
-  border-color: var(--history-color);
+  background-color: var(--category-color-4-light);
+  border-color: var(--category-color-4);
 }
 
 .option-card-5:hover {
-  border-color: var(--art-color);
+  border-color: var(--category-color-5);
 }
 
 .option-card-5.selected {
-  background-color: var(--art-color-light);
-  border-color: var(--art-color);
+  background-color: var(--category-color-5-light);
+  border-color: var(--category-color-5);
 }
-
-.option-card-6:hover {
-  border-color: var(--science-color);
-}
-
-.option-card-6.selected {
-  background-color: var(--science-color-light);
-  border-color: var(--science-color);
-}
-
 
 .quiz-actions {
   text-align: center;
@@ -149,131 +148,6 @@
   border: 1px solid #afafaf;
   transition: background-color 0.2s ease;
 }
-
-/* Risultati Quiz */
-.quiz-results {
-  text-align: center;
-}
-
-.quiz-results h3 {
-  color: var(--text-color);
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-}
-
-.score-summary {
-  background-color: #eeeeee;
-  border: 1px solid #afafaf;
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin: 3rem;
-  font-size: 1.2rem;
-  color: var(--text-color);
-}
-
-.score-actions {
-  text-align: center;
-}
-
-.score-actions button {
-  padding: 0.75rem 2rem;
-  font-size: 1.1rem;
-  border-radius: 8px;
-  border: 1px solid #afafaf;
-  transition: background-color 0.2s ease;
-}
-
-.score-item {
-  margin-bottom: 1rem;
-  color: var(--text-color);
-}
-
-/* Revisione Risposte */
-.answers-review {
-  margin: 3rem;
-  text-align: left;
-}
-
-.answers-review h2 {
-  color: var(--text-color);
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.question-review {
-  background-color: white;
-  border-radius: 8px;
-  border: 1px solid #e0e3e6;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.question-review:last-child {
-  margin-bottom: 0;
-}
-
-.question-review h4 {
-  color: var(--secondary-text-color);
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.review-options {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.review-option {
-  padding: 0.75rem;
-  border-radius: 8px;
-  background-color: white;
-  border: 2px solid #e0e3e6;
-}
-
-.review-option.correct {
-  background-color: #d4edda;
-  border-color: #28a745;
-  color: #155724;
-}
-
-.review-option.wrong {
-  background-color: #f8d7da;
-  border-color: #dc3545;
-  color: #721c24;
-}
-
-.correct-label,
-.wrong-label {
-  font-weight: 600;
-}
-
-.correct-label {
-  color: #28a745;
-}
-
-.wrong-label {
-  color: #dc3545;
-}
-
-/* Azioni Finali */
-.final-actions {
-  text-align: center;
-  padding: 1.5rem 0;
-}
-
-.final-actions button {
-  padding: 0.75rem 2rem;
-  margin: 0 0.5rem;
-  font-size: 1.1rem;
-  border-radius: 8px;
-  border: 1px solid #afafaf;
-  transition: background-color 0.2s ease;
-}
-
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -296,17 +170,5 @@
 
   .options-container {
     grid-template-columns: 1fr;
-  }
-
-  .final-actions {
-    flex-direction: column;
-    gap: 0.5rem;
-
-  }
-
-  .final-actions button {
-    margin: 0;
-    width: 60%;
-    margin-bottom: 0.5rem;
   }
 }

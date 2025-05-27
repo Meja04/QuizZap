@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
+import { ResultsComponent } from './components/results/results.component';
 
 export const routes: Routes = [
   {
@@ -10,13 +11,23 @@ export const routes: Routes = [
     title: 'Home Page'
   },
   {
+    path: 'results/:category',
+    component: ResultsComponent,
+    title: 'Quiz Results'
+  },
+  {
     path: 'quiz/:category',
     component: QuizComponent,
     title: 'Quiz Game'
   },
   {
-    path: 'leaderboard', // /:category da aggiungere
+    path: 'leaderboard/:category',
     component: LeaderboardComponent,
-    title: 'Classifica'
-  }
+    title: 'Leaderboard'
+  },
+  {
+    path: 'leaderboard',
+    redirectTo: 'leaderboard/videogames',
+    pathMatch: 'full'
+  },
 ];

@@ -1,30 +1,32 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
 
-html, body { 
-  height: 100%; ;
+html,
+body {
+  height: 100%;
+  ;
 }
 
-body { 
-  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-:root{
+:root {
   --text-color: #333;
   --secondary-text-color: #666;
 
-  --videogames-color-light: #c77bd480;
-  --cinema-color-light: #f7c06d80;
-  --geography-color-light: #7cd5ff80;
-  --history-color-light: #f7ee6e80;
-  --art-color-light: #ff7b6480;
-  --science-color-light: #aed58180;
+  --category-color-0-light: #c77bd480;
+  --category-color-1-light: #f7c06d80;
+  --category-color-2-light: #7cd5ff80;
+  --category-color-3-light: #f7ee6e80;
+  --category-color-4-light: #ff7b6480;
+  --category-color-5-light: #aed58180;
 
-  --videogames-color: #ad008b;
-  --cinema-color: #eb8500;
-  --geography-color: #0079ca;
-  --history-color: #d3be00;
-  --art-color: #db1a00;
-  --science-color: #81a800;
+  --category-color-0: #ad008b;
+  --category-color-1: #eb8500;
+  --category-color-2: #0079ca;
+  --category-color-3: #d3be00;
+  --category-color-4: #db1a00;
+  --category-color-5: #81a800;
 }
-

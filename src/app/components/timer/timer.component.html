@@ -1,8 +1,29 @@
 <div class="timer-container">
-  <div class="countdown-display time-value{{ categoryId }}">
-      {{ (currentTime * 1000) | date:'mm:ss':'UTC' }}
+  <div class="countdown-display time-value{{ categoryId%6 }}">
+    {{ (currentTime * 1000) | date:'mm:ss':'UTC' }}
   </div>
 
-  <p-progressBar [value]="progress" [style]="{ 'height': '12px' }" [styleClass]="'category-' + categoryId"
+  <p-progressBar [value]="progress" [style]="{ 'height': '12px' }" [styleClass]="'category-' + categoryId%6"
     [showValue]="false"></p-progressBar>
 </div>
+
+<!-- Modal Bootstrap controllato da Angular -->
+@if (showModal) {
+<div class="modal fade show d-block" tabindex="-1" aria-labelledby="expiredModalLabel"
+  style="background-color: rgba(0,0,0,0.5);">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="expiredModalLabel">Time's Up!</h5>
+        <button type="button" class="btn-close" (click)="showModal = false" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Your time has expired.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="showModal = false">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+}

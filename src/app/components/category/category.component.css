@@ -17,23 +17,23 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+.category-card0:hover {
+  background-color: var(--category-color-0-light);
+}
 .category-card1:hover {
-  background-color: var(--videogames-color-light);
+  background-color: var(--category-color-1-light);
 }
 .category-card2:hover {
-  background-color: var(--cinema-color-light);
+  background-color: var(--category-color-2-light);
 }
 .category-card3:hover {
-  background-color: var(--geography-color-light);
+  background-color: var(--category-color-3-light);
 }
 .category-card4:hover {
-  background-color: var(--history-color-light);
+  background-color: var(--category-color-4-light);
 }
 .category-card5:hover {
-  background-color: var(--art-color-light);
-}
-.category-card6:hover {
-  background-color: var(--science-color-light);
+  background-color: var(--category-color-5-light);
 }
 
 
@@ -67,21 +67,21 @@
   vertical-align: middle;
 }
 
+.mat-icon0 {
+  color: var(--category-color-0) !important
+}
 .mat-icon1 {
-  color: var(--videogames-color) !important
+  color: var(--category-color-1) !important;
 }
 .mat-icon2 {
-  color: var(--cinema-color) !important;
+  color: var(--category-color-2) !important;
 }
 .mat-icon3 {
-  color: var(--geography-color) !important;
+  color: var(--category-color-3) !important;
 }
 .mat-icon4 {
-  color: var(--history-color) !important;
+  color: var(--category-color-4) !important;
 }
 .mat-icon5 {
-  color: var(--art-color) !important;
-}
-.mat-icon6 {
-  color: var(--science-color) !important;
+  color: var(--category-color-5) !important;
 }

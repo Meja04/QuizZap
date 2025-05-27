@@ -1,25 +1,232 @@
-.custom-paginator {
+:host ::ng-deep .custom-paginator.p-paginator {
   background: transparent;
-  padding: 0.5rem 0;
+  border: none;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.custom-paginator .p-paginator-pages .p-paginator-page {
-  min-width: 2rem;
-  height: 2rem;
-  margin: 0 0.1rem;
+/* Container delle pagine */
+:host ::ng-deep .custom-paginator .p-paginator-pages {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+/* Styling delle singole pagine */
+:host ::ng-deep .custom-paginator .p-paginator-page {
+  min-width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+  background: white;
+  color: #666;
+  border: 2px solid #e0e3e6;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.custom-paginator .p-paginator-pages .p-paginator-page.p-highlight {
-  background: #6366f1;
-  color: white;
+:host ::ng-deep .custom-paginator .p-paginator-page:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  border-color: var(--category-color-0, #6366f1);
+  color: var(--category-color-0, #6366f1);
 }
 
-.custom-paginator .p-paginator-next,
-.custom-paginator .p-paginator-last {
-  margin-left: 0.5rem;
+
+/* Pagine con domande risposte */
+:host ::ng-deep .custom-paginator .p-paginator-page.answered {
+  background: white !important;
+  border-color: #afafaf !important;
+  color: #afafaf !important;
+  font-weight: 500;
 }
 
-.custom-paginator .p-disabled {
-  opacity: 0.5;
+/* Pulsanti di navigazione */
+:host ::ng-deep .custom-paginator .p-paginator-first,
+:host ::ng-deep .custom-paginator .p-paginator-prev,
+:host ::ng-deep .custom-paginator .p-paginator-next,
+:host ::ng-deep .custom-paginator .p-paginator-last {
+  min-width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #e0e3e6;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin: 0 0.25rem;
+}
+
+:host ::ng-deep .custom-paginator .p-paginator-first:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator .p-paginator-prev:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator .p-paginator-next:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator .p-paginator-last:not(.p-disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  border-color: var(--category-color-0);
+  color: var(--category-color-0);
+}
+
+/* Stato disabilitato */
+:host ::ng-deep .custom-paginator .p-paginator-first.p-disabled,
+:host ::ng-deep .custom-paginator .p-paginator-prev.p-disabled,
+:host ::ng-deep .custom-paginator .p-paginator-next.p-disabled,
+:host ::ng-deep .custom-paginator .p-paginator-last.p-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: #f8f9fa;
+  border-color: #e0e3e6;
+  color: #999;
+}
+
+:host ::ng-deep .custom-paginator .p-paginator-first.p-disabled:hover,
+:host ::ng-deep .custom-paginator .p-paginator-prev.p-disabled:hover,
+:host ::ng-deep .custom-paginator .p-paginator-next.p-disabled:hover,
+:host ::ng-deep .custom-paginator .p-paginator-last.p-disabled:hover {
+  transform: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Nascondere elementi non necessari */
+:host ::ng-deep .custom-paginator .p-paginator-rpp-options,
+:host ::ng-deep .custom-paginator .p-dropdown {
+  display: none !important;
+}
+
+/* Override per le diverse categorie */
+
+:host ::ng-deep .custom-paginator.category-0 .p-paginator-page:hover,
+:host ::ng-deep .custom-paginator.category-0 .p-paginator-first:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-0 .p-paginator-prev:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-0 .p-paginator-next:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-0 .p-paginator-last:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-0 .p-paginator-page.p-highlight,
+:host ::ng-deep .custom-paginator.category-0 .p-paginator-page.answered:hover {
+  border-color: var(--category-color-0);
+  color: var(--category-color-0);
+}
+
+:host ::ng-deep .custom-paginator.category-1 .p-paginator-page:hover,
+:host ::ng-deep .custom-paginator.category-1 .p-paginator-first:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-1 .p-paginator-prev:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-1 .p-paginator-next:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-1 .p-paginator-last:not(.p-disabled):hover {
+  border-color: var(--category-color-1);
+  color: var(--category-color-1);
+}
+
+:host ::ng-deep .custom-paginator.category-1 .p-paginator-page.p-highlight {
+  background: var(--category-color-1);
+  border-color: var(--category-color-1);
+}
+
+:host ::ng-deep .custom-paginator.category-2 .p-paginator-page:hover,
+:host ::ng-deep .custom-paginator.category-2 .p-paginator-first:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-2 .p-paginator-prev:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-2 .p-paginator-next:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-2 .p-paginator-last:not(.p-disabled):hover {
+  border-color: var(--category-color-2);
+  color: var(--category-color-2);
+}
+
+:host ::ng-deep .custom-paginator.category-2 .p-paginator-page.p-highlight {
+  background: var(--category-color-2);
+  border-color: var(--category-color-2);
+}
+
+:host ::ng-deep .custom-paginator.category-3 .p-paginator-page:hover,
+:host ::ng-deep .custom-paginator.category-3 .p-paginator-first:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-3 .p-paginator-prev:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-3 .p-paginator-next:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-3 .p-paginator-last:not(.p-disabled):hover {
+  border-color: var(--category-color-3);
+  color: var(--category-color-3);
+}
+
+:host ::ng-deep .custom-paginator.category-3 .p-paginator-page.p-highlight {
+  background: var(--category-color-3);
+  border-color: var(--category-color-3);
+}
+
+:host ::ng-deep .custom-paginator.category-4 .p-paginator-page:hover,
+:host ::ng-deep .custom-paginator.category-4 .p-paginator-first:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-4 .p-paginator-prev:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-4 .p-paginator-next:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-4 .p-paginator-last:not(.p-disabled):hover {
+  border-color: var(--category-color-4);
+  color: var(--category-color-4);
+}
+
+:host ::ng-deep .custom-paginator.category-4 .p-paginator-page.p-highlight {
+  background: var(--category-color-4);
+  border-color: var(--category-color-4);
+}
+
+:host ::ng-deep .custom-paginator.category-5 .p-paginator-page:hover,
+:host ::ng-deep .custom-paginator.category-5 .p-paginator-first:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-5 .p-paginator-prev:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-5 .p-paginator-next:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-5 .p-paginator-last:not(.p-disabled):hover {
+  border-color: var(--category-color-5);
+  color: var(--category-color-5);
+}
+
+:host ::ng-deep .custom-paginator.category-5 .p-paginator-page.p-highlight {
+  background: var(--category-color-5);
+  border-color: var(--category-color-5);
+}
+
+/* Responsive design - Mobile */
+@media (max-width: 768px) {
+  :host ::ng-deep .custom-paginator.p-paginator {
+    padding: 0.75rem 0;
+    gap: 0.25rem;
+  }
+  
+  :host ::ng-deep .custom-paginator .p-paginator-page,
+  :host ::ng-deep .custom-paginator .p-paginator-first,
+  :host ::ng-deep .custom-paginator .p-paginator-prev,
+  :host ::ng-deep .custom-paginator .p-paginator-next,
+  :host ::ng-deep .custom-paginator .p-paginator-last {
+    min-width: 2.25rem;
+    height: 2.25rem;
+    font-size: 0.85rem;
+  }
+
+  :host ::ng-deep .custom-paginator .p-paginator-first,
+  :host ::ng-deep .custom-paginator .p-paginator-prev,
+  :host ::ng-deep .custom-paginator .p-paginator-next,
+  :host ::ng-deep .custom-paginator .p-paginator-last {
+    margin: 0 0.15rem;
+  }
+
+  /* Limitare il numero di pagine visibili su mobile */
+  :host ::ng-deep .custom-paginator .p-paginator-pages {
+    gap: 0.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :host ::ng-deep .custom-paginator .p-paginator-page,
+  :host ::ng-deep .custom-paginator .p-paginator-first,
+  :host ::ng-deep .custom-paginator .p-paginator-prev,
+  :host ::ng-deep .custom-paginator .p-paginator-next,
+  :host ::ng-deep .custom-paginator .p-paginator-last {
+    min-width: 2rem;
+    height: 2rem;
+    font-size: 0.8rem;
+  }
 }

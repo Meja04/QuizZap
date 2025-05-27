@@ -81,7 +81,7 @@ export class QuizComponent implements OnInit {
   loadCategory(category: string): void {
     this.quizService.getQuestionsByCategory(category).subscribe((data) => {
       const shuffled = this.shuffleArray([...data]);
-      this.questions = shuffled.slice(0, 2);
+      this.questions = shuffled.slice(0, 10);
       this.questions.forEach(q => q.currentAnswer = null);
     });
   }
@@ -112,6 +112,13 @@ export class QuizComponent implements OnInit {
   checkAllQuestionsAnswered(): void {
     this.allQuestionsAnswered = this.questions.every(q => q.currentAnswer !== null);
   }
+
+
+getAnsweredQuestionsIndices(): number[] {
+  return this.questions
+    .map((question, index) => question.currentAnswer !== null ? index : -1)
+    .filter(index => index !== -1);
+}
 
   updateRemainingTime(seconds: number): void {
     this.remainingTime = seconds;

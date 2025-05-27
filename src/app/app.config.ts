@@ -16,15 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withEventReplay()),
     provideHttpClient(),
     provideAnimationsAsync(),
-            providePrimeNG({
-            theme: {
-                preset: 'material',
-                options: {
-                    prefix: 'p',
-                    darkModeSelector: 'class',
-                    cssLayer: false
-                }
-            }
-        })
+    providePrimeNG()
   ]
 };

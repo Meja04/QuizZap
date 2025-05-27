@@ -13,9 +13,13 @@
             @if (questions.length > 0) {
             <!-- Timer Component -->
             <div class="quiz-timer">
-              <app-timer [duration]="12" [categoryId]="currentCategoryId" (timeExpired)="handleTimeExpired()"
-                (timeUpdate)="updateRemainingTime($event)" #quizTimer>
-              </app-timer>
+              <app-timer
+  [duration]="2"
+  [categoryId]="currentCategoryId"
+  (timeExpired)="handleTimeExpired()"
+  (timeUpdate)="updateRemainingTime($event)"
+  #quizTimer>
+</app-timer>
             </div>
             }
 
@@ -62,6 +66,9 @@
           </div>
           }
 
+
+
+          
         </div>
       </div>
     </div>

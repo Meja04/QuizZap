@@ -14,6 +14,13 @@ import { Question } from '../../interfaces/question.interface';
 import { QuizService } from '../../services/quiz.service';
 import { ScoreService } from '../../services/score.service';
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { TimeoutDialogComponent } from '../timeout/timeout.component';
+
+
+
+
 @Component({
   selector: 'app-quiz',
   standalone: true,
@@ -27,7 +34,7 @@ import { ScoreService } from '../../services/score.service';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule, MatDialogModule
   ],
 })
 export class QuizComponent implements OnInit {
@@ -45,11 +52,14 @@ export class QuizComponent implements OnInit {
   isQuizCompleted = false;
   allQuestionsAnswered = false;
 
+  showModal: boolean = false;
+
   constructor(
     private quizService: QuizService,
     private scoreService: ScoreService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+      private dialog: MatDialog // aggiunto
   ) { }
 
   ngOnInit(): void {
@@ -108,8 +118,14 @@ export class QuizComponent implements OnInit {
   }
 
   handleTimeExpired(): void {
-    this.finishQuiz();
-  }
+  this.finishQuiz();
+
+  this.dialog.open(TimeoutDialogComponent, {
+    width: '400px',
+    disableClose: true
+  });
+}
+
 
   finishQuiz(): void {console.log('Finishing quiz...');
     if (this.isQuizCompleted) return;
@@ -144,4 +160,7 @@ export class QuizComponent implements OnInit {
       }
     });
   }
+
+
+
 }

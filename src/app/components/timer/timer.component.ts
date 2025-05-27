@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, output } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { ProgressBarModule } from 'primeng/progressbar';
 
@@ -15,12 +15,13 @@ export class TimerComponent implements OnInit, OnDestroy {
   @Input() categoryId!: number;
   @Output() timeExpired = new EventEmitter<void>();
   @Output() timeUpdate = new EventEmitter<number>();
+  @Output() showmodal = new EventEmitter<boolean>();
 
   progress = 100;
   currentTime: number = 0;
   private intervalId: any;
   private isRunning = false;
-  showModal = false;
+  showModal = true;
 
   ngOnInit(): void {
     this.startTimer();
@@ -41,7 +42,7 @@ export class TimerComponent implements OnInit, OnDestroy {
       if (this.currentTime <= 0) {
         this.stopTimer();
         this.timeExpired.emit();
-        this.showModal = true;
+        this.showmodal.emit(true);
       }
     }, 1000);
   }

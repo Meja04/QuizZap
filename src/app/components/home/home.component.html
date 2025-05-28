@@ -1,20 +1,21 @@
 <div class="page-container">
   <main class="container-fluid">
     <div class="container">
+
       @if (!playerName) {
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-6 col-lg-5">
-          <div class="card shadow-sm">
-            <div class="card-body p-4">
-              <h2 class="form-title text-center mb-4">Inserisci il tuo nome per iniziare</h2>
-              <div class="mb-3">
-                <label class="form-label">Il tuo nome</label>
+      <div class="row justify-content-center mb-4">
+        <div class="col-12 col-lg-8">
+          <div class="card shadow border-0">
+            <div class="card-body text-center py-5">
+              <h2 class="form-title text-center mb-4">Choose a nickname to start playing:</h2>
+              <div class="mb-3 text-center">
+                <label class="form-label">Your name:</label>
                 <input type="text" class="form-control" [(ngModel)]="inputName" 
-                       (keyup.enter)="saveName()" placeholder="Inserisci il tuo nome">
+                       (keyup.enter)="saveName()" placeholder="Insert your name">
               </div>
               <div class="text-center">
                 <button class="btn btn-primary px-4" (click)="saveName()" [disabled]="!inputName">
-                  Inizia
+                  Start
                 </button>
               </div>
             </div>
@@ -22,14 +23,15 @@
         </div>
       </div>
       }
+
       @if (playerName) {
       <div class="row justify-content-center mb-4">
         <div class="col-12 col-lg-8">
           <div class="card shadow border-0">
             <div class="card-body text-center py-5">
               <div class="mb-4">
-                <h2 class="welcome-title mb-4">Welcome back, <span class="player-name">{{ playerName }}</span>!</h2>
-                <p class="welcome-subtitle mb-2">Test your knowledge.</p>
+                <h2 class="welcome-title mb-4">Welcome, <span class="player-name">{{ playerName }}</span>!</h2>
+                <p class="welcome-subtitle mb-2">Test your knowledge with QuizZap.</p>
               </div>
               <p class="welcome-subsubtitle mb-0">Choose a category and start your adventure:</p>
             </div>

@@ -23,31 +23,33 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 1rem;
   background: white;
-  color: #666;
+  color: var(--text-color);
   border: 2px solid #e0e3e6;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 :host ::ng-deep .custom-paginator .p-paginator-page:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
-  border-color: var(--category-color-0, #6366f1);
-  color: var(--category-color-0, #6366f1);
 }
-
 
 /* Pagine con domande risposte */
 :host ::ng-deep .custom-paginator .p-paginator-page.answered {
-  background: white !important;
-  border-color: #afafaf !important;
-  color: #afafaf !important;
-  font-weight: 500;
+  background: white;
+  border-color: #e0e3e6;
+  color: #e0e3e6;
+}
+
+:host ::ng-deep .custom-paginator .p-paginator-prev {
+  margin-right: 1rem;
+}
+
+:host ::ng-deep .custom-paginator .p-paginator-next {
+  margin-left: 1rem;
 }
 
 /* Pulsanti di navigazione */
@@ -60,24 +62,12 @@
   border-radius: 50%;
   background: white;
   border: 2px solid #e0e3e6;
-  color: #666;
+  color: var(--text-color);
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  margin: 0 0.25rem;
-}
-
-:host ::ng-deep .custom-paginator .p-paginator-first:not(.p-disabled):hover,
-:host ::ng-deep .custom-paginator .p-paginator-prev:not(.p-disabled):hover,
-:host ::ng-deep .custom-paginator .p-paginator-next:not(.p-disabled):hover,
-:host ::ng-deep .custom-paginator .p-paginator-last:not(.p-disabled):hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
-  border-color: var(--category-color-0);
-  color: var(--category-color-0);
 }
 
 /* Stato disabilitato */
@@ -87,9 +77,9 @@
 :host ::ng-deep .custom-paginator .p-paginator-last.p-disabled {
   opacity: 0.4;
   cursor: not-allowed;
-  background: #f8f9fa;
+  background: white;
   border-color: #e0e3e6;
-  color: #999;
+  color: #e0e3e6;
 }
 
 :host ::ng-deep .custom-paginator .p-paginator-first.p-disabled:hover,
@@ -107,95 +97,122 @@
 }
 
 /* Override per le diverse categorie */
-
-:host ::ng-deep .custom-paginator.category-0 .p-paginator-page:hover,
+:host ::ng-deep .custom-paginator.category-0 .p-paginator-page.p-paginator-page-selected,
+:host ::ng-deep .custom-paginator.category-0 .p-paginator-page.p-paginator-page-selected:hover,
+:host ::ng-deep .custom-paginator.category-0 .p-paginator-page.p-highlight {
+  background-color: var(--category-color-0-light);
+  border-color: var(--category-color-0);
+  color: var(--category-color-0);
+}
 :host ::ng-deep .custom-paginator.category-0 .p-paginator-first:not(.p-disabled):hover,
 :host ::ng-deep .custom-paginator.category-0 .p-paginator-prev:not(.p-disabled):hover,
 :host ::ng-deep .custom-paginator.category-0 .p-paginator-next:not(.p-disabled):hover,
 :host ::ng-deep .custom-paginator.category-0 .p-paginator-last:not(.p-disabled):hover,
-:host ::ng-deep .custom-paginator.category-0 .p-paginator-page.p-highlight,
+:host ::ng-deep .custom-paginator.category-0 .p-paginator-page:hover,
 :host ::ng-deep .custom-paginator.category-0 .p-paginator-page.answered:hover {
   border-color: var(--category-color-0);
   color: var(--category-color-0);
 }
 
-:host ::ng-deep .custom-paginator.category-1 .p-paginator-page:hover,
+:host ::ng-deep .custom-paginator.category-1 .p-paginator-page.p-paginator-page-selected,
+:host ::ng-deep .custom-paginator.category-1 .p-paginator-page.p-paginator-page-selected:hover,
+:host ::ng-deep .custom-paginator.category-1 .p-paginator-page.p-highlight {
+  background-color: var(--category-color-1-light);
+  border-color: var(--category-color-1);
+  color: var(--category-color-1);
+}
 :host ::ng-deep .custom-paginator.category-1 .p-paginator-first:not(.p-disabled):hover,
 :host ::ng-deep .custom-paginator.category-1 .p-paginator-prev:not(.p-disabled):hover,
 :host ::ng-deep .custom-paginator.category-1 .p-paginator-next:not(.p-disabled):hover,
-:host ::ng-deep .custom-paginator.category-1 .p-paginator-last:not(.p-disabled):hover {
+:host ::ng-deep .custom-paginator.category-1 .p-paginator-last:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-1 .p-paginator-page:hover,
+:host ::ng-deep .custom-paginator.category-1 .p-paginator-page.answered:hover {
   border-color: var(--category-color-1);
   color: var(--category-color-1);
 }
 
-:host ::ng-deep .custom-paginator.category-1 .p-paginator-page.p-highlight {
-  background: var(--category-color-1);
-  border-color: var(--category-color-1);
+:host ::ng-deep .custom-paginator.category-2 .p-paginator-page.p-paginator-page-selected,
+:host ::ng-deep .custom-paginator.category-2 .p-paginator-page.p-paginator-page-selected:hover,
+:host ::ng-deep .custom-paginator.category-2 .p-paginator-page.p-highlight {
+  background-color: var(--category-color-2-light);
+  border-color: var(--category-color-2);
+  color: var(--category-color-2);
 }
-
-:host ::ng-deep .custom-paginator.category-2 .p-paginator-page:hover,
 :host ::ng-deep .custom-paginator.category-2 .p-paginator-first:not(.p-disabled):hover,
 :host ::ng-deep .custom-paginator.category-2 .p-paginator-prev:not(.p-disabled):hover,
 :host ::ng-deep .custom-paginator.category-2 .p-paginator-next:not(.p-disabled):hover,
-:host ::ng-deep .custom-paginator.category-2 .p-paginator-last:not(.p-disabled):hover {
+:host ::ng-deep .custom-paginator.category-2 .p-paginator-last:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-2 .p-paginator-page:hover,
+:host ::ng-deep .custom-paginator.category-2 .p-paginator-page.answered:hover {
   border-color: var(--category-color-2);
   color: var(--category-color-2);
 }
 
-:host ::ng-deep .custom-paginator.category-2 .p-paginator-page.p-highlight {
-  background: var(--category-color-2);
-  border-color: var(--category-color-2);
+:host ::ng-deep .custom-paginator.category-3 .p-paginator-page.p-paginator-page-selected,
+:host ::ng-deep .custom-paginator.category-3 .p-paginator-page.p-paginator-page-selected:hover,
+:host ::ng-deep .custom-paginator.category-3 .p-paginator-page.p-highlight {
+  background-color: var(--category-color-3-light);
+  border-color: var(--category-color-3);
+  color: var(--category-color-3);
 }
-
-:host ::ng-deep .custom-paginator.category-3 .p-paginator-page:hover,
 :host ::ng-deep .custom-paginator.category-3 .p-paginator-first:not(.p-disabled):hover,
 :host ::ng-deep .custom-paginator.category-3 .p-paginator-prev:not(.p-disabled):hover,
 :host ::ng-deep .custom-paginator.category-3 .p-paginator-next:not(.p-disabled):hover,
-:host ::ng-deep .custom-paginator.category-3 .p-paginator-last:not(.p-disabled):hover {
+:host ::ng-deep .custom-paginator.category-3 .p-paginator-last:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-3 .p-paginator-page:hover,
+:host ::ng-deep .custom-paginator.category-3 .p-paginator-page.answered:hover {
   border-color: var(--category-color-3);
   color: var(--category-color-3);
 }
 
-:host ::ng-deep .custom-paginator.category-3 .p-paginator-page.p-highlight {
-  background: var(--category-color-3);
-  border-color: var(--category-color-3);
+:host ::ng-deep .custom-paginator.category-4 .p-paginator-page.p-paginator-page-selected,
+:host ::ng-deep .custom-paginator.category-4 .p-paginator-page.p-paginator-page-selected:hover,
+:host ::ng-deep .custom-paginator.category-4 .p-paginator-page.p-highlight {
+  background-color: var(--category-color-4-light);
+  border-color: var(--category-color-4);
+  color: var(--category-color-4);
 }
-
-:host ::ng-deep .custom-paginator.category-4 .p-paginator-page:hover,
 :host ::ng-deep .custom-paginator.category-4 .p-paginator-first:not(.p-disabled):hover,
 :host ::ng-deep .custom-paginator.category-4 .p-paginator-prev:not(.p-disabled):hover,
 :host ::ng-deep .custom-paginator.category-4 .p-paginator-next:not(.p-disabled):hover,
-:host ::ng-deep .custom-paginator.category-4 .p-paginator-last:not(.p-disabled):hover {
+:host ::ng-deep .custom-paginator.category-4 .p-paginator-last:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-4 .p-paginator-page:hover,
+:host ::ng-deep .custom-paginator.category-4 .p-paginator-page.answered:hover {
   border-color: var(--category-color-4);
   color: var(--category-color-4);
 }
 
-:host ::ng-deep .custom-paginator.category-4 .p-paginator-page.p-highlight {
-  background: var(--category-color-4);
-  border-color: var(--category-color-4);
+:host ::ng-deep .custom-paginator.category-5 .p-paginator-page.p-paginator-page-selected,
+:host ::ng-deep .custom-paginator.category-5 .p-paginator-page.p-paginator-page-selected:hover,
+:host ::ng-deep .custom-paginator.category-5 .p-paginator-page.p-highlight {
+  background-color: var(--category-color-5-light);
+  border-color: var(--category-color-5);
+  color: var(--category-color-5);
 }
-
-:host ::ng-deep .custom-paginator.category-5 .p-paginator-page:hover,
 :host ::ng-deep .custom-paginator.category-5 .p-paginator-first:not(.p-disabled):hover,
 :host ::ng-deep .custom-paginator.category-5 .p-paginator-prev:not(.p-disabled):hover,
 :host ::ng-deep .custom-paginator.category-5 .p-paginator-next:not(.p-disabled):hover,
-:host ::ng-deep .custom-paginator.category-5 .p-paginator-last:not(.p-disabled):hover {
+:host ::ng-deep .custom-paginator.category-5 .p-paginator-last:not(.p-disabled):hover,
+:host ::ng-deep .custom-paginator.category-5 .p-paginator-page:hover,
+:host ::ng-deep .custom-paginator.category-5 .p-paginator-page.answered:hover {
   border-color: var(--category-color-5);
   color: var(--category-color-5);
 }
 
-:host ::ng-deep .custom-paginator.category-5 .p-paginator-page.p-highlight {
-  background: var(--category-color-5);
-  border-color: var(--category-color-5);
-}
 
-/* Responsive design - Mobile */
-@media (max-width: 768px) {
+/* Responsive design */
+@media (max-width: 840px) {
+
+  :host ::ng-deep .custom-paginator .p-paginator-first,
+  :host ::ng-deep .custom-paginator .p-paginator-last {
+    display: none !important;
+  }
+  
   :host ::ng-deep .custom-paginator.p-paginator {
     padding: 0.75rem 0;
     gap: 0.25rem;
   }
-  
+
   :host ::ng-deep .custom-paginator .p-paginator-page,
   :host ::ng-deep .custom-paginator .p-paginator-first,
   :host ::ng-deep .custom-paginator .p-paginator-prev,
@@ -213,20 +230,7 @@
     margin: 0 0.15rem;
   }
 
-  /* Limitare il numero di pagine visibili su mobile */
   :host ::ng-deep .custom-paginator .p-paginator-pages {
     gap: 0.15rem;
-  }
-}
-
-@media (max-width: 480px) {
-  :host ::ng-deep .custom-paginator .p-paginator-page,
-  :host ::ng-deep .custom-paginator .p-paginator-first,
-  :host ::ng-deep .custom-paginator .p-paginator-prev,
-  :host ::ng-deep .custom-paginator .p-paginator-next,
-  :host ::ng-deep .custom-paginator .p-paginator-last {
-    min-width: 2rem;
-    height: 2rem;
-    font-size: 0.8rem;
   }
 }

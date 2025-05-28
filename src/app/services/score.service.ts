@@ -19,9 +19,13 @@ export class ScoreService {
     return this.http.post<Score>(`${this.url}/scores`, scoreData);
   }
 
+  getAllScores(): Observable<Score[]> {
+    return this.http.get<Score[]>(`${this.url}/scores`);
+  }
+
   calculateScore(
     correctAnswers: number,
-    remainingTime: number 
+    remainingTime: number
   ): number {
     // Punteggio per correttezza (0-70 punti)
     const correctnessPoints = correctAnswers * 70;

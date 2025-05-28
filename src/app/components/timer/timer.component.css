@@ -35,9 +35,14 @@
   color: var(--category-color-5);
 }
 
+:host ::ng-deep .p-progressbar {
+  background-color: #e0e3e6;
+  border-radius: 1rem;
+  height: 12px;
+}
 
 :host ::ng-deep .p-progressbar-value {
-  border-radius: 1rem; /* angoli stondati anche per la barra di avanzamento */
+  border-radius: 1rem;
   transition: width 4s ease; /* effetto smooth opzionale */
 }
 

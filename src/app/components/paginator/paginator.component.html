@@ -1,30 +1,29 @@
-<p-paginator
-  [first]="current * itemsPerPage"
-  [rows]="itemsPerPage"
-  [totalRecords]="total"
-  [pageLinkSize]="10"
-  (onPageChange)="handlePageChange($event)"
-  [showJumpToPageDropdown]="false"
+<p-paginator 
+  [first]="current * itemsPerPage" 
+  [rows]="itemsPerPage" 
+  [totalRecords]="total" 
+  [pageLinkSize]="pageLinkSize"
+  (onPageChange)="handlePageChange($event)" 
+  [showJumpToPageDropdown]="false" 
   [showPageLinks]="true"
-  [showCurrentPageReport]="false"
-  [showFirstLastIcon]="true"
+  [showCurrentPageReport]="false" 
+  [showFirstLastIcon]="true" 
   [alwaysShow]="false"
-  [styleClass]="'custom-paginator category-' + (categoryId % 6)"
->
-  <!-- Template per le icone di navigazione -->
-  <ng-template pTemplate="firstpagelinkicon">
+  [styleClass]="'custom-paginator category-' + (categoryId % 6)">
+
+  <ng-template>
     <i class="pi pi-angle-double-left"></i>
   </ng-template>
-  
-  <ng-template pTemplate="prevpagelinkicon">
+
+  <ng-template>
     <i class="pi pi-angle-left"></i>
   </ng-template>
-  
-  <ng-template pTemplate="nextpagelinkicon">
+
+  <ng-template>
     <i class="pi pi-angle-right"></i>
   </ng-template>
-  
-  <ng-template pTemplate="lastpagelinkicon">
+
+  <ng-template>
     <i class="pi pi-angle-double-right"></i>
   </ng-template>
 </p-paginator>

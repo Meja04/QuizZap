@@ -47,19 +47,7 @@
         "Hollow Knight",
         "Celeste"
       ],
-      "correctOptionIndex": 1,
-      "category": "computer"
-    },
-    {
-      "id": "1",
-      "question": "Which game features the character Mugman?",
-      "options": [
-        "Cuphead",
-        "Undertale",
-        "Hollow Knight",
-        "Celeste"
-      ],
-      "correctOptionIndex": 1,
+      "correctOptionIndex": 0,
       "category": "videogames"
     },
     {
@@ -131,7 +119,7 @@
         "Apex Legends",
         "Call of Duty: Warzone"
       ],
-      "correctOptionIndex": 1,
+      "correctOptionIndex": 0,
       "category": "videogames"
     },
     {
@@ -280,14 +268,14 @@
     },
     {
       "id": "20",
-      "question": "What does 'NPC' stand for in gaming?",
+      "question": "What is the name of the princess you must rescue in the Super Mario series?",
       "options": [
-        "Non-Player Character",
-        "New Player Character",
-        "Network Playable Character",
-        "Non-Playable Campaign"
+        "Daisy",
+        "Toad",
+        "Zelda",
+        "Peach"
       ],
-      "correctOptionIndex": 0,
+      "correctOptionIndex": 3,
       "category": "videogames"
     },
     {
@@ -367,11 +355,11 @@
       "question": "Which director is known for his distinctive visual style and frequent collaborations with Johnny Depp?",
       "options": [
         "Quentin Tarantino",
-        "Tim Burton",
         "Wes Anderson",
-        "David Fincher"
+        "David Fincher",
+        "Tim Burton"
       ],
-      "correctOptionIndex": 1,
+      "correctOptionIndex": 3,
       "category": "cinema"
     },
     {
@@ -379,11 +367,11 @@
       "question": "Which movie features the fictional sport of Quidditch?",
       "options": [
         "The Lord of the Rings",
+        "Eragon",
         "Harry Potter",
-        "The Hunger Games",
-        "Eragon"
+        "The Hunger Games"
       ],
-      "correctOptionIndex": 1,
+      "correctOptionIndex": 2,
       "category": "cinema"
     },
     {
@@ -419,7 +407,7 @@
         "Zootopia",
         "The Secret Life of Pets"
       ],
-      "correctOptionIndex": 1,
+      "correctOptionIndex": 0,
       "category": "cinema"
     },
     {
@@ -474,12 +462,12 @@
       "id": "36",
       "question": "What song is in the ending of the movie Fight Club?",
       "options": [
-        "Where Is My Mind?",
         "Creep",
         "Hurt",
-        "The Sound of Silence"
+        "The Sound of Silence",
+        "Where Is My Mind?"
       ],
-      "correctOptionIndex": 0,
+      "correctOptionIndex": 3,
       "category": "cinema"
     },
     {
@@ -513,7 +501,7 @@
         "Mahito",
         "Mitsuha",
         "Sōta",
-        "Shōta"
+        "Hayao"
       ],
       "correctOptionIndex": 0,
       "category": "cinema"
@@ -551,7 +539,7 @@
         "Yangtze",
         "Mississippi"
       ],
-      "correctOptionIndex": 1,
+      "correctOptionIndex": 0,
       "category": "geography"
     },
     {
@@ -572,7 +560,7 @@
       "options": [
         "Russia",
         "Canada",
-        "USA",
+        "Kenya",
         "Finland"
       ],
       "correctOptionIndex": 1,
@@ -667,11 +655,11 @@
       "question": "Which country is shaped like a boot?",
       "options": [
         "Greece",
-        "Italy",
         "Spain",
-        "Portugal"
+        "Portugal",
+        "Italy"
       ],
-      "correctOptionIndex": 1,
+      "correctOptionIndex": 3,
       "category": "geography"
     },
     {
@@ -748,12 +736,12 @@
     },
     {
       "id": "59",
-      "question": "Which African country was never colonized?",
+      "question": "Which country is known as the Land of the Rising Sun?",
       "options": [
-        "Ethiopia",
-        "South Africa",
-        "Nigeria",
-        "Kenya"
+        "Japan",
+        "China",
+        "Thailand",
+        "South Korea"
       ],
       "correctOptionIndex": 0,
       "category": "geography"
@@ -765,7 +753,7 @@
         "India",
         "USA",
         "China",
-        "Indonesia"
+        "Russia"
       ],
       "correctOptionIndex": 2,
       "category": "geography"
@@ -832,12 +820,12 @@
     },
     {
       "id": "66",
-      "question": "What is the name of Michelangelo's famous sculpture of David?",
+      "question": "Which artist is famous for the sculpture 'David'?",
       "options": [
-        "The Thinker",
-        "David",
-        "The Pietà",
-        "Moses"
+        "Leonardo da Vinci",
+        "Michelangelo",
+        "Raphael",
+        "Donatello"
       ],
       "correctOptionIndex": 1,
       "category": "art"
@@ -880,14 +868,14 @@
     },
     {
       "id": "70",
-      "question": "What material was used to create the Terracotta Army?",
+      "question": "Which artist is credited with inventing linear perspective in painting during the Renaissance?",
       "options": [
-        "Marble",
-        "Bronze",
-        "Terracotta clay",
-        "Limestone"
+        "Leonardo da Vinci",
+        "Filippo Brunelleschi",
+        "Sandro Botticelli",
+        "Michelangelo"
       ],
-      "correctOptionIndex": 2,
+      "correctOptionIndex": 1,
       "category": "art"
     },
     {
@@ -1065,7 +1053,7 @@
         "Greeks",
         "Romans",
         "Egyptians",
-        "Mayans"
+        "Vikings"
       ],
       "correctOptionIndex": 2,
       "category": "history"
@@ -1123,11 +1111,11 @@
       "question": "Who discovered America in 1492?",
       "options": [
         "Vasco da Gama",
-        "Christopher Columbus",
         "Ferdinand Magellan",
-        "James Cook"
+        "James Cook",
+        "Christopher Columbus"
       ],
-      "correctOptionIndex": 1,
+      "correctOptionIndex": 3,
       "category": "history"
     },
     {
@@ -1156,26 +1144,26 @@
     },
     {
       "id": "93",
-      "question": "Which ancient wonder was located in Alexandria, Egypt?",
+      "question": "Who was the first woman in space?",
       "options": [
-        "Hanging Gardens",
-        "Colossus of Rhodes",
-        "Lighthouse of Alexandria",
-        "Great Pyramid"
+        "Valentina Tereshkova",
+        "Sally Ride",
+        "Mae Jemison",
+        "Yuri Gagarin"
       ],
-      "correctOptionIndex": 2,
+      "correctOptionIndex": 0,
       "category": "history"
     },
     {
       "id": "94",
-      "question": "What was the main cause of the Black Death in the 14th century?",
+      "question": "Who was known as the Maid of Orléans during the Hundred Years' War?",
       "options": [
-        "Virus",
-        "Bacteria",
-        "Fungus",
-        "Parasite"
+        "Joan of Arc",
+        "Catherine de' Medici",
+        "Eleanor of Aquitaine",
+        "Marie Antoinette"
       ],
-      "correctOptionIndex": 1,
+      "correctOptionIndex": 0,
       "category": "history"
     },
     {
@@ -1252,14 +1240,14 @@
     },
     {
       "id": "101",
-      "question": "What is the chemical symbol for Gold?",
+      "question": "What is the largest planet in our Solar System?",
       "options": [
-        "Ag",
-        "Gd",
-        "Au",
-        "Go"
+        "Earth",
+        "Jupiter",
+        "Saturn",
+        "Neptune"
       ],
-      "correctOptionIndex": 2,
+      "correctOptionIndex": 1,
       "category": "science"
     },
     {
@@ -1480,12 +1468,12 @@
     },
     {
       "id": "120",
-      "question": "In which year the man first landed on the moon?",
+      "question": "What is the powerhouse of the cell?",
       "options": [
-        "1965",
-        "1969",
-        "1971",
-        "1975"
+        "Nucleus",
+        "Mitochondria",
+        "Ribosome",
+        "Chloroplast"
       ],
       "correctOptionIndex": 1,
       "category": "science"
@@ -1529,402 +1517,437 @@
     },
     {
       "id": "6",
+      "username": "GamerPro",
+      "category": "videogames",
+      "score": 420,
+      "date": "2025-05-15"
+    },
+    {
+      "id": "7",
+      "username": "NoobSlayer",
+      "category": "videogames",
+      "score": 380,
+      "date": "2025-05-16"
+    },
+    {
+      "id": "8",
+      "username": "PixelMaster",
+      "category": "videogames",
+      "score": 750,
+      "date": "2025-05-17"
+    },
+    {
+      "id": "9",
+      "username": "ConsoleKing",
+      "category": "videogames",
+      "score": 290,
+      "date": "2025-05-18"
+    },
+    {
+      "id": "10",
+      "username": "RetroPlayer",
+      "category": "videogames",
+      "score": 110,
+      "date": "2025-05-19"
+    },
+    {
+      "id": "11",
       "username": "Player111",
       "category": "history",
       "score": 860,
       "date": "2025-05-10"
     },
     {
-      "id": "7",
+      "id": "12",
       "username": "Player222",
       "category": "history",
       "score": 895,
       "date": "2025-05-11"
     },
     {
-      "id": "8",
+      "id": "13",
       "username": "Player333",
       "category": "history",
-      "score": 875,
+      "score": 990,
       "date": "2025-05-12"
     },
     {
-      "id": "9",
+      "id": "14",
       "username": "Player444",
       "category": "history",
       "score": 910,
       "date": "2025-05-13"
     },
     {
-      "id": "10",
+      "id": "15",
       "username": "Player555",
       "category": "history",
       "score": 840,
       "date": "2025-05-14"
     },
     {
-      "id": "11",
+      "id": "16",
+      "username": "HistoryBuff",
+      "category": "history",
+      "score": 320,
+      "date": "2025-05-15"
+    },
+    {
+      "id": "17",
+      "username": "TimeTraveler",
+      "category": "history",
+      "score": 580,
+      "date": "2025-05-16"
+    },
+    {
+      "id": "18",
+      "username": "AncientOne",
+      "category": "history",
+      "score": 670,
+      "date": "2025-05-17"
+    },
+    {
+      "id": "19",
+      "username": "Player123",
+      "category": "history",
+      "score": 230,
+      "date": "2025-05-18"
+    },
+    {
+      "id": "20",
+      "username": "FactFinder",
+      "category": "history",
+      "score": 580,
+      "date": "2025-05-19"
+    },
+    {
+      "id": "21",
       "username": "Player666",
       "category": "geography",
-      "score": 920,
+      "score": 320,
       "date": "2025-05-10"
     },
     {
-      "id": "12",
+      "id": "22",
       "username": "Player777",
       "category": "geography",
       "score": 875,
       "date": "2025-05-11"
     },
     {
-      "id": "13",
+      "id": "23",
       "username": "Player888",
       "category": "geography",
-      "score": 900,
+      "score": 200,
       "date": "2025-05-12"
     },
     {
-      "id": "14",
+      "id": "24",
       "username": "Player999",
       "category": "geography",
       "score": 860,
       "date": "2025-05-13"
     },
     {
-      "id": "15",
+      "id": "25",
       "username": "Player123",
       "category": "geography",
       "score": 890,
       "date": "2025-05-14"
     },
     {
-      "id": "16",
-      "username": "Player222",
-      "category": "cinema",
-      "score": 910,
+      "id": "26",
+      "username": "GlobeTrotter",
+      "category": "geography",
+      "score": 310,
       "date": "2025-05-15"
     },
     {
-      "id": "17",
+      "id": "27",
+      "username": "MapMaster",
+      "category": "geography",
+      "score": 350,
+      "date": "2025-05-16"
+    },
+    {
+      "id": "28",
+      "username": "GeoExpert",
+      "category": "geography",
+      "score": 720,
+      "date": "2025-05-17"
+    },
+    {
+      "id": "29",
+      "username": "Player456",
+      "category": "geography",
+      "score": 380,
+      "date": "2025-05-18"
+    },
+    {
+      "id": "30",
+      "username": "CapitalWhiz",
+      "category": "geography",
+      "score": 630,
+      "date": "2025-05-19"
+    },
+    {
+      "id": "31",
+      "username": "Player222",
+      "category": "cinema",
+      "score": 610,
+      "date": "2025-05-15"
+    },
+    {
+      "id": "32",
       "username": "Player456",
       "category": "cinema",
       "score": 865,
       "date": "2025-05-16"
     },
     {
-      "id": "18",
+      "id": "33",
       "username": "Player654",
       "category": "cinema",
-      "score": 940,
+      "score": 640,
       "date": "2025-05-17"
     },
     {
-      "id": "19",
+      "id": "34",
       "username": "Player888",
       "category": "cinema",
       "score": 875,
       "date": "2025-05-18"
     },
     {
-      "id": "20",
+      "id": "35",
       "username": "Player111",
       "category": "cinema",
-      "score": 890,
+      "score": 490,
       "date": "2025-05-19"
     },
     {
-      "id": "21",
-      "username": "Player789",
-      "category": "art",
-      "score": 880,
+      "id": "36",
+      "username": "FilmBuff",
+      "category": "cinema",
+      "score": 380,
       "date": "2025-05-20"
     },
     {
-      "id": "22",
-      "username": "Player321",
-      "category": "art",
-      "score": 870,
+      "id": "37",
+      "username": "MovieManiac",
+      "category": "cinema",
+      "score": 450,
       "date": "2025-05-21"
     },
     {
-      "id": "23",
-      "username": "Player999",
-      "category": "art",
-      "score": 915,
+      "id": "38",
+      "username": "DirectorCut",
+      "category": "cinema",
+      "score": 790,
       "date": "2025-05-22"
     },
     {
-      "id": "24",
+      "id": "39",
+      "username": "Player789",
+      "category": "cinema",
+      "score": 210,
+      "date": "2025-05-23"
+    },
+    {
+      "id": "40",
+      "username": "OscarWinner",
+      "category": "cinema",
+      "score": 520,
+      "date": "2025-05-24"
+    },
+    {
+      "id": "41",
+      "username": "Player789",
+      "category": "art",
+      "score": 580,
+      "date": "2025-05-20"
+    },
+    {
+      "id": "42",
+      "username": "Player321",
+      "category": "art",
+      "score": 170,
+      "date": "2025-05-21"
+    },
+    {
+      "id": "43",
+      "username": "Player999",
+      "category": "art",
+      "score": 60,
+      "date": "2025-05-22"
+    },
+    {
+      "id": "44",
       "username": "Player555",
       "category": "art",
       "score": 860,
       "date": "2025-05-23"
     },
     {
-      "id": "25",
+      "id": "45",
       "username": "Player777",
       "category": "art",
-      "score": 900,
+      "score": 300,
       "date": "2025-05-24"
     },
     {
-      "id": "26",
-      "username": "Player444",
-      "category": "science",
-      "score": 910,
+      "id": "46",
+      "username": "ArtLover",
+      "category": "art",
+      "score": 740,
       "date": "2025-05-25"
     },
     {
-      "id": "27",
+      "id": "47",
+      "username": "Modernist",
+      "category": "art",
+      "score": 170,
+      "date": "2025-05-26"
+    },
+    {
+      "id": "48",
+      "username": "ClassicFan",
+      "category": "art",
+      "score": 580,
+      "date": "2025-05-27"
+    },
+    {
+      "id": "49",
+      "username": "Player222",
+      "category": "art",
+      "score": 450,
+      "date": "2025-05-28"
+    },
+    {
+      "id": "50",
+      "username": "BrushMaster",
+      "category": "art",
+      "score": 590,
+      "date": "2025-05-29"
+    },
+    {
+      "id": "51",
+      "username": "Player444",
+      "category": "science",
+      "score": 610,
+      "date": "2025-05-25"
+    },
+    {
+      "id": "52",
       "username": "Player666",
       "category": "science",
       "score": 885,
       "date": "2025-05-26"
     },
     {
-      "id": "28",
+      "id": "53",
       "username": "Player321",
       "category": "science",
-      "score": 895,
+      "score": 795,
       "date": "2025-05-27"
     },
     {
-      "id": "29",
+      "id": "54",
       "username": "Player123",
       "category": "science",
       "score": 875,
       "date": "2025-05-28"
     },
     {
-      "id": "30",
+      "id": "55",
       "username": "Player888",
       "category": "science",
-      "score": 920,
+      "score": 820,
       "date": "2025-05-29"
     },
     {
-      "id": "7",
-      "username": "Player000",
-      "category": "art",
-      "score": 999999,
-      "date": "2023-10-09"
+      "id": "56",
+      "username": "ScienceGeek",
+      "category": "science",
+      "score": 390,
+      "date": "2025-05-30"
     },
     {
-      "id": "0",
-      "username": "ugguu",
-      "category": "videogames",
-      "score": 98,
-      "date": "2025-05-23T10:19:54.810Z"
+      "id": "57",
+      "username": "LabRat",
+      "category": "science",
+      "score": 640,
+      "date": "2025-05-31"
     },
     {
-      "id": "0b2f",
-      "username": "ugguu",
+      "id": "58",
+      "username": "QuantumFan",
+      "category": "science",
+      "score": 710,
+      "date": "2025-06-01"
+    },
+    {
+      "id": "59",
+      "username": "Player654",
+      "category": "science",
+      "score": 270,
+      "date": "2025-06-02"
+    },
+    {
+      "id": "60",
+      "username": "EinsteinJr",
+      "category": "science",
+      "score": 350,
+      "date": "2025-06-03"
+    },
+    {
+      "id": "01dd",
+      "username": "Carlo856",
+      "category": "geography",
+      "score": 333,
+      "date": "2025-05-28T16:20:55.835Z"
+    },
+    {
+      "id": "7bb6",
+      "username": "Paoloooo34",
       "category": "cinema",
-      "score": 0,
-      "date": "2025-05-23T10:28:41.050Z"
+      "score": 949,
+      "date": "2025-05-28T16:48:10.715Z"
     },
     {
-      "id": "4a95",
-      "username": "edede",
+      "id": "2e74",
+      "username": "Paoloooo34",
       "category": "geography",
-      "score": 0,
-      "date": "2025-05-26T14:43:22.765Z"
+      "score": 790,
+      "date": "2025-05-28T16:48:59.866Z"
     },
     {
-      "id": "3799",
-      "username": "edede",
-      "category": "art",
-      "score": 855,
-      "date": "2025-05-26T14:57:43.725Z"
+      "id": "4f27",
+      "username": "Paoloooo34",
+      "category": "science",
+      "score": 991,
+      "date": "2025-05-28T16:49:33.524Z"
     },
     {
-      "id": "8ab6",
-      "username": "edede",
-      "category": "art",
-      "score": 855,
-      "date": "2025-05-26T14:57:47.933Z"
-    },
-    {
-      "id": "f442",
-      "username": "momomomo",
-      "category": "art",
-      "score": 856,
-      "date": "2025-05-26T14:59:00.734Z"
-    },
-    {
-      "id": "a330",
-      "username": "momomomo",
-      "category": "art",
-      "score": 856,
-      "date": "2025-05-26T15:02:20.656Z"
-    },
-    {
-      "id": "24d2",
-      "username": "momomomo",
-      "category": "cinema",
-      "score": 0,
-      "date": "2025-05-26T15:37:10.357Z"
-    },
-    {
-      "id": "9b91",
-      "username": "momomomo",
-      "category": "art",
-      "score": 0,
-      "date": "2025-05-26T15:56:14.853Z"
-    },
-    {
-      "id": "d150",
-      "username": "alfredo",
+      "id": "9fd0",
+      "username": "ciro978",
       "category": "geography",
-      "score": 0,
-      "date": "2025-05-27T07:24:35.528Z"
+      "score": 892,
+      "date": "2025-05-28T17:59:52.092Z"
     },
     {
-      "id": "a5b7",
-      "username": "alfredo",
+      "id": "c8eb",
+      "username": "ciro978",
       "category": "geography",
-      "score": 0,
-      "date": "2025-05-27T07:24:38.042Z"
+      "score": 508,
+      "date": "2025-05-28T20:05:13.967Z"
     },
     {
-      "id": "19ef",
-      "username": "alfredo",
-      "category": "geography",
-      "score": 0,
-      "date": "2025-05-27T07:25:05.961Z"
-    },
-    {
-      "id": "a894",
-      "username": "alfredo",
-      "category": "geography",
-      "score": 0,
-      "date": "2025-05-27T07:25:22.601Z"
-    },
-    {
-      "id": "5e13",
-      "username": "alfredo",
-      "category": "geography",
-      "score": 0,
-      "date": "2025-05-27T07:25:24.303Z"
-    },
-    {
-      "id": "ac2f",
-      "username": "alfredo",
-      "category": "geography",
-      "score": 0,
-      "date": "2025-05-27T07:26:46.872Z"
-    },
-    {
-      "id": "fa20",
-      "username": "alfredo",
-      "category": "geography",
-      "score": 0,
-      "date": "2025-05-27T07:26:57.074Z"
-    },
-    {
-      "id": "df62",
-      "username": "alfredo",
-      "category": "geography",
-      "score": 0,
-      "date": "2025-05-27T07:27:06.417Z"
-    },
-    {
-      "id": "f296",
-      "username": "alfredo",
-      "category": "geography",
-      "score": 0,
-      "date": "2025-05-27T07:27:08.480Z"
-    },
-    {
-      "id": "f50c",
-      "username": "alfredo",
-      "category": "geography",
-      "score": 0,
-      "date": "2025-05-27T07:36:10.691Z"
-    },
-    {
-      "id": "642a",
-      "username": "alfredo",
-      "category": "geography",
-      "score": 0,
-      "date": "2025-05-27T07:37:05.262Z"
-    },
-    {
-      "id": "13a7",
-      "username": "alfredo",
-      "category": "geography",
-      "score": 0,
-      "date": "2025-05-27T07:37:35.443Z"
-    },
-    {
-      "id": "f702",
-      "username": "alfredo",
-      "category": "cinema",
-      "score": 143,
-      "date": "2025-05-27T07:44:56.679Z"
-    },
-    {
-      "id": "0141",
-      "username": "alfredo",
-      "category": "videogames",
-      "score": 0,
-      "date": "2025-05-27T07:45:59.024Z"
-    },
-    {
-      "id": "31a6",
-      "username": "alfredo",
-      "category": "cinema",
-      "score": 0,
-      "date": "2025-05-27T07:47:13.895Z"
-    },
-    {
-      "id": "2510",
-      "username": "alfredo",
-      "category": "cinema",
-      "score": 0,
-      "date": "2025-05-27T07:49:21.687Z"
-    },
-    {
-      "id": "5473",
-      "username": "alfredo",
-      "category": "cinema",
-      "score": 0,
-      "date": "2025-05-27T07:49:24.744Z"
-    },
-    {
-      "id": "8b3b",
-      "username": "alfredo",
-      "category": "cinema",
-      "score": 0,
-      "date": "2025-05-27T07:49:31.479Z"
-    },
-    {
-      "id": "97a0",
-      "username": "alfredo",
-      "category": "cinema",
-      "score": 0,
-      "date": "2025-05-27T07:49:33.071Z"
-    },
-    {
-      "id": "4e0f",
-      "username": "alfredo",
-      "category": "cinema",
-      "score": 0,
-      "date": "2025-05-27T07:50:09.816Z"
-    },
-    {
-      "id": "f7ad",
-      "username": "alfredo",
-      "category": "cinema",
-      "score": 0,
-      "date": "2025-05-27T07:50:25.609Z"
-    },
-    {
-      "id": "bed9",
-      "username": "alfredo",
-      "category": "cinema",
-      "score": 0,
-      "date": "2025-05-27T07:50:27.544Z"
+      "id": "1f04",
+      "username": "ciro978",
+      "category": "history",
+      "score": 793,
+      "date": "2025-05-28T20:13:10.085Z"
     }
   ]
 }

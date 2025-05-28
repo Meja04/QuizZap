@@ -9,8 +9,13 @@
             <h1>Leaderboard: {{ selectedCategory | titlecase }}</h1>
           </div>
 
+          <div class="chart-style">
+            <app-chart></app-chart>
+          </div>
+
           <div class="leaderboard-content">
             @if (categories.length > 0) {
+
             <!-- Category Selector -->
             <div class="category-selector">
               <label for="category">Select a category:</label>
@@ -54,11 +59,10 @@
 
             <!-- Back to Top Button -->
             <div class="back-to-top">
-              <button type="button" class="btn btn-light" (click)="scrollToTop()" title="Torna su">
+              <button type="button" class="btn btn-light" (click)="scrollToTop()">
                 <i class="material-icons">keyboard_arrow_up</i>
-                Torna su
+                Back to top
               </button>
-              
             </div>
 
             }

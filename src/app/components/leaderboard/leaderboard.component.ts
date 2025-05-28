@@ -5,13 +5,15 @@ import { QuizService } from '../../services/quiz.service';
 import { FormsModule } from '@angular/forms';
 import { Score } from '../../interfaces/score.interface';
 import { Category } from '../../interfaces/category.interface';
+import { ChartComponent } from "../chart/chart.component";
+
 
 @Component({
   selector: 'app-leaderboard',
   standalone: true,
   templateUrl: './leaderboard.component.html',
   styleUrl: './leaderboard.component.css',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ChartComponent],
 })
 export class LeaderboardComponent implements OnInit {
 
@@ -19,6 +21,9 @@ export class LeaderboardComponent implements OnInit {
   categories: Category[] = [];
   currentCategoryId!: number;
   selectedCategory: string = '';
+
+
+  
 
   constructor(
     private quizService: QuizService, 

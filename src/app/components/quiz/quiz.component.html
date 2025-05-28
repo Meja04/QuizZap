@@ -13,7 +13,7 @@
             @if (questions.length > 0) {
             <!-- Timer Component -->
             <div class="quiz-timer">
-              <app-timer [duration]="12220" [categoryId]="currentCategoryId" (timeExpired)="handleTimeExpired()"
+              <app-timer [duration]="120" [categoryId]="currentCategoryId" (timeExpired)="handleTimeExpired()"
                 (timeUpdate)="updateRemainingTime($event)" #quizTimer>
               </app-timer>
             </div>
@@ -52,19 +52,11 @@
           <!-- Pulsante Fine Quiz -->
           @if (currentQuestion) {
           <div class="quiz-actions">
-            <button type="button" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top"
-              data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables."
-              [disabled]="!allQuestionsAnswered" (click)="finishQuiz()">
+            <button type="button" class="btn btn-light" [disabled]="!allQuestionsAnswered" (click)="finishQuiz()">
               Finish Quiz
             </button>
-
-            <button id="button" aria-describedby="tooltip">I'm a button</button>
-            <div id="tooltip" role="tooltip">I'm a tooltip</div>
           </div>
           }
-
-
-
 
         </div>
       </div>

@@ -8,22 +8,22 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'Home Page'
+    title: 'Home Page - QuizZap'
   },
   {
     path: 'results/:category',
     component: ResultsComponent,
-    title: 'Quiz Results'
+    title: 'Quiz Results - QuizZap'
   },
   {
     path: 'quiz/:category',
     component: QuizComponent,
-    title: 'Quiz Game'
+    title: 'Quiz Game - QuizZap'
   },
   {
     path: 'leaderboard/:category',
     component: LeaderboardComponent,
-    title: 'Leaderboard'
+    title: 'Leaderboard - QuizZap'
   },
   {
     path: 'leaderboard',

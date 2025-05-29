@@ -7,7 +7,6 @@ import { Score } from '../../interfaces/score.interface';
 import { Category } from '../../interfaces/category.interface';
 import { ChartComponent } from "../chart/chart.component";
 
-
 @Component({
   selector: 'app-leaderboard',
   standalone: true,
@@ -21,9 +20,6 @@ export class LeaderboardComponent implements OnInit {
   categories: Category[] = [];
   currentCategoryId!: number;
   selectedCategory: string = '';
-
-
-  
 
   constructor(
     private quizService: QuizService, 
@@ -43,7 +39,7 @@ export class LeaderboardComponent implements OnInit {
           if (foundCategory) {
             this.currentCategoryId = foundCategory.id;
           }
-          this.loadScores(); // Fixed: added parentheses to call the method
+          this.loadScores();
         }
       });
     });
@@ -56,8 +52,9 @@ export class LeaderboardComponent implements OnInit {
   }
 
   onCategoryChange(): void {
-    // Navigate to the new leaderboard URL with the selected category
-    this.router.navigate(['/leaderboard', this.selectedCategory]);
+    this.router.navigate(['/leaderboard', this.selectedCategory]).then(() => {
+      window.scrollTo(0, 0);
+    });
   }
 
   scrollToTop(): void {

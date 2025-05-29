@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-
 import { Question } from '../../interfaces/question.interface';
-import { Score } from '../../interfaces/score.interface';
 import { ScoreService } from '../../services/score.service';
 
 interface QuizResults {
@@ -23,9 +19,7 @@ interface QuizResults {
   templateUrl: './results.component.html',
   styleUrl: './results.component.css',
   imports: [
-    CommonModule,
-    MatCardModule,
-    MatButtonModule
+    CommonModule
   ],
 })
 export class ResultsComponent implements OnInit {
@@ -62,12 +56,15 @@ export class ResultsComponent implements OnInit {
       this.currentCategoryId = state.currentCategoryId;
 
       // Controlla se questo specifico punteggio è già stato salvato
-      const scoreKey = `${this.playerName}_${this.selectedCategory}_${this.finalScore}`;
-      this.scoreSaved = localStorage.getItem(scoreKey) === 'saved';
+      this.scoreSaved = localStorage.getItem(this.getScoreKey()) === 'saved';
     } else {
       // Se non ci sono dati, reindirizza alla home
       this.router.navigate(['/']);
     }
+  }
+
+  private getScoreKey(): string {
+    return `${this.playerName}_${this.selectedCategory}_${this.finalScore}`;
   }
 
   getScoreMessage(): string {
@@ -94,8 +91,7 @@ export class ResultsComponent implements OnInit {
         this.scoreSaved = true;
 
         // Salva nel localStorage per prevenire salvataggi futuri dello stesso punteggio
-        const scoreKey = `${this.playerName}_${this.selectedCategory}_${this.finalScore}`;
-        localStorage.setItem(scoreKey, 'saved');
+        localStorage.setItem(this.getScoreKey(), 'saved');
       },
       error: (error) => {
         console.error('Error saving score:', error);
@@ -110,14 +106,21 @@ export class ResultsComponent implements OnInit {
   }
 
   restartQuiz(): void {
-    this.router.navigate(['/quiz', this.selectedCategory]);
+    this.router.navigate(['/quiz', this.selectedCategory]).then(() => {
+      window.scrollTo(0, 0);
+    });
   }
 
   viewCategoryLeaderboard(): void {
-    this.router.navigate(['/leaderboard', this.selectedCategory]);
+    this.router.navigate(['/leaderboard', this.selectedCategory]).then(() => {
+      window.scrollTo(0, 0);
+    });
   }
 
   goBackToCategories(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/']).then(() => {
+      window.scrollTo(0, 0);
+    });
   }
+  
 }

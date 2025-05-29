@@ -6,4 +6,3 @@ export interface Question {
   category: string,
   currentAnswer: number | null,
 }
-//inserire campo currentAnswer per tenere traccia della risposta corrente

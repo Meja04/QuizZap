@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration } from 'chart.js';
 import { ScoreService } from '../../services/score.service';
-import { Category } from '../../interfaces/category.interface';
 import { QuizService } from '../../services/quiz.service';
+import { Category } from '../../interfaces/category.interface';
 import { Score } from '../../interfaces/score.interface';
 
 @Component({
@@ -76,7 +76,6 @@ export class ChartComponent implements OnInit {
     return ranges;
   }
 
-  // Funzione per ottenere i colori dalle variabili CSS
   getCSSColors(): { backgroundColor: string[], borderColors: string[] } {
     const backgroundColors: string[] = [];
     const borderColors: string[] = [];
@@ -109,7 +108,7 @@ export class ChartComponent implements OnInit {
     const scoreRanges = this.generateScoreRanges(min, max, step);
 
     this.quizService.getCategories().subscribe((data: Category[]) => {
-      // Inizializza: per ogni categoria, un array di slot
+      // Inizializza per ogni categoria un array di slot
       const dataPerCategory: Record<string, number[]> = {};
       data.forEach(cat => {
         dataPerCategory[cat.name] = new Array((max - min) / step).fill(0);
@@ -124,7 +123,6 @@ export class ChartComponent implements OnInit {
         }
       });
 
-      // Ottieni i colori dalle variabili CSS
       const { backgroundColor, borderColors } = this.getCSSColors();
 
       const datasets = data.map((cat, i) => ({
@@ -142,4 +140,5 @@ export class ChartComponent implements OnInit {
       };
     });
   }
+  
 }

@@ -1,7 +1,6 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, output } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy} from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { ProgressBarModule } from 'primeng/progressbar';
-
 
 @Component({
   selector: 'app-timer',
@@ -47,7 +46,6 @@ export class TimerComponent implements OnInit, OnDestroy {
     }, 1000);
   }
 
-
   stopTimer(): void {
     if (this.intervalId) {
       clearInterval(this.intervalId);
@@ -61,7 +59,6 @@ export class TimerComponent implements OnInit, OnDestroy {
     this.currentTime = this.duration;
     this.startTimer();
   }
-
 
   getRemainingTime(): number {
     return this.currentTime;

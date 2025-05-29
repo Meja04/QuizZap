@@ -10,8 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./timeout.component.css'],
   imports: [MatButtonModule, MatDialogModule],
 })
-export class TimeoutDialogComponent {
-  constructor(private dialogRef: MatDialogRef<TimeoutDialogComponent>) {}
+export class TimeoutComponent {
+  constructor(private dialogRef: MatDialogRef<TimeoutComponent>) {}
 
   close(): void {
     this.dialogRef.close();

@@ -82,4 +82,5 @@ export class PaginatorComponent implements AfterViewInit, OnDestroy {
       }
     });
   }
+  
 }

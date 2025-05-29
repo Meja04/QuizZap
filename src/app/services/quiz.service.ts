@@ -9,8 +9,6 @@ import { Score } from '../interfaces/score.interface';
   providedIn: 'root'
 })
 export class QuizService {
-  // Stoplight
-  private apiUrl = 'https://stoplight.io/mocks/rubino/test/861759111';
 
   // JSON server
   private url = 'http://localhost:3000';
@@ -28,7 +26,5 @@ export class QuizService {
   getScoresByCategory(category: string): Observable<Score[]> {
     return this.http.get<Score[]>(`${this.url}/scores?category=${category}`);
   }
-
-
 
 }

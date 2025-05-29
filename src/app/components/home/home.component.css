@@ -18,7 +18,7 @@
 
 .form-control {
   width: 50%;
-  margin: 0 auto; /* Centra l'input */
+  margin: 0 auto;
   display: block; 
   padding: 0.75rem 1rem;
   font-size: 1.1rem;

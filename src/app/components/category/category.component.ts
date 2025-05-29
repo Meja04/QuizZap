@@ -15,13 +15,11 @@ import { Category } from '../../interfaces/category.interface';
 export class CategoryComponent {
   @Input() category!: Category;
 
-
   constructor(private router: Router) { }
 
   onSelect(): void {
     this.router.navigate(['/quiz', this.category.name], {
-});
+    });
   }
-
-
+  
 }

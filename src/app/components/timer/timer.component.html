@@ -3,6 +3,10 @@
     {{ (currentTime * 1000) | date:'mm:ss':'UTC' }}
   </div>
 
-  <p-progressBar [value]="progress" [styleClass]="'category-' + categoryId%6"
-    [showValue]="false"></p-progressBar>
+  <p-progressBar 
+    [value]="progress"
+    [styleClass]="'category-' + categoryId%6"
+    [showValue]="false">
+  </p-progressBar>
+  
 </div>

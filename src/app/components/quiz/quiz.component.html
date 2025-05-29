@@ -51,13 +51,18 @@
 
           <!-- Pulsante Fine Quiz -->
           @if (currentQuestion) {
-          <div class="quiz-actions">
+            <div class="quiz-actions">
             <button type="button" class="btn btn-light" [disabled]="!allQuestionsAnswered" (click)="finishQuiz()">
-              Finish Quiz
+              <span matTooltip="You must answer all questions before finishing the quiz"
+                [matTooltipDisabled]="allQuestionsAnswered"
+                matTooltipPosition="above"
+                aria-label="Button that displays a tooltip when focused or hovered over"
+                style="pointer-events: auto;">
+                Finish Quiz
+                </span>
             </button>
-          </div>
+            </div>
           }
-
         </div>
       </div>
     </div>

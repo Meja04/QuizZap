@@ -1,25 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
-
-import { PaginatorComponent } from '../paginator/paginator.component';
-import { TimerComponent } from '../timer/timer.component';
-
-import { Question } from '../../interfaces/question.interface';
-import { QuizService } from '../../services/quiz.service';
-import { ScoreService } from '../../services/score.service';
-
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
-import { TimeoutDialogComponent } from '../timeout/timeout.component';
-
-
-
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { TimeoutComponent } from '../timeout/timeout.component';
+import { PaginatorComponent } from '../paginator/paginator.component';
+import { TimerComponent } from '../timer/timer.component';
+import { Question } from '../../interfaces/question.interface';
+import { QuizService } from '../../services/quiz.service';
 
 @Component({
   selector: 'app-quiz',
@@ -30,11 +19,8 @@ import { TimeoutDialogComponent } from '../timeout/timeout.component';
     CommonModule,
     PaginatorComponent,
     TimerComponent,
-    MatCardModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    FormsModule, MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ],
 })
 export class QuizComponent implements OnInit {
@@ -44,8 +30,7 @@ export class QuizComponent implements OnInit {
   currentQuestionIndex = 0;
   currentCategoryId!: number;
   selectedCategory: string = '';
-  
-  // Proprietà per il calcolo del punteggio
+
   correctAnswers = 0;
   finalScore = 0;
   remainingTime = 0;
@@ -56,10 +41,9 @@ export class QuizComponent implements OnInit {
 
   constructor(
     private quizService: QuizService,
-    private scoreService: ScoreService,
     private route: ActivatedRoute,
     private router: Router,
-      private dialog: MatDialog // aggiunto
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -113,28 +97,26 @@ export class QuizComponent implements OnInit {
     this.allQuestionsAnswered = this.questions.every(q => q.currentAnswer !== null);
   }
 
-
-getAnsweredQuestionsIndices(): number[] {
-  return this.questions
-    .map((question, index) => question.currentAnswer !== null ? index : -1)
-    .filter(index => index !== -1);
-}
+  getAnsweredQuestionsIndices(): number[] {
+    return this.questions
+      .map((question, index) => question.currentAnswer !== null ? index : -1)
+      .filter(index => index !== -1);
+  }
 
   updateRemainingTime(seconds: number): void {
     this.remainingTime = seconds;
   }
 
   handleTimeExpired(): void {
-  this.finishQuiz();
+    this.finishQuiz();
 
-  this.dialog.open(TimeoutDialogComponent, {
-    width: '400px',
-    disableClose: true
-  });
-}
+    this.dialog.open(TimeoutComponent, {
+      width: '400px',
+      disableClose: true
+    });
+  }
 
-
-  finishQuiz(): void {console.log('Finishing quiz...');
+  finishQuiz(): void {
     if (this.isQuizCompleted) return;
 
     this.isQuizCompleted = true;
@@ -143,19 +125,30 @@ getAnsweredQuestionsIndices(): number[] {
     this.navigateToResults();
   }
 
+  calculateScorePoints(correctAnswers: number, remainingTime: number): number {
+    const correctnessPoints = correctAnswers * 70;
+    const timeBonus = remainingTime * correctAnswers * 0.3;
+
+    if (correctnessPoints > 0) {
+      return Math.round(correctnessPoints + timeBonus);
+    }
+    else {
+      return 0;
+    }
+  }
+
   calculateScore(): void {
     this.correctAnswers = this.questions.filter(q =>
       q.currentAnswer === q.correctOptionIndex
     ).length;
 
-    this.finalScore = this.scoreService.calculateScore(
+    this.finalScore = this.calculateScorePoints(
       this.correctAnswers,
       Math.max(0, this.remainingTime)
     );
   }
 
   navigateToResults(): void {
-    // Naviga alla pagina dei risultati passando i dati necessari
     this.router.navigate(['/results', this.selectedCategory], {
       state: {
         questions: this.questions,
@@ -165,9 +158,9 @@ getAnsweredQuestionsIndices(): number[] {
         selectedCategory: this.selectedCategory,
         currentCategoryId: this.currentCategoryId
       }
+      }).then(() => {
+      window.scrollTo(0, 0);
     });
   }
-
-
 
 }

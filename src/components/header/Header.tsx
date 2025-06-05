@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import Logo from '../assets/logo.png'
+import Logo from '../../assets/logo.png'
 
 import './Header.css'
 
@@ -17,8 +17,8 @@ function Header() {
           <div className="navbar-nav ms-auto nav-buttons">
             <NavLink
               to="/"
-              className={({ isActive }) => "nav-link" + (isActive ? " active-link" : "")}
-              end
+              className={({ isActive }) => "nav-link" + (isActive ? " active-link" : "")} /* passa la classe se la route è attiva */
+              end /* per escludere /quiz o /leaderboard */
             >
               <i className="material-icons">home</i> Home
             </NavLink>

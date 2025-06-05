@@ -1,0 +1,97 @@
+.custom-paginator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.custom-paginator button.MuiPaginationItem-root {
+  border-radius: 50%;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid #e0e3e6;
+  background: white;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  margin: 0 0.15rem;
+}
+
+.custom-paginator button.MuiPaginationItem-root:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.custom-paginator button.MuiPaginationItem-root.answered {
+  background: white;
+  border-color: #e0e3e6;
+  color: #e0e3e6;
+}
+
+.custom-paginator.category-0 button.Mui-selected {
+  background-color: var(--category-color-0-light);
+  border-color: var(--category-color-0);
+  color: var(--category-color-0);
+}
+.custom-paginator.category-0 button.MuiPaginationItem-root:hover {
+  border-color: var(--category-color-0);
+  color: var(--category-color-0);
+}
+
+.custom-paginator.category-1 button.Mui-selected {
+  background-color: var(--category-color-1-light);
+  border-color: var(--category-color-1);
+  color: var(--category-color-1);
+}
+.custom-paginator.category-1 button.MuiPaginationItem-root:hover {
+  border-color: var(--category-color-1);
+  color: var(--category-color-1);
+}
+
+.custom-paginator.category-2 button.Mui-selected {
+  background-color: var(--category-color-2-light);
+  border-color: var(--category-color-2);
+  color: var(--category-color-2);
+}
+.custom-paginator.category-2 button.MuiPaginationItem-root:hover {
+  border-color: var(--category-color-2);
+  color: var(--category-color-2);
+}
+
+.custom-paginator.category-3 button.Mui-selected {
+  background-color: var(--category-color-3-light);
+  border-color: var(--category-color-3);
+  color: var(--category-color-3);
+}
+.custom-paginator.category-3 button.MuiPaginationItem-root:hover {
+  border-color: var(--category-color-3);
+  color: var(--category-color-3);
+}
+
+.custom-paginator.category-4 button.Mui-selected {
+  background-color: var(--category-color-4-light);
+  border-color: var(--category-color-4);
+  color: var(--category-color-4);
+}
+.custom-paginator.category-4 button.MuiPaginationItem-root:hover {
+  border-color: var(--category-color-4);
+  color: var(--category-color-4);
+}
+
+.custom-paginator.category-5 button.Mui-selected {
+  background-color: var(--category-color-5-light);
+  border-color: var(--category-color-5);
+  color: var(--category-color-5);
+}
+.custom-paginator.category-5 button.MuiPaginationItem-root:hover {
+  border-color: var(--category-color-5);
+  color: var(--category-color-5);
+}
+
+/* Responsive */
+@media (max-width: 840px) {
+  .custom-paginator button.MuiPaginationItem-root {
+    min-width: 2.25rem;
+    height: 2.25rem;
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,80 @@
+.category-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  margin: 12px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.category-card0:hover {
+  background-color: var(--category-color-0-light);
+}
+.category-card1:hover {
+  background-color: var(--category-color-1-light);
+}
+.category-card2:hover {
+  background-color: var(--category-color-2-light);
+}
+.category-card3:hover {
+  background-color: var(--category-color-3-light);
+}
+.category-card4:hover {
+  background-color: var(--category-color-4-light);
+}
+.category-card5:hover {
+  background-color: var(--category-color-5-light);
+}
+
+.category-card .card-body {
+  text-align: center;
+  padding: 1rem;
+}
+
+.category-card h3 {
+  color: var(--text-color);
+  margin: 0.5rem 0;
+  font-size: 1.3rem;
+}
+
+.category-card .description {
+  color: var(--secondary-text-color);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.category-card i,
+.category-card .material-icons {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.mat-icon0 {
+  color: var(--category-color-0) !important
+}
+.mat-icon1 {
+  color: var(--category-color-1) !important;
+}
+.mat-icon2 {
+  color: var(--category-color-2) !important;
+}
+.mat-icon3 {
+  color: var(--category-color-3) !important;
+}
+.mat-icon4 {
+  color: var(--category-color-4) !important;
+}
+.mat-icon5 {
+  color: var(--category-color-5) !important;
+}

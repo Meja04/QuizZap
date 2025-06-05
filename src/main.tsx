@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import App from "./App"; // layout principale
-import Home from "./components/Home";
-import Quiz from "./components/Quiz";
-import Results from "./components/Results";
-import Leaderboard from "./components/Leaderboard";
+import Home from "./components/home/Home";
+import Quiz from "./components/quiz/Quiz";
+import Results from "./components/results/Results";
+import Leaderboard from "./components/leaderboard/Leaderboard";
 import Page from "./components/Page"; // per i titoli dinamici
 
 import { Provider } from "react-redux";

@@ -1,0 +1,46 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1020; /* Bootstrap z-index for sticky elements */
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 500;
+  font-family: 'Fugaz One', cursive;
+  color: var(--text-color);
+}
+
+.logo-image {
+  height: 48px;
+  vertical-align: middle;
+}
+
+.nav-buttons .nav-link {
+  color: var(--text-color) !important;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.nav-buttons .nav-link:hover {
+  color: var(--text-color) !important;
+  background: rgba(41, 41, 41, 0.1);
+  border-radius: 0.25rem;
+}
+
+.nav-buttons .nav-link.active,
+.nav-buttons .active-link {
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  background-color: rgba(107, 107, 107, 0.15) !important;
+  color: var(--text-color) !important;
+  border-radius: 0.25rem;
+}
+
+.nav-buttons .nav-link i,
+.nav-buttons .nav-link .material-icons {
+  margin-right: 8px;
+  vertical-align: middle;
+  font-size: 1.2rem;
+}

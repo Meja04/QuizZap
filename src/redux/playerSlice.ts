@@ -6,7 +6,7 @@ interface PlayerState {
 }
 
 const initialState: PlayerState = {
-  name: localStorage.getItem("playerName") || "",
+  name: localStorage.getItem("playerName") || "", // prende il nome dal local storage se c'è già oppure setta stringa vuota
 };
 
 const playerSlice = createSlice({

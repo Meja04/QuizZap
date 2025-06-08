@@ -149,6 +149,11 @@
   transition: background-color 0.2s ease;
 }
 
+.button-tooltip {
+  display: inline-block;
+  cursor: not-allowed; 
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .quiz-container {

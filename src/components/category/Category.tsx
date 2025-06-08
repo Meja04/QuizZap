@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { formatTitleCase } from "../../utils/format";
 import type { Category as CategoryType } from "../../interfaces/category.interface";
 import "./Category.css";
 
@@ -15,10 +16,6 @@ function Category({ category }: CategoryProps) {
 
   const cardClass = `card category-card category-card${category.id % 6}`;
   const iconClass = `material-icons mat-icon${category.id % 6}`;
-  
-  //sostitutivo della pipe titlecase
-  const formatTitleCase = (text: string) =>
-    text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 
   return (
     <>

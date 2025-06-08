@@ -1,89 +1,124 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "../../redux/store";
+import {
+  setQuestions,
+  setCurrentCategory,
+  setCurrentQuestionIndex,
+  selectAnswer,
+  updateRemainingTime,
+  finishQuiz,
+  resetQuiz,
+} from "../../redux/quizSlice";
 import { getCategories, getQuestionsByCategory } from "../../services/quiz.service";
 import type { Question as QuestionType } from "../../interfaces/question.interface";
-import type { Category as CategoryType } from "../../interfaces/category.interface";
+import { formatTitleCase } from "../../utils/format";
 import Paginator from "../paginator/Paginator";
-
+import Timer from "../timer/Timer";
 import "./Quiz.css";
-import Timer from "../timer/Timer"
+import Tooltip from '@mui/material/Tooltip';
 
 function Quiz() {
-  const { category } = useParams<{ category: string }>();
+  const { category } = useParams<{ category: string }>(); // prendo categoria da url
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const [questions, setQuestions] = useState<QuestionType[]>([]);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [currentCategoryId, setCurrentCategoryId] = useState<number | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [finalScore, setFinalScore] = useState(0);
-  const [isQuizCompleted, setIsQuizCompleted] = useState(false);
-  const [allQuestionsAnswered, setAllQuestionsAnswered] = useState(false);
+  // prende i dati dallo store redux
+  const {
+    questions,
+    currentQuestionIndex,
+    currentCategoryId,
+    selectedCategory,
+    isQuizCompleted,
+    allQuestionsAnswered,
+    correctAnswers,
+    finalScore,
+    remainingTime,
+  } = useSelector((state: RootState) => state.quiz);
 
+  // useEffect per caricare i dati (come nel componente Home)
   useEffect(() => {
     if (!category) return;
 
-    setSelectedCategory(category);
+    // Reset del quiz quando cambia categoria
+    dispatch(resetQuiz());
 
-    getCategories().then((cats: CategoryType[]) => {
-      const found = cats.find((c) => c.name === category);
-      if (found) setCurrentCategoryId(found.id);
+    // Carica categorie e trova quella corrente
+    getCategories().then((data) => {
+      const found = data.find((c) => c.name === category);
+      if (found) {
+        dispatch(setCurrentCategory({ name: category, id: found.id }));
+      }
     });
 
+    // Carica domande e randomizza array
     getQuestionsByCategory(category).then((data: QuestionType[]) => {
-      const shuffled = [...data].sort(() => Math.random() - 0.5).slice(0, 10);
+      const shuffled = shuffleArray([...data]).slice(0, 10);
       shuffled.forEach((q) => (q.currentAnswer = null));
-      setQuestions(shuffled);
+      dispatch(setQuestions(shuffled));
     });
-  }, [category]);
+  }, [category, dispatch]);
+
+  function shuffleArray(array: any[]): any[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
 
   const currentQuestion = questions[currentQuestionIndex];
 
-  const handleSelect = (index: number) => {
+  // Gestione selezione risposta
+  function handleSelect(answerIndex: number) {
     if (!isQuizCompleted && currentQuestion) {
-      const updated = [...questions];
-      updated[currentQuestionIndex].currentAnswer = index;
-      setQuestions(updated);
-      checkAllAnswered(updated);
+      dispatch(selectAnswer({
+        questionIndex: currentQuestionIndex,
+        answerIndex,
+      }));
     }
-  };
+  }
 
-  const onPageChange = (index: number): void => {
-    setCurrentQuestionIndex(index);
-  };
+  // Gestione cambio pagina
+  function handlePageChange(index: number) {
+    dispatch(setCurrentQuestionIndex(index));
+  }
 
+  // Gestione aggiornamento timer
+  function handleTimeUpdate(seconds: number) {
+    dispatch(updateRemainingTime(seconds));
+  }
+  // Gestione fine tempo
+  function handleTimeExpired() {
+    handleFinishQuiz();
+    // modal timeout
+  }
 
-  const checkAllAnswered = (qs: QuestionType[]) => {
-    setAllQuestionsAnswered(qs.every((q) => q.currentAnswer !== null));
-  };
-
-  const getAnsweredQuestionsIndices: () => number[] = (): number[] => {
+  // Calcola indici domande risposte
+  function getAnsweredQuestionsIndices(): number[] {
     return questions
-      .map((question: QuestionType, index: number) => question.currentAnswer !== null ? index : -1)
-      .filter((index: number) => index !== -1);
-  };
+      .map(function (question: QuestionType, index: number) {
+        return question.currentAnswer !== null ? index : -1;
+      })
+      .filter(function (index: number) {
+        return index !== -1;
+      });
+  }
 
-  const finishQuiz = () => {
+  // Gestione fine quiz
+  function handleFinishQuiz() {
     if (isQuizCompleted) return;
 
-    const correct = questions.filter(
-      (q) => q.currentAnswer === q.correctOptionIndex
-    ).length;
+    dispatch(finishQuiz());
 
-    setCorrectAnswers(correct);
-
-    const timeLeft = 60; // tempo simulato (timer da integrare)
-    const score = correct * 70 + timeLeft * correct * 0.3;
-    setFinalScore(Math.round(score));
-    setIsQuizCompleted(true);
-
+    // Naviga ai risultati
     navigate(`/results/${category}`, {
       state: {
         questions,
-        correctAnswers: correct,
-        finalScore: Math.round(score),
-        remainingTime: timeLeft,
+        correctAnswers,
+        finalScore,
+        remainingTime,
         selectedCategory: category,
         currentCategoryId,
       },
@@ -98,47 +133,83 @@ function Quiz() {
             <div className="card quiz-main-card shadow border-0">
 
               <div className="quiz-header">
-                <h1>{selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)} Quiz</h1>
+                <h1>
+                  {formatTitleCase(selectedCategory)} Quiz
+                </h1>
               </div>
 
-              <Timer></Timer>
-
-              {currentQuestion && (
-                <div className="quiz-question-container">
-                  <h2>Question {currentQuestionIndex + 1} of {questions.length}</h2>
-                  <p className="question-text">{currentQuestion.question}</p>
-
-                  <div className="options-container">
-                    {currentQuestion.options.map((option, i) => (
-                      <div
-                        key={i}
-                        className={`card option-card ${currentQuestion.currentAnswer === i ? "selected" : ""} option-card-${currentCategoryId && currentCategoryId % 6}`}
-                        onClick={() => handleSelect(i)}
-                      >
-                        <div className="card-body">{option}</div>
-                      </div>
-                    ))}
+              <div className="quiz-content">
+                {questions.length > 0 && (
+                  <div className="quiz-timer">
+                    <Timer
+                    /*                       duration={120}
+                                          categoryId={currentCategoryId || 0}
+                                          onTimeExpired={handleTimeExpired}
+                                          onTimeUpdate={handleTimeUpdate} */
+                    />
                   </div>
-                </div>
-              )}
+                )}
 
-              <Paginator
-                total={questions.length}
-                current={currentQuestionIndex}
-                categoryId={currentCategoryId ?? 0}
-                answeredQuestions={getAnsweredQuestionsIndices()}
-                onChange={onPageChange}
-              />
+                {currentQuestion && (
+                  <div className="quiz-question-container">
+                    <h2>
+                      Question {currentQuestionIndex + 1} of {questions.length}
+                    </h2>
+                    <p className="question-text">{currentQuestion.question}</p>
 
+                    <div className="options-container">
+                      {currentQuestion.options.map((option, i) => {
+                        const optionClass = `card option-card ${currentQuestion.currentAnswer === i ? "selected" : ""}
+                          option-card-${currentCategoryId && currentCategoryId % 6}`;
+                        return (
+                          <div
+                            key={i}
+                            className={optionClass}
+                            onClick={() => handleSelect(i)}
+                          >
+                            <div className="card-body">{option}</div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {questions.length > 0 && (
+                  <div className="quiz-paginator">
+                    <Paginator
+                      total={questions.length}
+                      current={currentQuestionIndex}
+                      categoryId={currentCategoryId || 0}
+                      answeredQuestions={getAnsweredQuestionsIndices()}
+                      onChange={handlePageChange}
+                    />
+                  </div>
+                )}
+              </div>
               {currentQuestion && (
-                <div className="quiz-actions mt-4">
-                  <button
-                    className="btn btn-light"
-                    onClick={finishQuiz}
-                    disabled={!allQuestionsAnswered}
-                  >
-                    Finish Quiz
-                  </button>
+                <div className="quiz-actions">
+                  {allQuestionsAnswered ? (
+                    <button
+                      className="btn btn-light"
+                      onClick={handleFinishQuiz}
+                      disabled={false}
+                    >
+                      Finish Quiz
+                    </button>
+                  ) : (
+                    <Tooltip title="You must answer all questions before finishing the quiz" followCursor>
+                      <div className="button-tooltip">
+                        <button
+                          className="btn btn-light"
+                          onClick={handleFinishQuiz}
+                          disabled
+                        >
+                          Finish Quiz
+                        </button>
+                      </div>
+                    </Tooltip>
+                  )}
                 </div>
               )}
             </div>

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import "./Paginator.css";
@@ -18,6 +18,20 @@ function Paginator({
   answeredQuestions,
   onChange,
 }: PaginatorProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Hook per rilevare la dimensione dello schermo
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 840);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []); // eseguo effect solo alla nascita del componente
+
   useEffect(() => {
     setTimeout(() => {
       const buttons = document.querySelectorAll(
@@ -35,11 +49,13 @@ function Paginator({
       });
     }, 100);
   }, [current, total, answeredQuestions, categoryId]);
+  // eseguo effect al cambiamento delle dependencies
+
+const pagClass = `custom-paginator category-${categoryId % 6}`
 
   return (
-    <>
     <div
-      className={`custom-paginator category-${categoryId % 6}`}
+      className={pagClass}
       style={{ display: "flex", justifyContent: "center" }}
     >
       <Stack spacing={2}>
@@ -47,13 +63,13 @@ function Paginator({
           count={total}
           page={current + 1}
           onChange={(_, page) => onChange(page - 1)}
-          showFirstButton
-          showLastButton
-          boundaryCount={3}
+          showFirstButton={!isMobile}
+          showLastButton={!isMobile}
+          boundaryCount={isMobile ? 0 : 3}
+          siblingCount={isMobile ? 1 : 2}
         />
       </Stack>
     </div>
-    </>
   );
 }
 

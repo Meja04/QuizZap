@@ -1,5 +1,5 @@
 .header {
-  position: sticky;
+  position: sticky !important;
   top: 0;
   z-index: 1020; /* Bootstrap z-index for sticky elements */
 }
@@ -18,7 +18,7 @@
 
 .nav-buttons .nav-link {
   color: var(--text-color) !important;
-  padding: 0.5rem 10rem;
+  padding: 0.5rem 1rem;
   transition: all 0.3s ease;
 }
 

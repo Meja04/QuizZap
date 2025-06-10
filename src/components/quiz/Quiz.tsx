@@ -30,7 +30,7 @@ interface ModalState {
   message: string;
 }
 
-function Quiz({}: QuizProps) {
+function Quiz({ }: QuizProps) {
   const { category } = useParams<{ category: string }>(); // prendo categoria da url
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -128,12 +128,16 @@ function Quiz({}: QuizProps) {
 
     dispatch(finishQuiz());
 
-    // Salva solo i metadati essenziali in sessionStorage
+    // Salva tutte le info necessarie
     const resultData = {
       category,
       correctAnswers: questions.filter((q) => q.currentAnswer === q.correctOptionIndex).length,
       totalQuestions: questions.length,
       finalScore: finalScore,
+      questions,
+      remainingTime,
+      selectedCategory,
+      isQuizCompleted: true,
     };
 
     sessionStorage.setItem(`quiz_result_${category}`, JSON.stringify(resultData));
@@ -178,9 +182,8 @@ function Quiz({}: QuizProps) {
 
                     <div className="options-container">
                       {currentQuestion.options.map((option, i) => {
-                        const optionClass = `card option-card ${
-                          currentQuestion.currentAnswer === i ? 'selected' : ''
-                        }
+                        const optionClass = `card option-card ${currentQuestion.currentAnswer === i ? 'selected' : ''
+                          }
                           option-card-${currentCategoryId && (currentCategoryId % 6)}`;
                         return (
                           <div key={i} className={optionClass} onClick={() => handleSelect(i)}>

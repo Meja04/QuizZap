@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../redux/store";
-import { resetQuiz } from "../../redux/quizSlice";
+import { resetQuiz, setQuestions, setCurrentCategory, finishQuiz, updateRemainingTime } from "../../redux/quizSlice";
 import { saveScore } from "../../services/score.service";
 import type { Question } from "../../interfaces/question.interface";
 import { formatTitleCase } from "../../utils/format";
@@ -26,11 +26,14 @@ function Results() {
 
   const playerName = useSelector((state: RootState) => state.player.name);
 
-  const [scoreSaved, setScoreSaved] = useState(false);
-
   const scoreKey = `${playerName}_${category}_${finalScore}`;
 
-  useEffect(() => {
+  // Inizializza scoreSaved leggendo dal localStorage
+  const [scoreSaved, setScoreSaved] = useState(() => {
+    return localStorage.getItem(scoreKey) === "saved";
+  });
+
+  useEffect(function restoreResultsFromSession() {
     if (isQuizCompleted && questions.length > 0) {
       // Caso normale - dati nello store
       return;
@@ -41,13 +44,17 @@ function Results() {
     if (savedResult) {
       const resultData = JSON.parse(savedResult);
 
-      setScoreSaved(resultData);
+      // Ripopola lo store Redux con i dati recuperati
+      dispatch(setQuestions(resultData.questions));
+      dispatch(setCurrentCategory({ name: resultData.selectedCategory, id: resultData.currentCategoryId }));
+      dispatch(updateRemainingTime(resultData.remainingTime));
+      dispatch(finishQuiz());
       return;
-    };
+    }
 
     // Se non ci sono dati validi, vai alla home
     navigate("/");
-  }, [category, isQuizCompleted, questions.length]);
+  }, [category, isQuizCompleted, questions.length, dispatch, navigate]);
 
   function getScoreMessage(): string {
     const percentage = Math.round((correctAnswers / questions.length) * 100);

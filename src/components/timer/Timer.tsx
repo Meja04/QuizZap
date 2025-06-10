@@ -1,8 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { ProgressBar } from 'primereact/progressbar';
-import 'primereact/resources/themes/saga-blue/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
 import { formatTime } from '../../utils/format';
 import "./Timer.css";
 
@@ -20,7 +17,6 @@ function Timer({ duration, categoryId, onTimeExpired, onTimeUpdate, onShowModal 
   const intervalId = useRef<number | null>(null);
   const isRunning = useRef(false);
 
-  // simula ngOnInit per avviare il timer all'inizializzazione del componente
   useEffect(() => {
     startTimer();
     return () => stopTimer();
@@ -28,14 +24,12 @@ function Timer({ duration, categoryId, onTimeExpired, onTimeUpdate, onShowModal 
 
   const startTimer = () => {
     if (isRunning.current) return;
-
     isRunning.current = true;
     setCurrentTime(duration);
 
     intervalId.current = window.setInterval(() => {
       setCurrentTime((prevTime) => {
         const newTime = prevTime - 1;
-
         onTimeUpdate(newTime);
 
         if (newTime <= 0) {
@@ -57,32 +51,20 @@ function Timer({ duration, categoryId, onTimeExpired, onTimeUpdate, onShowModal 
     }
   };
 
-  const resetTimer = () => {
-    setProgress(100);
-    stopTimer();
-    startTimer();
-  };
-
   useEffect(() => {
-    const newProgress = (currentTime / duration) * 100;
-    setProgress(newProgress);
+    setProgress((currentTime / duration) * 100);
   }, [currentTime, duration]);
-
-  const getRemainingTime = () => {
-    return currentTime;
-  };
 
   return (
     <div className="timer-container">
       <div className={`countdown-display time-value${categoryId % 6}`}>
         {formatTime(currentTime)}
       </div>
-
       <ProgressBar
         value={progress}
         className={`category-${categoryId % 6}`}
         showValue={false}
-      ></ProgressBar>
+      />
     </div>
   );
 }

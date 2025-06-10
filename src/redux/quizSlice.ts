@@ -12,7 +12,6 @@ interface QuizState {
   remainingTime: number;
   isQuizCompleted: boolean;
   allQuestionsAnswered: boolean;
-  showResults: boolean; // Nuovo campo per controllare la visualizzazione dei risultati
 }
 
 const initialState: QuizState = {
@@ -25,7 +24,6 @@ const initialState: QuizState = {
   remainingTime: 120,
   isQuizCompleted: false,
   allQuestionsAnswered: false,
-  showResults: false,
 };
 
 function calculateScorePoints(correctAnswers: number, remainingTime: number): number {
@@ -48,7 +46,7 @@ const quizSlice = createSlice({
       state.questions = action.payload;
       state.currentQuestionIndex = 0;
       state.allQuestionsAnswered = false;
-      state.showResults = false; // Reset quando si caricano nuove domande
+      // Reset quando si caricano nuove domande
     },
 
     // Imposta categoria corrente
@@ -82,14 +80,11 @@ const quizSlice = createSlice({
       if (state.isQuizCompleted) return;
 
       state.isQuizCompleted = true;
-      state.showResults = true; // Abilita la visualizzazione dei risultati
 
       // Calcola risultati
       state.correctAnswers = state.questions.filter(
         q => q.currentAnswer === q.correctOptionIndex
       ).length;
-
-      state.finalScore = calculateScorePoints(state.correctAnswers, state.remainingTime);
     },
 
   // Reset quiz (quando si cambia categoria o si ricomincia)
@@ -101,12 +96,6 @@ const quizSlice = createSlice({
     state.correctAnswers = 0;
     state.finalScore = 0;
     state.remainingTime = 120;
-    state.showResults = false;
-  },
-
-  // Nuovo action per nascondere i risultati
-  hideResults: (state) => {
-    state.showResults = false;
   },
 },
 });
@@ -119,7 +108,6 @@ export const {
   updateRemainingTime,
   finishQuiz,
   resetQuiz,
-  hideResults,
 } = quizSlice.actions;
 
 export default quizSlice.reducer;

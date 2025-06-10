@@ -85,6 +85,9 @@ const quizSlice = createSlice({
       state.correctAnswers = state.questions.filter(
         q => q.currentAnswer === q.correctOptionIndex
       ).length;
+
+      // Calcola il punteggio finale usando la funzione
+      state.finalScore = calculateScorePoints(state.correctAnswers, state.remainingTime);
     },
 
   // Reset quiz (quando si cambia categoria o si ricomincia)

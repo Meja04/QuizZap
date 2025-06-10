@@ -5,6 +5,7 @@ import type { Category as CategoryType } from "../../interfaces/category.interfa
 import type { Score } from "../../interfaces/score.interface";
 import "./Leaderboard.css";
 import { formatTitleCase } from "../../utils/format";
+import Chart from "../chart/Chart";
 
 function Leaderboard() {
   const { category } = useParams<{ category: string }>();
@@ -48,7 +49,6 @@ function Leaderboard() {
     const newCategory = e.target.value;
     setSelectedCategory(newCategory);
     navigate(`/leaderboard/${newCategory}`);
-    window.scrollTo(0, 0);
   }
 
   function scrollToTop() {
@@ -67,6 +67,10 @@ function Leaderboard() {
               {/* Leaderboard Header */}
               <div className="leaderboard-header">
                 <h1>Leaderboard: {formatTitleCase(selectedCategory)}</h1>
+              </div>
+
+              <div className="chart-style">
+                <Chart />
               </div>
 
               <div className="leaderboard-content">

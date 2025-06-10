@@ -21,10 +21,6 @@ export class ChartComponent implements OnInit {
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
     responsive: true,
     plugins: {
-      title: {
-        display: true,
-        text: 'Score distribution by range and category'
-      },
       legend: {
         display: true,
         position: 'top'

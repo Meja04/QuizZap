@@ -55,14 +55,17 @@ function Timer({ duration, categoryId, onTimeExpired, onTimeUpdate, onShowModal 
     setProgress((currentTime / duration) * 100);
   }, [currentTime, duration]);
 
+  const countdownClass = `countdown-display time-value${categoryId % 6}`;
+  const progressBarClass = `category-${categoryId % 6}`;
+
   return (
     <div className="timer-container">
-      <div className={`countdown-display time-value${categoryId % 6}`}>
+      <div className={countdownClass}>
         {formatTime(currentTime)}
       </div>
       <ProgressBar
         value={progress}
-        className={`category-${categoryId % 6}`}
+        className={progressBarClass}
         showValue={false}
       />
     </div>

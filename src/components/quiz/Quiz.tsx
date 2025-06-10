@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "../../redux/store";
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState } from '../../redux/store';
 import {
   setQuestions,
   setCurrentCategory,
@@ -10,19 +10,33 @@ import {
   updateRemainingTime,
   finishQuiz,
   resetQuiz,
-} from "../../redux/quizSlice";
-import { getCategories, getQuestionsByCategory } from "../../services/quiz.service";
-import type { Question as QuestionType } from "../../interfaces/question.interface";
-import { formatTitleCase } from "../../utils/format";
-import Paginator from "../paginator/Paginator";
-import Timer from "../timer/Timer";
-import "./Quiz.css";
+} from '../../redux/quizSlice';
+import { getCategories, getQuestionsByCategory } from '../../services/quiz.service';
+import type { Question as QuestionType } from '../../interfaces/question.interface';
+import { formatTitleCase } from '../../utils/format';
+import Paginator from '../paginator/Paginator';
+import Timer from '../timer/Timer';
+import './Quiz.css';
 import Tooltip from '@mui/material/Tooltip';
 
-function Quiz() {
+// Definisci l'interfaccia per le props del componente Quiz
+interface QuizProps {
+  // Se il componente Quiz riceve delle props, definiscile qui
+}
+
+// Definisci l'interfaccia per lo stato del modale
+interface ModalState {
+  show: boolean;
+  message: string;
+}
+
+function Quiz({}: QuizProps) {
   const { category } = useParams<{ category: string }>(); // prendo categoria da url
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  // Stato locale per il modale
+  const [modal, setModal] = useState<ModalState>({ show: false, message: '' });
 
   // prende i dati dallo store redux
   const {
@@ -32,7 +46,6 @@ function Quiz() {
     selectedCategory,
     isQuizCompleted,
     allQuestionsAnswered,
-    correctAnswers,
     finalScore,
     remainingTime,
   } = useSelector((state: RootState) => state.quiz);
@@ -73,10 +86,12 @@ function Quiz() {
   // Gestione selezione risposta
   function handleSelect(answerIndex: number) {
     if (!isQuizCompleted && currentQuestion) {
-      dispatch(selectAnswer({
-        questionIndex: currentQuestionIndex,
-        answerIndex,
-      }));
+      dispatch(
+        selectAnswer({
+          questionIndex: currentQuestionIndex,
+          answerIndex,
+        })
+      );
     }
   }
 
@@ -89,11 +104,12 @@ function Quiz() {
   function handleTimeUpdate(seconds: number) {
     dispatch(updateRemainingTime(seconds));
   }
-  // Gestione fine tempo
-  function handleTimeExpired() {
-    handleFinishQuiz();
-    // modal timeout
-  }
+
+  // Gestione fine tempo (mostra il modale)
+  const handleTimeExpired = () => {
+    setModal({ show: true, message: 'Time expired!' });
+    handleFinishQuiz(); // Chiama handleFinishQuiz anche quando il tempo scade
+  };
 
   // Calcola indici domande risposte
   function getAnsweredQuestionsIndices(): number[] {
@@ -112,17 +128,22 @@ function Quiz() {
 
     dispatch(finishQuiz());
 
-    // Naviga ai risultati
-    navigate(`/results/${category}`, {
-      state: {
-        questions,
-        correctAnswers,
-        finalScore,
-        remainingTime,
-        selectedCategory: category,
-        currentCategoryId,
-      },
-    });
+    // Salva solo i metadati essenziali in sessionStorage
+    const resultData = {
+      category,
+      correctAnswers: questions.filter((q) => q.currentAnswer === q.correctOptionIndex).length,
+      totalQuestions: questions.length,
+      finalScore: finalScore,
+    };
+
+    sessionStorage.setItem(`quiz_result_${category}`, JSON.stringify(resultData));
+
+    navigate(`/results/${category}`);
+  }
+
+  // Gestione chiusura modale
+  const handleCloseModal = () => {
+    setModal({ show: false, message: '' });
   };
 
   return (
@@ -131,21 +152,19 @@ function Quiz() {
         <div className="row justify-content-center">
           <div className="col-12 col-lg-10">
             <div className="card quiz-main-card shadow border-0">
-
               <div className="quiz-header">
-                <h1>
-                  {formatTitleCase(selectedCategory)} Quiz
-                </h1>
+                <h1>{formatTitleCase(selectedCategory)} Quiz</h1>
               </div>
 
               <div className="quiz-content">
                 {questions.length > 0 && (
                   <div className="quiz-timer">
                     <Timer
-                    /*                       duration={120}
-                                          categoryId={currentCategoryId || 0}
-                                          onTimeExpired={handleTimeExpired}
-                                          onTimeUpdate={handleTimeUpdate} */
+                      duration={120}
+                      categoryId={currentCategoryId || 0}
+                      onTimeExpired={handleTimeExpired}
+                      onTimeUpdate={handleTimeUpdate}
+                      onShowModal={(show) => setModal({ show, message: 'Time expired!' })} // Mostra il modale quando il tempo scade
                     />
                   </div>
                 )}
@@ -159,14 +178,12 @@ function Quiz() {
 
                     <div className="options-container">
                       {currentQuestion.options.map((option, i) => {
-                        const optionClass = `card option-card ${currentQuestion.currentAnswer === i ? "selected" : ""}
-                          option-card-${currentCategoryId && currentCategoryId % 6}`;
+                        const optionClass = `card option-card ${
+                          currentQuestion.currentAnswer === i ? 'selected' : ''
+                        }
+                          option-card-${currentCategoryId && (currentCategoryId % 6)}`;
                         return (
-                          <div
-                            key={i}
-                            className={optionClass}
-                            onClick={() => handleSelect(i)}
-                          >
+                          <div key={i} className={optionClass} onClick={() => handleSelect(i)}>
                             <div className="card-body">{option}</div>
                           </div>
                         );
@@ -190,21 +207,13 @@ function Quiz() {
               {currentQuestion && (
                 <div className="quiz-actions">
                   {allQuestionsAnswered ? (
-                    <button
-                      className="btn btn-light"
-                      onClick={handleFinishQuiz}
-                      disabled={false}
-                    >
+                    <button className="btn btn-light" onClick={handleFinishQuiz} disabled={false}>
                       Finish Quiz
                     </button>
                   ) : (
                     <Tooltip title="You must answer all questions before finishing the quiz" followCursor>
                       <div className="button-tooltip">
-                        <button
-                          className="btn btn-light"
-                          onClick={handleFinishQuiz}
-                          disabled
-                        >
+                        <button className="btn btn-light" onClick={handleFinishQuiz} disabled>
                           Finish Quiz
                         </button>
                       </div>
@@ -216,6 +225,16 @@ function Quiz() {
           </div>
         </div>
       </div>
+
+      {/* Modale per il timeout */}
+      {modal.show && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>{modal.message}</h2>
+            <button onClick={handleCloseModal}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,0 +1,67 @@
+.timer-container {
+  margin-bottom: 1.5rem;
+}
+
+.countdown-display {
+  justify-content: space-between;
+  align-items: center;
+  font-size: 3em;
+  text-align: center;
+  font-weight: bold;
+  padding: 4px;
+}
+
+.time-value0 {
+  color: var(--category-color-0);
+}
+
+.time-value1 {
+  color: var(--category-color-1);
+}
+
+.time-value2 {
+  color: var(--category-color-2);
+}
+
+.time-value3 {
+  color: var(--category-color-3);
+}
+
+.time-value4 {
+  color: var(--category-color-4);
+}
+
+.time-value5 {
+  color: var(--category-color-5);
+}
+
+.p-progressbar {
+  background-color: #e0e3e6;
+  border-radius: 1rem;
+  height: 12px;
+}
+
+.p-progressbar-value {
+  border-radius: 1rem;
+  transition: width 4s ease-out;
+}
+
+
+.category-0 .p-progressbar-value {
+  background-color: var(--category-color-0);
+}
+.category-1 .p-progressbar-value {
+  background-color: var(--category-color-1);
+}
+.category-2 .p-progressbar-value {
+  background-color: var(--category-color-2);
+}
+.category-3 .p-progressbar-value {
+  background-color: var(--category-color-3);
+}
+.category-4 .p-progressbar-value {
+  background-color: var(--category-color-4);
+}
+.category-5 .p-progressbar-value {
+  background-color: var(--category-color-5);
+}

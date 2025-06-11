@@ -1,0 +1,41 @@
+.timeout-modal-container {
+  border-radius: 8px;
+  padding: 2rem;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 16rem 32rem;
+}
+
+.timeout-modal-title {
+  color: var(--text-color);
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.timeout-modal-description {
+  color: var(--secondary-text-color);
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.timeout-modal-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.timeout-modal-btn {
+  background-color: #dddddd !important;
+  border: 1px solid var(--secondary-text-color);
+  color: var(--text-color) !important;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.timeout-modal-btn:hover {
+  background-color: #afafaf !important;
+}

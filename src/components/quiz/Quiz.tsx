@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store';
@@ -18,27 +18,19 @@ import Paginator from '../paginator/Paginator';
 import Timer from '../timer/Timer';
 import './Quiz.css';
 import Tooltip from '@mui/material/Tooltip';
+import Timeout from '../timeout/Timeout';
 
-// Definisci l'interfaccia per le props del componente Quiz
-interface QuizProps {
-  // Se il componente Quiz riceve delle props, definiscile qui
-}
-
-// Definisci l'interfaccia per lo stato del modale
-interface ModalState {
-  show: boolean;
-  message: string;
-}
-
-function Quiz({ }: QuizProps) {
-  const { category } = useParams<{ category: string }>(); // prendo categoria da url
+function Quiz() {
+  const { category } = useParams<{ category: string }>();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // Stato locale per il modale
-  const [modal, setModal] = useState<ModalState>({ show: false, message: '' });
+  // Stato per il modale di timeout
+  const [showTimeoutModal, setShowTimeoutModal] = useState(false);
+  const [timerDuration, setTimerDuration] = useState(120); // 2 minuti come esempio
+  const [quizFinished, setQuizFinished] = useState(false);
 
-  // prende i dati dallo store redux
+  // Prende i dati dallo store redux
   const {
     questions,
     currentQuestionIndex,
@@ -50,12 +42,14 @@ function Quiz({ }: QuizProps) {
     remainingTime,
   } = useSelector((state: RootState) => state.quiz);
 
-  // useEffect per caricare i dati (come nel componente Home)
+  // useEffect per caricare i dati iniziali
   useEffect(() => {
     if (!category) return;
 
     // Reset del quiz quando cambia categoria
     dispatch(resetQuiz());
+    setQuizFinished(false);
+    setShowTimeoutModal(false);
 
     // Carica categorie e trova quella corrente
     getCategories().then((data) => {
@@ -73,6 +67,13 @@ function Quiz({ }: QuizProps) {
     });
   }, [category, dispatch]);
 
+  // Reset timer duration quando cambia categoria
+  useEffect(() => {
+    if (category) {
+      setTimerDuration(120); // resetta il timer solo quando cambi categoria
+    }
+  }, [category]);
+
   function shuffleArray(array: any[]): any[] {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -85,7 +86,7 @@ function Quiz({ }: QuizProps) {
 
   // Gestione selezione risposta
   function handleSelect(answerIndex: number) {
-    if (!isQuizCompleted && currentQuestion) {
+    if (!isQuizCompleted && !quizFinished && currentQuestion) {
       dispatch(
         selectAnswer({
           questionIndex: currentQuestionIndex,
@@ -97,19 +98,23 @@ function Quiz({ }: QuizProps) {
 
   // Gestione cambio pagina
   function handlePageChange(index: number) {
-    dispatch(setCurrentQuestionIndex(index));
+    if (!quizFinished) {
+      dispatch(setCurrentQuestionIndex(index));
+    }
   }
 
-  // Gestione aggiornamento timer
-  function handleTimeUpdate(seconds: number) {
+  // Gestione aggiornamento timer - usa useCallback per stabilizzare
+  const handleTimeUpdate = useCallback((seconds: number) => {
     dispatch(updateRemainingTime(seconds));
-  }
+  }, [dispatch]);
 
-  // Gestione fine tempo (mostra il modale)
-  const handleTimeExpired = () => {
-    setModal({ show: true, message: 'Time expired!' });
-    handleFinishQuiz(); // Chiama handleFinishQuiz anche quando il tempo scade
-  };
+  // Gestione fine tempo - usa useCallback per stabilizzare
+  const handleTimeExpired = useCallback(() => {
+    if (!quizFinished) {
+      setQuizFinished(true);
+      setShowTimeoutModal(true);
+    }
+  }, [quizFinished]);
 
   // Calcola indici domande risposte
   function getAnsweredQuestionsIndices(): number[] {
@@ -124,8 +129,9 @@ function Quiz({ }: QuizProps) {
 
   // Gestione fine quiz
   function handleFinishQuiz() {
-    if (isQuizCompleted) return;
+    if (isQuizCompleted || quizFinished) return;
 
+    setQuizFinished(true);
     dispatch(finishQuiz());
 
     // Salva tutte le info necessarie
@@ -141,13 +147,32 @@ function Quiz({ }: QuizProps) {
     };
 
     sessionStorage.setItem(`quiz_result_${category}`, JSON.stringify(resultData));
-
     navigate(`/results/${category}`);
   }
 
-  // Gestione chiusura modale
-  const handleCloseModal = () => {
-    setModal({ show: false, message: '' });
+  // Gestione chiusura modale timeout
+  const handleCloseTimeoutModal = () => {
+    setShowTimeoutModal(false);
+    
+    // Finalizza il quiz quando chiudi il modale
+    if (!isQuizCompleted) {
+      dispatch(finishQuiz());
+      
+      const resultData = {
+        category,
+        correctAnswers: questions.filter((q) => q.currentAnswer === q.correctOptionIndex).length,
+        totalQuestions: questions.length,
+        finalScore: finalScore,
+        questions,
+        remainingTime: 0,
+        selectedCategory,
+        isQuizCompleted: true,
+        timedOut: true,
+      };
+
+      sessionStorage.setItem(`quiz_result_${category}`, JSON.stringify(resultData));
+      navigate(`/results/${category}`);
+    }
   };
 
   return (
@@ -161,19 +186,19 @@ function Quiz({ }: QuizProps) {
               </div>
 
               <div className="quiz-content">
-                {questions.length > 0 && (
+                {questions.length > 0 && !quizFinished && (
                   <div className="quiz-timer">
                     <Timer
-                      duration={120}
+                      key={selectedCategory}
+                      duration={timerDuration}
                       categoryId={currentCategoryId || 0}
                       onTimeExpired={handleTimeExpired}
                       onTimeUpdate={handleTimeUpdate}
-                      onShowModal={(show) => setModal({ show, message: 'Time expired!' })} // Mostra il modale quando il tempo scade
                     />
                   </div>
                 )}
 
-                {currentQuestion && (
+                {currentQuestion && !quizFinished && (
                   <div className="quiz-question-container">
                     <h2>
                       Question {currentQuestionIndex + 1} of {questions.length}
@@ -182,9 +207,9 @@ function Quiz({ }: QuizProps) {
 
                     <div className="options-container">
                       {currentQuestion.options.map((option, i) => {
-                        const optionClass = `card option-card ${currentQuestion.currentAnswer === i ? 'selected' : ''
-                          }
-                          option-card-${currentCategoryId && (currentCategoryId % 6)}`;
+                        const optionClass = `card option-card ${
+                          currentQuestion.currentAnswer === i ? 'selected' : ''
+                        } option-card-${currentCategoryId && (currentCategoryId % 6)}`;
                         return (
                           <div key={i} className={optionClass} onClick={() => handleSelect(i)}>
                             <div className="card-body">{option}</div>
@@ -195,7 +220,7 @@ function Quiz({ }: QuizProps) {
                   </div>
                 )}
 
-                {questions.length > 0 && (
+                {questions.length > 0 && !quizFinished && (
                   <div className="quiz-paginator">
                     <Paginator
                       total={questions.length}
@@ -207,7 +232,8 @@ function Quiz({ }: QuizProps) {
                   </div>
                 )}
               </div>
-              {currentQuestion && (
+
+              {currentQuestion && !quizFinished && (
                 <div className="quiz-actions">
                   {allQuestionsAnswered ? (
                     <button className="btn btn-light" onClick={handleFinishQuiz} disabled={false}>
@@ -230,14 +256,10 @@ function Quiz({ }: QuizProps) {
       </div>
 
       {/* Modale per il timeout */}
-      {modal.show && (
-        <div className="modal">
-          <div className="modal-content">
-            <h2>{modal.message}</h2>
-            <button onClick={handleCloseModal}>Close</button>
-          </div>
-        </div>
-      )}
+      <Timeout 
+        open={showTimeoutModal} 
+        onClose={handleCloseTimeoutModal} 
+      />
     </div>
   );
 }

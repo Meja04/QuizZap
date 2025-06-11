@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
-import { ProgressBar } from 'primereact/progressbar';
-import { formatTime } from '../../utils/format';
+import { useEffect, useRef, useState } from "react";
+import { ProgressBar } from "primereact/progressbar";
+import { formatTime } from "../../utils/format";
 import "./Timer.css";
 
 interface TimerProps {
@@ -8,68 +8,68 @@ interface TimerProps {
   categoryId: number;
   onTimeExpired: () => void;
   onTimeUpdate: (remainingTime: number) => void;
-  onShowModal: (show: boolean) => void;
 }
 
-function Timer({ duration, categoryId, onTimeExpired, onTimeUpdate, onShowModal }: TimerProps) {
+export default function Timer({ duration, categoryId, onTimeExpired, onTimeUpdate }: TimerProps) {
   const [currentTime, setCurrentTime] = useState(duration);
-  const [progress, setProgress] = useState(100);
-  const intervalId = useRef<number | null>(null);
-  const isRunning = useRef(false);
+  const intervalRef = useRef<number | null>(null);
+  const hasExpiredRef = useRef(false);
 
+  // Resetta il timer quando cambia la durata
   useEffect(() => {
-    startTimer();
-    return () => stopTimer();
+    setCurrentTime(duration);
+    hasExpiredRef.current = false;
   }, [duration]);
 
-  const startTimer = () => {
-    if (isRunning.current) return;
-    isRunning.current = true;
-    setCurrentTime(duration);
+  // Gestisce il timer
+  useEffect(() => {
+    // Pulisci l'intervallo precedente
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
 
-    intervalId.current = window.setInterval(() => {
-      setCurrentTime((prevTime) => {
-        const newTime = prevTime - 1;
-        onTimeUpdate(newTime);
-
-        if (newTime <= 0) {
-          stopTimer();
-          onTimeExpired();
-          onShowModal(true);
+    intervalRef.current = window.setInterval(() => {
+      setCurrentTime((prev) => {
+        const newTime = prev - 1;
+        
+        // Aggiorna sempre il tempo rimanente
+        onTimeUpdate(Math.max(0, newTime));
+        
+        // Se il tempo è scaduto e non abbiamo già chiamato onTimeExpired
+        if (newTime <= 0 && !hasExpiredRef.current) {
+          hasExpiredRef.current = true;
+          clearInterval(intervalRef.current!);
+          intervalRef.current = null;
+          
+          // Chiama onTimeExpired in modo asincrono per evitare problemi di stato
+          setTimeout(() => {
+            onTimeExpired();
+          }, 0);
+          
           return 0;
         }
-        return newTime;
+        
+        return Math.max(0, newTime);
       });
     }, 1000);
-  };
 
-  const stopTimer = () => {
-    if (intervalId.current !== null) {
-      window.clearInterval(intervalId.current);
-      intervalId.current = null;
-      isRunning.current = false;
-    }
-  };
+    // Cleanup function
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+  }, [duration]);
 
-  useEffect(() => {
-    setProgress((currentTime / duration) * 100);
-  }, [currentTime, duration]);
-
+  const progress = (currentTime / duration) * 100;
   const countdownClass = `countdown-display time-value${categoryId % 6}`;
   const progressBarClass = `category-${categoryId % 6}`;
 
   return (
     <div className="timer-container">
-      <div className={countdownClass}>
-        {formatTime(currentTime)}
-      </div>
-      <ProgressBar
-        value={progress}
-        className={progressBarClass}
-        showValue={false}
-      />
+      <div className={countdownClass}>{formatTime(currentTime)}</div>
+      <ProgressBar value={progress} className={progressBarClass} showValue={false} />
     </div>
   );
 }
-
-export default Timer;

@@ -163,4 +163,11 @@ export class QuizComponent implements OnInit {
     });
   }
 
+  onOptionKeydown(event: KeyboardEvent, index: number): void {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.selectAnswer(index);
+    }
+  }
+
 }

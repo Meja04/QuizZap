@@ -199,6 +199,19 @@
   color: var(--category-color-5);
 }
 
+:host ::ng-deep .custom-paginator .p-paginator-page:focus,
+:host ::ng-deep .custom-paginator .p-paginator-page:focus-visible,
+:host ::ng-deep .custom-paginator .p-paginator-first:focus,
+:host ::ng-deep .custom-paginator .p-paginator-first:focus-visible,
+:host ::ng-deep .custom-paginator .p-paginator-prev:focus,
+:host ::ng-deep .custom-paginator .p-paginator-prev:focus-visible,
+:host ::ng-deep .custom-paginator .p-paginator-next:focus,
+:host ::ng-deep .custom-paginator .p-paginator-next:focus-visible,
+:host ::ng-deep .custom-paginator .p-paginator-last:focus,
+:host ::ng-deep .custom-paginator .p-paginator-last:focus-visible {
+  border-color: var(--text-color);
+  z-index: 2;
+}
 
 /* Responsive design */
 @media (max-width: 840px) {

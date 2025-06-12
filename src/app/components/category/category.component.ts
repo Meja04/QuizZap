@@ -22,4 +22,10 @@ export class CategoryComponent {
     });
   }
   
+  onCardKeydown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.onSelect();
+    }
+  }
 }

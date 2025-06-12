@@ -53,6 +53,7 @@ export class LeaderboardComponent implements OnInit {
 
   onCategoryChange(): void {
     this.router.navigate(['/leaderboard', this.selectedCategory]).then(() => {
+      window.scrollTo(0, 0);
     });
   }
 

@@ -6,7 +6,7 @@
 
           <!-- Quiz Header -->
           <div class="quiz-header">
-            <h1>{{ selectedCategory | titlecase }} Quiz</h1>
+            <h2>{{ selectedCategory | titlecase }} Quiz</h2>
           </div>
 
           <div class="quiz-content">
@@ -22,13 +22,21 @@
             <!-- Mostra domanda durante il quiz -->
             @if (currentQuestion) {
             <div class="quiz-question-container">
-              <h2>Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</h2>
+              <h3>Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</h3>
               <p class="question-text">{{ currentQuestion.question }}</p>
 
               <div class="options-container">
                 @for (option of currentQuestion.options; track $index) {
-                <div class="card option-card" [class.selected]="currentQuestion.currentAnswer === $index"
-                  [class]="'option-card-' + currentCategoryId%6" (click)="selectAnswer($index)">
+                <div
+                  class="card option-card option-card-{{currentCategoryId%6}}"
+                  [class.selected]="currentQuestion.currentAnswer === $index"
+                  (click)="selectAnswer($index)"
+                  tabindex="0"
+                  role="button"
+                  [attr.aria-pressed]="currentQuestion.currentAnswer === $index"
+                  [attr.aria-label]="option"
+                  (keydown)="onOptionKeydown($event, $index)"
+                >
                   <div class="card-body">
                     {{ option }}
                   </div>

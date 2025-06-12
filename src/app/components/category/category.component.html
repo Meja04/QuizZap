@@ -1,6 +1,13 @@
-<div class="card category-card category-card{{ category.id%6 }}" (click)="onSelect()">
+<div
+  class="card category-card category-card{{ category.id%6 }}"
+  tabindex="0"
+  role="button"
+  (click)="onSelect()"
+  (keydown)="onCardKeydown($event)"
+  [attr.aria-label]="'Select category ' + category.name"
+>
   <div class="card-body">
-    <i class="material-icons mat-icon{{ category.id%6 }}">{{ category.icon }}</i>
+    <i class="material-icons mat-icon{{ category.id%6 }}" aria-hidden="true">{{ category.icon }}</i>
     <h3>{{ category.name | titlecase }}</h3>
     <p class="description">{{ category.description }}</p>
   </div>

@@ -2,18 +2,18 @@
   <div class="container-fluid">
     <div class="navbar-brand d-flex align-items-center">
       <img src="../../assets/logo.png" alt="Logo" class="logo-image me-3" />
-      <span class="logo">QuizZap</span>
+      <h1 class="logo">QuizZap</h1>
     </div>
     
     <div class="navbar-nav ms-auto nav-buttons">
       <a class="nav-link" routerLink="/" routerLinkActive="active-link" 
          [routerLinkActiveOptions]="{ exact: true }">
-        <i class="material-icons">home</i>
+        <i class="material-icons" aria-hidden="true">home</i>
         Home
       </a>
       <a class="nav-link" routerLink="/leaderboard" routerLinkActive="active-link"
          [routerLinkActiveOptions]="{ exact: false }">
-        <i class="material-icons">leaderboard</i>
+        <i class="material-icons" aria-hidden="true">leaderboard</i>
         Leaderboard
       </a>
     </div>

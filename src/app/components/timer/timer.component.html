@@ -1,12 +1,19 @@
 <div class="timer-container">
-  <div class="countdown-display time-value{{ categoryId%6 }}">
+  <div
+    class="countdown-display time-value{{ categoryId%6 }}"
+    role="timer"
+    aria-live="polite"
+    aria-label="Time remaining"
+  >
     {{ (currentTime * 1000) | date:'mm:ss':'UTC' }}
   </div>
 
-  <p-progressBar 
+  <p-progressBar
     [value]="progress"
     [styleClass]="'category-' + categoryId%6"
-    [showValue]="false">
+    [showValue]="false"
+    [attr.tabindex]="-1"
+    aria-hidden="true"
+  >
   </p-progressBar>
-  
 </div>

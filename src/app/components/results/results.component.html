@@ -6,15 +6,15 @@
 
           <!-- Result Header -->
           <div class="result-header">
-            <h1>{{ selectedCategory | titlecase }} Quiz Results</h1>
+            <h2>{{ selectedCategory | titlecase }} Quiz Results</h2>
           </div>
 
           <div class="result-content">
             <!-- Risultati del Quiz -->
             <div class="quiz-results">
-              <h3>{{ getScoreMessage() }}</h3>
+              <span class="result-message">{{ getScoreMessage() }}</span>
 
-              <div class="score-summary mb-0 mt-0">
+              <div class="score-summary mb-0">
                 <div class="score-item">
                   <strong>Correct Answers:</strong> {{ correctAnswers }} / {{ questions.length }}
                 </div>
@@ -33,7 +33,7 @@
 
               <!-- Revisione Risposte -->
               <div class="answers-review mt-4 mb-0">
-                <h2>Answers review:</h2>
+                <h3>Answers review:</h3>
                 @for (question of questions; track question.id; let i = $index) {
                 <div class="question-review">
                   <h4>Question {{ i + 1 }}: {{ question.question }}</h4>

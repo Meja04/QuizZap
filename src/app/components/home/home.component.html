@@ -10,8 +10,8 @@
             <div class="card-body text-center py-5">
               <h2 class="form-title text-center mb-4">Choose a nickname to start playing:</h2>
               <div class="mb-3 text-center">
-                <label class="form-label">Your name:</label>
-                <input type="text" class="form-control" [(ngModel)]="inputName" 
+                <label class="form-label" for="playerNameInput">Your name:</label>
+                <input id="playerNameInput" type="text" class="form-control" [(ngModel)]="inputName" 
                        (keyup.enter)="saveName()" placeholder="Insert your name">
               </div>
               <div class="text-center">

@@ -43,7 +43,7 @@
 
 :host ::ng-deep .p-progressbar-value {
   border-radius: 1rem;
-  transition: width 4s ease; /* effetto smooth opzionale */
+  transition: width 1s ease; /* effetto smooth opzionale */
 }
 
 

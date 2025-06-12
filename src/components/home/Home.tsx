@@ -36,9 +36,10 @@ function Home() {
                 <div className="card shadow border-0">
                   <div className="card-body text-center py-5">
                     <h2 className="form-title text-center mb-4">Choose a nickname to start playing:</h2>
-                    <div className="mb-3 text-center">
-                      <label className="form-label">Your name:</label>
+                    <div className="name-insert mb-3 text-center">
+                      <label className="form-label" htmlFor="player-name-input">Your name:</label>
                       <input
+                        id="player-name-input"
                         type="text"
                         className="form-control"
                         value={inputName}
@@ -49,7 +50,7 @@ function Home() {
                     </div>
                     <div className="text-center">
                       <button
-                        className="btn btn-primary px-4"
+                        className="start-button btn btn-primary px-4"
                         onClick={saveName}
                         disabled={!inputName.trim()}
                       >

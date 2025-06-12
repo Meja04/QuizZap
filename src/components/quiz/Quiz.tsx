@@ -25,9 +25,8 @@ function Quiz() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // Stato per il modale di timeout
   const [showTimeoutModal, setShowTimeoutModal] = useState(false);
-  const [timerDuration, setTimerDuration] = useState(120); // 2 minuti come esempio
+  const [timerDuration, setTimerDuration] = useState(120);
   const [quizFinished, setQuizFinished] = useState(false);
 
   // Prende i dati dallo store redux
@@ -93,6 +92,14 @@ function Quiz() {
           answerIndex,
         })
       );
+    }
+  }
+
+  // Gestione accessibilità per le option card
+  function handleOptionKeyDown(e: React.KeyboardEvent<HTMLDivElement>, i: number) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleSelect(i);
     }
   }
 
@@ -175,6 +182,10 @@ function Quiz() {
     }
   };
 
+  function getOptionClass(currentAnswer: number | null, i: number, currentCategoryId: number | null) {
+    return `card option-card${currentAnswer === i ? ' selected' : ''} option-card-${currentCategoryId && (currentCategoryId % 6)}`;
+  }
+
   return (
     <div className="quiz-container">
       <div className="container">
@@ -207,11 +218,17 @@ function Quiz() {
 
                     <div className="options-container">
                       {currentQuestion.options.map((option, i) => {
-                        const optionClass = `card option-card ${
-                          currentQuestion.currentAnswer === i ? 'selected' : ''
-                        } option-card-${currentCategoryId && (currentCategoryId % 6)}`;
                         return (
-                          <div key={i} className={optionClass} onClick={() => handleSelect(i)}>
+                          <div
+                            key={i}
+                            className={getOptionClass(currentQuestion.currentAnswer, i, currentCategoryId)}
+                            onClick={() => handleSelect(i)}
+                            tabIndex={0}
+                            role="button"
+                            aria-pressed={currentQuestion.currentAnswer === i}
+                            aria-label={option}
+                            onKeyDown={(e) => handleOptionKeyDown(e, i)}
+                          >
                             <div className="card-body">{option}</div>
                           </div>
                         );

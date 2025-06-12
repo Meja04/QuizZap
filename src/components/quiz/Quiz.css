@@ -31,6 +31,12 @@
   padding-bottom: 1rem;
 }
 
+.quiz-content .options-container .option-card {
+  padding: 1rem;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
 .quiz-question-container {
   margin-bottom: 2rem;
 }
@@ -59,7 +65,10 @@
   margin-bottom: 2rem;
 }
 
-.option-card {
+.options-container .option-card {
+  padding: 1rem;
+  font-size: 1rem;
+  color: var(--text-color);
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 8px;
@@ -76,63 +85,75 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.option-card mat-card-content {
-  padding: 1rem !important;
-  font-size: 1rem;
-  color: var(--text-color);
-}
-
 .option-card-0:hover {
   border-color: var(--category-color-0);
 }
-
 .option-card-0.selected {
   background-color: var(--category-color-0-light);
+  border-color: var(--category-color-0);
+}
+.option-card-0:focus,
+.option-card-0:focus-visible {
   border-color: var(--category-color-0);
 }
 
 .option-card-1:hover {
   border-color: var(--category-color-1);
 }
-
 .option-card-1.selected {
   background-color: var(--category-color-1-light);
+  border-color: var(--category-color-1);
+}
+.option-card-1:focus,
+.option-card-1:focus-visible {
   border-color: var(--category-color-1);
 }
 
 .option-card-2:hover {
   border-color: var(--category-color-2);
 }
-
 .option-card-2.selected {
   background-color: var(--category-color-2-light);
+  border-color: var(--category-color-2);
+}
+.option-card-2:focus,
+.option-card-2:focus-visible {
   border-color: var(--category-color-2);
 }
 
 .option-card-3:hover {
   border-color: var(--category-color-3);
 }
-
 .option-card-3.selected {
   background-color: var(--category-color-3-light);
+  border-color: var(--category-color-3);
+}
+.option-card-3:focus,
+.option-card-3:focus-visible {
   border-color: var(--category-color-3);
 }
 
 .option-card-4:hover {
   border-color: var(--category-color-4);
 }
-
 .option-card-4.selected {
   background-color: var(--category-color-4-light);
+  border-color: var(--category-color-4);
+}
+.option-card-4:focus,
+.option-card-4:focus-visible {
   border-color: var(--category-color-4);
 }
 
 .option-card-5:hover {
   border-color: var(--category-color-5);
 }
-
 .option-card-5.selected {
   background-color: var(--category-color-5-light);
+  border-color: var(--category-color-5);
+}
+.option-card-5:focus,
+.option-card-5:focus-visible {
   border-color: var(--category-color-5);
 }
 
@@ -141,17 +162,29 @@
   padding-bottom: 1.5rem;
 }
 
-.quiz-actions button {
+.quiz-content .quiz-actions button,
+.quiz-main-card .quiz-actions button {
   padding: 0.75rem 2rem;
   font-size: 1.1rem;
   border-radius: 8px;
-  border: 1px solid #afafaf !important;
+  border: 1px solid #afafaf;
   transition: background-color 0.2s ease;
+}
+
+.quiz-paginator .MuiPaginationItem-root:focus,
+.quiz-paginator .MuiPaginationItem-root:focus-visible {
+  border-color: var(--text-color);
 }
 
 .button-tooltip {
   display: inline-block;
   cursor: not-allowed; 
+}
+
+.options-container .option-card .card-body {
+  padding: 0;
+  font-size: 1rem;
+  color: inherit;
 }
 
 /* Responsive */

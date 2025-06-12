@@ -5,6 +5,9 @@ import './Header.css'
 
 function Header() {
 
+  const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
+    "nav-link" + (isActive ? " active-link" : "");
+
   return (
     <>
       <nav className="navbar navbar-expand-md navbar-light bg-white header shadow-sm">
@@ -17,15 +20,15 @@ function Header() {
           <div className="navbar-nav ms-auto nav-buttons">
             <NavLink
               to="/"
-              className={({ isActive }) => "nav-link" + (isActive ? " active-link" : "")} /* passa la classe se la route è attiva */
-              end /* per escludere /quiz o /leaderboard */
+              className={getNavLinkClass}
+              end
             >
               <i className="material-icons">home</i> Home
             </NavLink>
 
             <NavLink
               to="/leaderboard"
-              className={({ isActive }) => "nav-link" + (isActive ? " active-link" : "")}
+              className={getNavLinkClass}
             >
               <i className="material-icons">leaderboard</i> Leaderboard
             </NavLink>

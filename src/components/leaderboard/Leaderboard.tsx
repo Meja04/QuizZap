@@ -66,7 +66,7 @@ function Leaderboard() {
 
               {/* Leaderboard Header */}
               <div className="leaderboard-header">
-                <h1>Leaderboard: {formatTitleCase(selectedCategory)}</h1>
+                <h2>Leaderboard: {formatTitleCase(selectedCategory)}</h2>
               </div>
 
               <div className="chart-style" tabIndex={-1} aria-hidden="true">

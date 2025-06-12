@@ -193,7 +193,7 @@ function Quiz() {
           <div className="col-12 col-lg-10">
             <div className="card quiz-main-card shadow border-0">
               <div className="quiz-header">
-                <h1>{formatTitleCase(selectedCategory)} Quiz</h1>
+                <h2>{formatTitleCase(selectedCategory)} Quiz</h2>
               </div>
 
               <div className="quiz-content">
@@ -211,9 +211,9 @@ function Quiz() {
 
                 {currentQuestion && !quizFinished && (
                   <div className="quiz-question-container">
-                    <h2>
+                    <h3>
                       Question {currentQuestionIndex + 1} of {questions.length}
-                    </h2>
+                    </h3>
                     <p className="question-text">{currentQuestion.question}</p>
 
                     <div className="options-container">

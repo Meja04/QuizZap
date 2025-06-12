@@ -14,7 +14,7 @@ function Header() {
         <div className="container-fluid">
           <div className="navbar-brand d-flex align-items-center">
             <img src={Logo} alt="Logo" className="logo-image me-3" />
-            <span className="logo">QuizZap</span>
+            <h1 className="logo">QuizZap</h1>
           </div>
 
           <div className="navbar-nav ms-auto nav-buttons">

@@ -60,21 +60,21 @@
   color: var(--text-color);
 }
 
-.mat-icon0 {
-  color: var(--category-color-0) !important
+.category-card .mat-icon0 {
+  color: var(--category-color-0);
 }
-.mat-icon1 {
-  color: var(--category-color-1) !important;
+.category-card .mat-icon1 {
+  color: var(--category-color-1);
 }
-.mat-icon2 {
-  color: var(--category-color-2) !important;
+.category-card .mat-icon2 {
+  color: var(--category-color-2);
 }
-.mat-icon3 {
-  color: var(--category-color-3) !important;
+.category-card .mat-icon3 {
+  color: var(--category-color-3);
 }
-.mat-icon4 {
-  color: var(--category-color-4) !important;
+.category-card .mat-icon4 {
+  color: var(--category-color-4);
 }
-.mat-icon5 {
-  color: var(--category-color-5) !important;
+.category-card .mat-icon5 {
+  color: var(--category-color-5);
 }

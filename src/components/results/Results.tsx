@@ -121,14 +121,14 @@ function Results() {
             <div className="card result-main-card shadow border-0">
 
               <div className="result-header">
-                <h1>{formatTitleCase(selectedCategory)} Quiz Results</h1>
+                <h2>{formatTitleCase(selectedCategory)} Quiz Results</h2>
               </div>
 
               <div className="result-content">
                 <div className="quiz-results">
-                  <h3>{getScoreMessage()}</h3>
+                  <span className="result-message">{getScoreMessage()}</span>
 
-                  <div className="score-summary mb-0 mt-0">
+                  <div className="score-summary mb-0">
                     <div className="score-item">
                       <strong>Correct Answers:</strong> {correctAnswers} / {questions.length}
                     </div>
@@ -151,7 +151,7 @@ function Results() {
                   </div>
 
                   <div className="answers-review mt-4 mb-0">
-                    <h2>Answers review:</h2>
+                    <h3>Answers review:</h3>
                     {questions.map((question, i) => (
                       <div key={question.id} className="question-review">
                         <h4>Question {i + 1}: {question.question}</h4>

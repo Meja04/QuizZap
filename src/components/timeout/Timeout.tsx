@@ -31,7 +31,8 @@ export default function Timeout({ open, onClose }: TimeoutProps) {
           <Button
             variant="contained"
             onClick={onClose}
-            className="timeout-modal-btn"
+            className="btn btn-light timeout-modal-btn"
+            autoFocus
           >
             Ok
           </Button>

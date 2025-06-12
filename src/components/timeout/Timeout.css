@@ -4,7 +4,9 @@
   background-color: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
-  margin: 16rem 32rem;
+  margin: 8rem auto;
+  max-width: 400px;
+  width: 90%;
 }
 
 .timeout-modal-title {
@@ -26,16 +28,23 @@
   margin-top: 24px;
 }
 
-.timeout-modal-btn {
-  background-color: #dddddd !important;
-  border: 1px solid var(--secondary-text-color);
-  color: var(--text-color) !important;
-  padding: 0.6rem 1.5rem;
-  font-size: 1rem;
+.timeout-modal-btn,
+.btn.timeout-modal-btn,
+button.timeout-modal-btn {
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
   border-radius: 8px;
-  transition: background-color 0.2s ease;
+  border: 1px solid #afafaf;
+  background-color: #f8f9fa;
+  color: var(--text-color);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  box-shadow: none;
 }
 
-.timeout-modal-btn:hover {
-  background-color: #afafaf !important;
+.timeout-modal-btn:hover,
+.timeout-modal-btn:focus {
+  background-color: #e9ecef;
+  border-color: #888;
+  color: var(--text-color);
+  outline: none;
 }

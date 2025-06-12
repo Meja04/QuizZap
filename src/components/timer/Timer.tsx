@@ -67,9 +67,20 @@ export default function Timer({ duration, categoryId, onTimeExpired, onTimeUpdat
   const progressBarClass = `category-${categoryId % 6}`;
 
   return (
-    <div className="timer-container">
+    <div
+      className="timer-container"
+      role="timer"
+      aria-live="polite"
+      aria-label={`Time remaining: ${formatTime(currentTime)}`}
+    >
       <div className={countdownClass}>{formatTime(currentTime)}</div>
-      <ProgressBar value={progress} className={progressBarClass} showValue={false} />
+      <ProgressBar
+        value={progress}
+        className={progressBarClass}
+        showValue={false}
+        tabIndex={-1} // per togliere il focus
+        aria-hidden="true"
+      />
     </div>
   );
 }

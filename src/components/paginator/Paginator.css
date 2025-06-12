@@ -87,6 +87,11 @@
   color: var(--category-color-5);
 }
 
+.quiz-paginator .MuiPaginationItem-root:focus,
+.quiz-paginator .MuiPaginationItem-root:focus-visible {
+  border-color: var(--text-color);
+}
+
 /* Responsive */
 @media (max-width: 840px) {
   .custom-paginator button.MuiPaginationItem-root {

@@ -69,7 +69,7 @@ function Leaderboard() {
                 <h1>Leaderboard: {formatTitleCase(selectedCategory)}</h1>
               </div>
 
-              <div className="chart-style">
+              <div className="chart-style" tabIndex={-1} aria-hidden="true">
                 <Chart />
               </div>
 
@@ -98,9 +98,12 @@ function Leaderboard() {
                   <div className="table-container">
                     <div className="table-responsive">
                       <table className="table table-hover mb-0">
+                        <caption className="visually-hidden">
+                          Leaderboard: player rankings for {formatTitleCase(selectedCategory)}
+                        </caption>
                         <thead>
                           <tr>
-                            <th scope="col" className="text-center">#</th>
+                            <th scope="col" className="text-center" aria-label="Position">#</th>
                             <th scope="col" className="text-center">Player</th>
                             <th scope="col" className="text-center">Score</th>
                             <th scope="col" className="text-center">Date</th>
@@ -109,9 +112,11 @@ function Leaderboard() {
                         <tbody>
                           {scores.map((score, i) => (
                             <tr key={score.id}>
-                              <td className="position-cell text-center">{i + 1}</td>
+                              <td className="position-cell text-center">
+                                {i + 1}
+                              </td>
                               <td className="username-cell text-center"><strong>{score.username}</strong></td>
-                              <td className="text-center">
+                              <td className="badge-cell text-center">
                                 <span className={badgeClass}>
                                   {score.score}
                                 </span>

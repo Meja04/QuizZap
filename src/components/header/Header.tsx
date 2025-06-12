@@ -23,14 +23,14 @@ function Header() {
               className={getNavLinkClass}
               end
             >
-              <i className="material-icons">home</i> Home
+              <i className="material-icons" aria-hidden="true">home</i> Home
             </NavLink>
 
             <NavLink
               to="/leaderboard"
               className={getNavLinkClass}
             >
-              <i className="material-icons">leaderboard</i> Leaderboard
+              <i className="material-icons" aria-hidden="true">leaderboard</i> Leaderboard
             </NavLink>
           </div>
         </div>

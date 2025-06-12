@@ -171,11 +171,6 @@
   transition: background-color 0.2s ease;
 }
 
-.quiz-paginator .MuiPaginationItem-root:focus,
-.quiz-paginator .MuiPaginationItem-root:focus-visible {
-  border-color: var(--text-color);
-}
-
 .button-tooltip {
   display: inline-block;
   cursor: not-allowed; 

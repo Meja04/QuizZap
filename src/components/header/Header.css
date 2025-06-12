@@ -24,6 +24,7 @@
   border-radius: 0;
   font-weight: 400;
   text-decoration: none;
+  border-radius: 0.25rem;
 }
 
 .header .navbar-nav.nav-buttons .nav-link:hover {
@@ -47,4 +48,13 @@
   margin-right: 8px;
   vertical-align: middle;
   font-size: 1.2rem;
+}
+
+.header .navbar-nav.nav-buttons .nav-link:focus,
+.header .navbar-nav.nav-buttons .nav-link:focus-visible {
+  outline: 2px solid #333;
+  background: rgba(41, 41, 41, 0.08);
+  color: var(--text-color);
+  box-shadow: none;
+  transition: none;
 }

@@ -99,11 +99,11 @@
   transition: background-color 0.2s ease;
 }
 
-.score-badge {
+.badge-cell .score-badge {
   color: white;
   border-radius: 8px;
   padding: 0.25rem 0.5rem;
-  font-size: 1rem !important;
+  font-size: 1rem;
 }
 
 .badge-0 {
@@ -180,6 +180,15 @@
 .back-to-top button i{
   vertical-align: middle;
 }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  border: 0;
+}
+
 
 /* Responsive */
 @media (max-width: 840px) {

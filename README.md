@@ -1,54 +1,70 @@
-# React + TypeScript + Vite
+# QuizZap - React Version
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Il progetto nasce come esperienza di stage curricolare presso l'azienda Sync Lab S.r.l., e consiste nello sviluppo di una web app per un Trivia Quiz Game che permette agli utenti di misurare le proprie conoscenze su diverse categorie. L’applicazione è interamente client-side e sfrutta un file JSON locale per simulare domande e classifica, mentre il nome utente viene memorizzato nel browser senza richiedere autenticazione. La scelta di non implementare un back-end è stata fatta per concentrarsi sul confronto pratico tra i due framework front-end Angular e React. Il progetto è stato infatti sviluppato prima in Angular e successivamente replicato in React, seguendo lo stesso approccio per permettere una valutazione diretta delle differenze tra i due ambienti di sviluppo. La struttura stessa dell’applicazione è pensata per mettere in evidenza le caratteristiche tecniche e le potenzialità dei due framework.
 
-Currently, two official plugins are available:
+## Prerequisiti
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js (consigliato v18+)
+- npm (consigliato v9+)
 
-## Expanding the ESLint configuration
+## Installazione
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Clona la repository:
+   ```bash
+   git clone <repo-url> QuizZapReact
+   cd QuizZapReact
+   ```
+2. Installa le dipendenze:
+   ```bash
+   npm install
+   ```
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Avvio in modalità sviluppo
+
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+La web application è visitabile al link fornito da Vite (tipicamente [http://localhost:5173](http://localhost:5173)) nel browser.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Utilizzo di json-server per simulare il backend
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+Per simulare le API e gestire domande e classifica viene utilizzato [json-server](https://github.com/typicode/json-server), che permette di esporre rapidamente un file JSON come API REST locale.
+
+### Installazione di json-server
+
+Se non l’hai già installato globalmente:
+```bash
+npm install -g json-server
 ```
+
+### Avvio del server
+
+All’interno della cartella del progetto, avvia json-server specificando il file JSON che contiene i dati. Il comando corretto è:
+
+```bash
+json-server --watch src\assets\db.json --port 3000
+```
+
+- Il file `db.json` deve essere presente nella cartella `src/assets/` del progetto.
+- L’API sarà disponibile all’indirizzo: [http://localhost:3000](http://localhost:3000)
+
+### Note
+
+- Assicurarsi che il file JSON (`src/assets/db.json`) sia aggiornato e contenga sia la collezione delle domande che la classifica.
+- Il file `db.json` può essere modificato anche a server avviato.
+- Se si cambia la porta, è necessario aggiornare di conseguenza le chiamate API dell’applicazione.
+- Il file `db.json` è il punto centrale per gestire i dati simulati dell'applicazione.
+
+## Struttura principale del progetto
+
+- `src/` — Sorgente React (componenti, pagine, redux, ecc.).
+- `public/` — File pubblici statici.
+- `package.json` — Gestione dipendenze.
+- `vite.config.js` — Configurazione Vite.
+
+## Note
+
+- Ogni branch contiene una versione **indipendente** (Angular o React).
+- Se si cambia branch tra Angular e React, è necessario eliminare ogni volta `node_modules` e `package-lock.json` e reinstallare le dipendenze.
+- **Alternativa consigliata:** è possibile clonare due volte la repo, una per ogni branch (una cartella per Angular e una per React), così da non dover reinstallare le dipendenze nel passaggio da una versione all'altra.

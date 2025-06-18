@@ -1,4 +1,4 @@
-# QuizZap - Main Repository
+# QuizZap
 
 Questo repository contiene il progetto QuizZap, una web app per un Trivia Quiz Game sviluppata come parte di uno stage curricolare. L'applicazione è progettata per confrontare due framework front-end, Angular e React, attraverso implementazioni indipendenti dello stesso progetto.
 

@@ -9,4 +9,6 @@ public interface ScoreService {
   List<ScoreDto> getAllScores();
 
   ScoreDto saveScore(ScoreDto scoreDto);
+
+  List<ScoreDto> getScoresByCategory(String category);
 }

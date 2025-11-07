@@ -12,7 +12,7 @@ import com.quizzap.backend.dto.CategoryDto;
 import com.quizzap.backend.service.CategoryService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/categories")
 public class CategoryController {
 
   private final CategoryService categoryService;

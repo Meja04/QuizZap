@@ -46,7 +46,6 @@
   transition: width 1s ease; /* effetto smooth opzionale */
 }
 
-
 :host ::ng-deep .category-0 .p-progressbar-value {
   background-color: var(--category-color-0);
 }

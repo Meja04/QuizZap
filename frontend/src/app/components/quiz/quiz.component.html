@@ -3,7 +3,6 @@
     <div class="row justify-content-center">
       <div class="col-12 col-lg-10">
         <div class="card quiz-main-card shadow border-0">
-
           <!-- Quiz Header -->
           <div class="quiz-header">
             <h2>{{ selectedCategory | titlecase }} Quiz</h2>
@@ -13,8 +12,13 @@
             @if (questions.length > 0) {
             <!-- Timer Component -->
             <div class="quiz-timer">
-              <app-timer [duration]="120" [categoryId]="currentCategoryId" (timeExpired)="handleTimeExpired()"
-                (timeUpdate)="updateRemainingTime($event)" #quizTimer>
+              <app-timer
+                [duration]="120"
+                [categoryId]="currentCategoryId"
+                (timeExpired)="handleTimeExpired()"
+                (timeUpdate)="updateRemainingTime($event)"
+                #quizTimer
+              >
               </app-timer>
             </div>
             }
@@ -22,13 +26,18 @@
             <!-- Mostra domanda durante il quiz -->
             @if (currentQuestion) {
             <div class="quiz-question-container">
-              <h3>Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</h3>
+              <h3>
+                Question {{ currentQuestionIndex + 1 }} of
+                {{ questions.length }}
+              </h3>
               <p class="question-text">{{ currentQuestion.question }}</p>
 
               <div class="options-container">
                 @for (option of currentQuestion.options; track $index) {
                 <div
-                  class="card option-card option-card-{{currentCategoryId%6}}"
+                  class="card option-card option-card-{{
+                    (currentCategoryId - 1) % 6
+                  }}"
                   [class.selected]="currentQuestion.currentAnswer === $index"
                   (click)="selectAnswer($index)"
                   tabindex="0"
@@ -49,9 +58,13 @@
             <!-- Paginator Component -->
             @if (questions.length > 0) {
             <div class="quiz-paginator">
-              <app-paginator [total]="questions.length" [current]="currentQuestionIndex"
-                [categoryId]="currentCategoryId" [answeredQuestions]="getAnsweredQuestionsIndices()"
-                (change)="onPageChange($event)">
+              <app-paginator
+                [total]="questions.length"
+                [current]="currentQuestionIndex"
+                [categoryId]="currentCategoryId"
+                [answeredQuestions]="getAnsweredQuestionsIndices()"
+                (change)="onPageChange($event)"
+              >
               </app-paginator>
             </div>
             }
@@ -59,17 +72,24 @@
 
           <!-- Pulsante Fine Quiz -->
           @if (currentQuestion) {
-            <div class="quiz-actions">
-            <button type="button" class="btn btn-light" [disabled]="!allQuestionsAnswered" (click)="finishQuiz()">
-              <span matTooltip="You must answer all questions before finishing the quiz"
+          <div class="quiz-actions">
+            <button
+              type="button"
+              class="btn btn-light"
+              [disabled]="!allQuestionsAnswered"
+              (click)="finishQuiz()"
+            >
+              <span
+                matTooltip="You must answer all questions before finishing the quiz"
                 [matTooltipDisabled]="allQuestionsAnswered"
                 matTooltipPosition="above"
                 aria-label="Button that displays a tooltip when focused or hovered over"
-                style="pointer-events: auto;">
+                style="pointer-events: auto"
+              >
                 Finish Quiz
-                </span>
+              </span>
             </button>
-            </div>
+          </div>
           }
         </div>
       </div>

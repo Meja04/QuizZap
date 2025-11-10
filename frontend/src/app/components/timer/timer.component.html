@@ -1,16 +1,16 @@
 <div class="timer-container">
   <div
-    class="countdown-display time-value{{ categoryId%6 }}"
+    class="countdown-display time-value{{ (categoryId - 1) % 6 }}"
     role="timer"
     aria-live="polite"
     aria-label="Time remaining"
   >
-    {{ (currentTime * 1000) | date:'mm:ss':'UTC' }}
+    {{ currentTime * 1000 | date : "mm:ss" : "UTC" }}
   </div>
 
   <p-progressBar
     [value]="progress"
-    [styleClass]="'category-' + categoryId%6"
+    [styleClass]="'category-' + ((categoryId - 1) % 6)"
     [showValue]="false"
     [attr.tabindex]="-1"
     aria-hidden="true"

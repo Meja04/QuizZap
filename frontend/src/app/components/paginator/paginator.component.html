@@ -1,16 +1,16 @@
-<p-paginator 
-  [first]="current * itemsPerPage" 
-  [rows]="itemsPerPage" 
-  [totalRecords]="total" 
+<p-paginator
+  [first]="current * itemsPerPage"
+  [rows]="itemsPerPage"
+  [totalRecords]="total"
   [pageLinkSize]="pageLinkSize"
-  (onPageChange)="handlePageChange($event)" 
-  [showJumpToPageDropdown]="false" 
+  (onPageChange)="handlePageChange($event)"
+  [showJumpToPageDropdown]="false"
   [showPageLinks]="true"
-  [showCurrentPageReport]="false" 
-  [showFirstLastIcon]="true" 
+  [showCurrentPageReport]="false"
+  [showFirstLastIcon]="true"
   [alwaysShow]="false"
-  [styleClass]="'custom-paginator category-' + (categoryId % 6)">
-
+  [styleClass]="'custom-paginator category-' + ((categoryId - 1) % 6)"
+>
   <ng-template>
     <i class="pi pi-angle-double-left"></i>
   </ng-template>

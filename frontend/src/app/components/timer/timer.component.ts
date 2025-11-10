@@ -1,4 +1,11 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy} from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { ProgressBarModule } from 'primeng/progressbar';
 
@@ -7,7 +14,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
   standalone: true,
   templateUrl: './timer.component.html',
   styleUrls: ['./timer.component.css'],
-  imports: [CommonModule, ProgressBarModule, DatePipe]
+  imports: [CommonModule, ProgressBarModule, DatePipe],
 })
 export class TimerComponent implements OnInit, OnDestroy {
   @Input() duration!: number;

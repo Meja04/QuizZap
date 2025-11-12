@@ -1,0 +1,39 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>Login</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <label for="username">Username:</label>
+      <input
+        formControlName="username"
+        placeholder="Username"
+        class="form-control"
+      />
+
+      <label for="password">Password:</label>
+      <input
+        formControlName="password"
+        type="password"
+        placeholder="Password"
+        class="form-control"
+      />
+
+      @if (error) {
+      <p class="error">{{ error }}</p>
+      }
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="loginForm.invalid"
+      >
+        Accedi
+      </button>
+    </form>
+
+    <p class="sign-up">
+      Non hai un account?
+      <a routerLink="/register">Registrati</a>
+    </p>
+  </div>
+</div>

@@ -8,13 +8,19 @@
 .logo {
   font-size: 1.6rem;
   font-weight: 500;
-  font-family: 'Fugaz One', cursive;
+  font-family: "Fugaz One", cursive;
   color: var(--text-color);
 }
 
 .logo-image {
   height: 48px;
   vertical-align: middle;
+}
+
+.header .navbar-nav.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .header .nav-buttons .nav-link {

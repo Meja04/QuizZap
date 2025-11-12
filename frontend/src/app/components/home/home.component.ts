@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CategoryComponent } from '../category/category.component';
 import { Category } from '../../interfaces/category.interface';
 import { QuizService } from '../../services/quiz.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,23 +15,25 @@ import { QuizService } from '../../services/quiz.service';
 })
 export class HomeComponent implements OnInit {
   categories: Category[] = [];
-  playerName: string | null = null;
-  inputName: string = '';
+  username: string | null = null;
 
-  constructor(private quizService: QuizService) {
-    this.playerName = localStorage.getItem('playerName');
-  }
+  constructor(
+    private quizService: QuizService,
+    public authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-    this.quizService.getAllCategories().subscribe((data) => {
-      this.categories = data;
-    });
-  }
+    // Recupera username dal token
+    this.username = this.authService.getUsername();
 
-  saveName(): void {
-    if (this.inputName.trim()) {
-      this.playerName = this.inputName.trim();
-      localStorage.setItem('playerName', this.playerName);
-    }
+    // Carica le categorie
+    this.quizService.getAllCategories().subscribe({
+      next: (data) => {
+        this.categories = data;
+      },
+      error: (err) => {
+        console.error('Errore caricamento categorie:', err);
+      },
+    });
   }
 }

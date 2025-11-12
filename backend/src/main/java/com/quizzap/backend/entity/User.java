@@ -17,8 +17,10 @@ public class User {
 
   @Column(unique = true, nullable = false)
   private String username;
+
   @Column(unique = true, nullable = false)
   private String email;
+
   @Column(nullable = false)
   private String password;
 
@@ -57,7 +59,7 @@ public class User {
   }
 
   public String getPassword() {
-    return email;
+    return password;
   }
 
   public void setPassword(String password) {

@@ -1,10 +1,4 @@
 import {
-  BaseComponent
-} from "./chunk-SW7ZKIAX.js";
-import {
-  BaseStyle
-} from "./chunk-AY2TQI3Q.js";
-import {
   animate,
   animation,
   sequence,
@@ -14,12 +8,11 @@ import {
   useAnimation
 } from "./chunk-CXYWROJ7.js";
 import {
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  NgControl,
-  NgControlStatus,
-  NgModel
-} from "./chunk-F57EINCY.js";
+  BaseComponent
+} from "./chunk-SW7ZKIAX.js";
+import {
+  BaseStyle
+} from "./chunk-AY2TQI3Q.js";
 import {
   FilterService,
   OverlayService,
@@ -61,6 +54,13 @@ import {
   unblockBodyScroll,
   uuid
 } from "./chunk-HKGJTVHU.js";
+import {
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+  NgControl,
+  NgControlStatus,
+  NgModel
+} from "./chunk-F57EINCY.js";
 import {
   CommonModule,
   NgClass,

@@ -4,18 +4,58 @@
       <img src="../../assets/logo.png" alt="Logo" class="logo-image me-3" />
       <h1 class="logo">QuizZap</h1>
     </div>
-    
+
     <div class="navbar-nav ms-auto nav-buttons">
-      <a class="nav-link" routerLink="/" routerLinkActive="active-link" 
-         [routerLinkActiveOptions]="{ exact: true }">
+      <a
+        class="nav-link"
+        routerLink="/home"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <i class="material-icons" aria-hidden="true">home</i>
         Home
       </a>
-      <a class="nav-link" routerLink="/leaderboard" routerLinkActive="active-link"
-         [routerLinkActiveOptions]="{ exact: false }">
-        <i class="material-icons" aria-hidden="true">leaderboard</i>
-        Leaderboard
-      </a>
+      <div class="dropdown">
+        <button class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+          <i class="material-icons" aria-hidden="true">leaderboard</i>
+          Leaderboard
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" routerLink="/leaderboard/videogames"
+              >Videogames</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="/leaderboard/cinema">Cinema</a>
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="/leaderboard/geography"
+              >Geography</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="/leaderboard/history"
+              >History</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="/leaderboard/art">Art</a>
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="/leaderboard/science"
+              >Science</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      @if (authService.isLoggedIn()) {
+      <button class="nav-link btn-logout" (click)="logout()">
+        <i class="material-icons" aria-hidden="true">logout</i>
+        Logout
+      </button>
+      }
     </div>
   </div>
 </nav>

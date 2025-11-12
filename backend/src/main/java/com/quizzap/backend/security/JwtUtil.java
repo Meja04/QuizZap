@@ -14,30 +14,55 @@ public class JwtUtil {
 
   public String generateToken(String username) {
     return Jwts.builder()
-        .subject(username) // imposta username come subject
-        .issuedAt(new Date()) // data di emissione
-        .expiration(new Date(System.currentTimeMillis() + 86400000)) // valido 24h
-        .signWith(key) // firma con chiave segreta
-        .compact(); // costruisce il token JWT
+        .subject(username)
+        .issuedAt(new Date())
+        .expiration(new Date(System.currentTimeMillis() + 86400000))
+        .signWith(key)
+        .compact();
   }
 
   // Estrae username dal token
   public String extractUsername(String token) {
     return Jwts.parser()
-        .verifyWith(key) // verifica con la chiave segreta
-        .build() //
+        .verifyWith(key)
+        .build()
         .parseSignedClaims(token)
         .getPayload()
         .getSubject();
   }
 
-  // Verifica se JWT è valido
+  // Verifica se JWT è valido (versione base)
   public boolean isValid(String token) {
     try {
       Jwts.parser().verifyWith(key).build().parseSignedClaims(token);
       return true;
     } catch (Exception e) {
-      return false; // token non valido o scaduto
+      return false;
+    }
+  }
+
+  // Verifica se JWT è valido per un determinato username
+  public boolean validateToken(String token, String username) {
+    try {
+      String extractedUsername = extractUsername(token);
+      return extractedUsername.equals(username) && !isTokenExpired(token);
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
+  // Verifica se il token è scaduto
+  private boolean isTokenExpired(String token) {
+    try {
+      Date expiration = Jwts.parser()
+          .verifyWith(key)
+          .build()
+          .parseSignedClaims(token)
+          .getPayload()
+          .getExpiration();
+      return expiration.before(new Date());
+    } catch (Exception e) {
+      return true;
     }
   }
 }

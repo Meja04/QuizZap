@@ -1,0 +1,145 @@
+/* Container principale con sfondo grigio come la home */
+.auth-container {
+  min-height: 100vh;
+  background-color: #eeeeee;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card bianca centrata */
+.auth-card {
+  background: white;
+  border-radius: 8px;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 480px;
+}
+
+/* Titolo principale */
+.auth-card h2 {
+  font-size: 2rem;
+  color: var(--text-color);
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Form */
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Label */
+.auth-card label {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: 500;
+  display: block;
+}
+
+/* Input fields - stile identico alla home */
+.auth-card .form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #afafaf;
+  border-radius: 8px;
+  background-color: white;
+  color: var(--text-color);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-card .form-control:focus {
+  outline: none;
+  border-color: #888;
+  box-shadow: 0 0 0 0.2rem rgba(175, 175, 175, 0.25);
+}
+
+.auth-card .form-control::placeholder {
+  color: #999;
+}
+
+/* Messaggio di errore */
+.error {
+  color: #dc3545;
+  background: #ffe5e8;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Button - stile identico alla home */
+.auth-card .btn-primary {
+  width: 100%;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: 1px solid #afafaf;
+  background-color: #f8f9fa;
+  color: var(--text-color);
+  transition: 0.2s ease;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.auth-card .btn-primary:hover:not(:disabled) {
+  background-color: #e9ecef;
+  border-color: #888;
+}
+
+.auth-card .btn-primary:disabled {
+  background-color: #f8f9fa;
+  border-color: #afafaf;
+  color: #6c757d;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-card .btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(175, 175, 175, 0.25);
+}
+
+.back-login {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: var(--secondary-text-color);
+  font-size: 0.95rem;
+}
+
+.back-login a {
+  color: var(--text-color);
+  text-decoration: underline;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.back-login a:hover {
+  opacity: 0.7;
+}
+
+/* Responsive per mobile */
+@media (max-width: 768px) {
+  .auth-container {
+    padding: 1rem;
+  }
+
+  .auth-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .auth-card h2 {
+    font-size: 1.75rem;
+  }
+
+  .auth-card label {
+    font-size: 1rem;
+  }
+}

@@ -3,31 +3,52 @@ import { HomeComponent } from './components/home/home.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
 import { ResultsComponent } from './components/results/results.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-    title: 'Home Page - QuizZap'
+    redirectTo: 'login',
+    pathMatch: 'full',
   },
   {
-    path: 'results/:category',
-    component: ResultsComponent,
-    title: 'Quiz Results - QuizZap'
+    path: 'login',
+    component: LoginComponent,
+    title: 'Login - QuizZap',
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    title: 'Register - QuizZap',
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [authGuard],
+    title: 'Home - QuizZap',
   },
   {
     path: 'quiz/:category',
     component: QuizComponent,
-    title: 'Quiz Game - QuizZap'
+    canActivate: [authGuard],
+    title: 'Quiz Game - QuizZap',
+  },
+  {
+    path: 'results/:category',
+    component: ResultsComponent,
+    canActivate: [authGuard],
+    title: 'Quiz Results - QuizZap',
   },
   {
     path: 'leaderboard/:category',
     component: LeaderboardComponent,
-    title: 'Leaderboard - QuizZap'
+    canActivate: [authGuard],
+    title: 'Leaderboard - QuizZap',
   },
   {
-    path: 'leaderboard',
-    redirectTo: 'leaderboard/videogames',
-    pathMatch: 'full'
+    path: '**',
+    redirectTo: 'login',
   },
 ];

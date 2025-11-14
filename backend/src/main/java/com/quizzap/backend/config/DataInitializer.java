@@ -1,23 +1,29 @@
 package com.quizzap.backend.config;
 
 import java.util.Arrays;
+import java.util.Date;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import com.quizzap.backend.entity.Category;
 import com.quizzap.backend.entity.Question;
+import com.quizzap.backend.entity.Score;
 import com.quizzap.backend.repository.CategoryRepository;
 import com.quizzap.backend.repository.QuestionRepository;
+import com.quizzap.backend.repository.ScoreRepository;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
 
   private final CategoryRepository categoryRepository;
   private final QuestionRepository questionRepository;
+  private final ScoreRepository scoreRepository;
 
-  public DataInitializer(CategoryRepository categoryRepository, QuestionRepository questionRepository) {
+  public DataInitializer(CategoryRepository categoryRepository, QuestionRepository questionRepository,
+      ScoreRepository scoreRepository) {
     this.categoryRepository = categoryRepository;
     this.questionRepository = questionRepository;
+    this.scoreRepository = scoreRepository;
   }
 
   @Override
@@ -307,5 +313,33 @@ public class DataInitializer implements CommandLineRunner {
           Arrays.asList("Nucleus", "Mitochondria", "Ribosome", "Chloroplast"), 1, "science"));
     }
 
+    if (scoreRepository.count() == 0) {
+
+      scoreRepository.save(new Score(null, "mario", "videogames", 850, new Date()));
+      scoreRepository.save(new Score(null, "mario", "science", 720, new Date()));
+      scoreRepository.save(new Score(null, "mario", "history", 650, new Date()));
+      scoreRepository.save(new Score(null, "luigi", "videogames", 920, new Date()));
+      scoreRepository.save(new Score(null, "luigi", "cinema", 780, new Date()));
+      scoreRepository.save(new Score(null, "peach", "art", 890, new Date()));
+      scoreRepository.save(new Score(null, "peach", "cinema", 810, new Date()));
+      scoreRepository.save(new Score(null, "peach", "geography", 700, new Date()));
+      scoreRepository.save(new Score(null, "bowser", "videogames", 750, new Date()));
+      scoreRepository.save(new Score(null, "bowser", "history", 820, new Date()));
+      scoreRepository.save(new Score(null, "yoshi", "science", 950, new Date()));
+      scoreRepository.save(new Score(null, "yoshi", "geography", 880, new Date()));
+      scoreRepository.save(new Score(null, "yoshi", "art", 760, new Date()));
+      scoreRepository.save(new Score(null, "toad", "cinema", 690, new Date()));
+      scoreRepository.save(new Score(null, "toad", "videogames", 620, new Date()));
+      scoreRepository.save(new Score(null, "wario", "history", 840, new Date()));
+      scoreRepository.save(new Score(null, "wario", "science", 710, new Date()));
+      scoreRepository.save(new Score(null, "wario", "videogames", 670, new Date()));
+      scoreRepository.save(new Score(null, "waluigi", "geography", 790, new Date()));
+      scoreRepository.save(new Score(null, "waluigi", "cinema", 720, new Date()));
+      scoreRepository.save(new Score(null, "daisy", "art", 860, new Date()));
+      scoreRepository.save(new Score(null, "daisy", "science", 800, new Date()));
+      scoreRepository.save(new Score(null, "daisy", "history", 750, new Date()));
+      scoreRepository.save(new Score(null, "rosalina", "videogames", 990, new Date()));
+      scoreRepository.save(new Score(null, "rosalina", "geography", 870, new Date()));
+    }
   }
 }

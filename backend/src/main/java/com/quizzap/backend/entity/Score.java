@@ -1,15 +1,18 @@
 package com.quizzap.backend.entity;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "scores")
+@Table(name = "scores", uniqueConstraints = {
+    @UniqueConstraint(columnNames = { "username", "category", "score" })
+})
 public class Score {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,12 +20,12 @@ public class Score {
   private String username;
   private String category;
   private int score;
-  private LocalDate date;
+  private Date date;
 
   public Score() {
   }
 
-  public Score(Long id, String username, String category, int score, LocalDate date) {
+  public Score(Long id, String username, String category, int score, Date date) {
     this.id = id;
     this.username = username;
     this.category = category;
@@ -62,11 +65,11 @@ public class Score {
     this.score = score;
   }
 
-  public LocalDate getDate() {
+  public Date getDate() {
     return date;
   }
 
-  public void setDate(LocalDate date) {
+  public void setDate(Date date) {
     this.date = date;
   }
 }

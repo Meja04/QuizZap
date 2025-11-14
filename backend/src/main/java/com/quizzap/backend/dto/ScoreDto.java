@@ -1,7 +1,7 @@
 package com.quizzap.backend.dto;
 
-import java.time.LocalDate;
+import java.util.Date;
 
-public record ScoreDto(Long id, String username, String category, int score, LocalDate date) {
+public record ScoreDto(Long id, String username, String category, int score, Date date) {
 
 }

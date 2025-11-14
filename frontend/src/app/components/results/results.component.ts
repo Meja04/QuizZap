@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Question } from '../../interfaces/question.interface';
 import { ScoreService } from '../../services/score.service';
+import { AuthService } from '../../services/auth.service';
 
 interface QuizResults {
   questions: Question[];
@@ -18,9 +19,7 @@ interface QuizResults {
   standalone: true,
   templateUrl: './results.component.html',
   styleUrl: './results.component.css',
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
 })
 export class ResultsComponent implements OnInit {
   questions: Question[] = [];
@@ -29,19 +28,20 @@ export class ResultsComponent implements OnInit {
   remainingTime = 0;
   selectedCategory = '';
   currentCategoryId = 0;
-  playerName = '';
+  username = '';
   scoreSaved = false;
 
   constructor(
     private scoreService: ScoreService,
+    private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.playerName = localStorage.getItem('playerName') || '';
+    this.username = this.authService.getUsername() || '';
 
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       this.selectedCategory = params['category'];
     });
 
@@ -54,21 +54,16 @@ export class ResultsComponent implements OnInit {
       this.finalScore = state.finalScore;
       this.remainingTime = state.remainingTime;
       this.currentCategoryId = state.currentCategoryId;
-
-      // Controlla se questo specifico punteggio è già stato salvato
-      this.scoreSaved = localStorage.getItem(this.getScoreKey()) === 'saved';
     } else {
       // Se non ci sono dati, reindirizza alla home
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
     }
   }
 
-  private getScoreKey(): string {
-    return `${this.playerName}_${this.selectedCategory}_${this.finalScore}`;
-  }
-
   getScoreMessage(): string {
-    const percentage = Math.round((this.correctAnswers / this.questions.length) * 100);
+    const percentage = Math.round(
+      (this.correctAnswers / this.questions.length) * 100
+    );
     if (percentage >= 90) return 'Excellent!';
     if (percentage >= 70) return 'Great job!';
     if (percentage >= 50) return 'Good result!';
@@ -79,24 +74,20 @@ export class ResultsComponent implements OnInit {
     if (this.scoreSaved) return;
 
     const scoreData = {
-      username: this.playerName,
+      username: this.username,
       category: this.selectedCategory,
       score: this.finalScore,
-      date: new Date()
+      date: new Date(),
     };
 
     this.scoreService.saveScore(scoreData).subscribe({
       next: () => {
         console.log('Score saved successfully');
         this.scoreSaved = true;
-
-        // Salva nel localStorage per prevenire salvataggi futuri dello stesso punteggio
-        localStorage.setItem(this.getScoreKey(), 'saved');
       },
       error: (error) => {
         console.error('Error saving score:', error);
-        // Non modificare scoreSaved in caso di errore per permettere un nuovo tentativo
-      }
+      },
     });
   }
 
@@ -118,9 +109,8 @@ export class ResultsComponent implements OnInit {
   }
 
   goBackToCategories(): void {
-    this.router.navigate(['/']).then(() => {
+    this.router.navigate(['/home']).then(() => {
       window.scrollTo(0, 0);
     });
   }
-  
 }

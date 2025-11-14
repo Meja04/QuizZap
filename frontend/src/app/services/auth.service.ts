@@ -1,25 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-
-interface AuthResponse {
-  token: string;
-  username: string;
-}
-
-interface AuthRequest {
-  username: string;
-  email?: string;
-  password: string;
-}
+import { AuthResponse, AuthRequest } from '../interfaces/auth.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly apiUrl = 'http://localhost:8080/api/auth';
+  private apiUrl = 'http://localhost:8080/api/auth';
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   register(
     username: string,
@@ -30,6 +20,8 @@ export class AuthService {
     return this.http
       .post<AuthResponse>(`${this.apiUrl}/register`, body)
       .pipe(tap((res) => this.saveToken(res.token)));
+    // pipe() crea una pipeline per operatori rxjs
+    // tap() esegue un'azione (salva token) senza modificare i dati
   }
 
   login(username: string, password: string): Observable<AuthResponse> {
@@ -56,6 +48,10 @@ export class AuthService {
     if (!token) return null;
 
     try {
+      // JSON.parse converte la stringa json in oggetto js
+      // atob(): funzione js che decodifica una stringa Base64
+      // split divide la stringa usando . come separatore
+      // [1] prende il secondo elemento (payload)
       const payload = JSON.parse(atob(token.split('.')[1]));
       return payload.sub; // sub è il campo standard JWT per lo username
     } catch (error) {

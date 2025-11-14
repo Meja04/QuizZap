@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from '../interfaces/category.interface';
 import { Question } from '../interfaces/question.interface';
-import { Score } from '../interfaces/score.interface';
 
 @Injectable({
   providedIn: 'root',

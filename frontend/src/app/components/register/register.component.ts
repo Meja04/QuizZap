@@ -35,11 +35,7 @@ export class RegisterComponent {
     if (this.registerForm.invalid) return;
 
     this.error = '';
-    const { username, email, password } = this.registerForm.value as {
-      username: string;
-      email: string;
-      password: string;
-    };
+    const { username, email, password } = this.registerForm.value;
 
     this.authService.register(username, email, password).subscribe({
       next: () => this.router.navigate(['/home']),

@@ -9,9 +9,20 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
+  // In produzione usare variabili d'ambiente per la key
   private final SecretKey key = Keys.hmacShaKeyFor(
       "questa-e-una-chiave-segreta-molto-lunga-di-almeno-256-bit".getBytes());
 
+  // Metodo helper per estrarre i claims dal token
+  private Claims extractClaims(String token) {
+    return Jwts.parser() // Crea builder per parser JWT
+        .verifyWith(key) // Imposta chiave segreta per verifica
+        .build() // Costruisce il parser configurato
+        .parseSignedClaims(token) // Legge token e verifica firma/scadenza
+        .getPayload(); // Estrae claims (payload) dal token
+  }
+
+  // Genera token JWT per uno username
   public String generateToken(String username) {
     return Jwts.builder()
         .subject(username)
@@ -21,20 +32,19 @@ public class JwtUtil {
         .compact();
   }
 
-  // Estrae username dal token
+  // Estrae il subject username dal token
   public String extractUsername(String token) {
-    return Jwts.parser()
-        .verifyWith(key)
-        .build()
-        .parseSignedClaims(token)
-        .getPayload()
-        .getSubject();
+    try {
+      return extractClaims(token).getSubject();
+    } catch (Exception e) {
+      return null;
+    }
   }
 
-  // Verifica se JWT è valido (versione base)
+  // Verifica se JWT è valido
   public boolean isValid(String token) {
     try {
-      Jwts.parser().verifyWith(key).build().parseSignedClaims(token);
+      extractClaims(token);
       return true;
     } catch (Exception e) {
       return false;
@@ -42,24 +52,23 @@ public class JwtUtil {
   }
 
   // Verifica se JWT è valido per un determinato username
+  // Ritorna true solo se il token è valido e lo username corrisponde
   public boolean validateToken(String token, String username) {
     try {
       String extractedUsername = extractUsername(token);
-      return extractedUsername.equals(username) && !isTokenExpired(token);
+      return extractedUsername != null
+          && extractedUsername.equals(username)
+          && !isTokenExpired(token);
     } catch (Exception e) {
       return false;
     }
   }
 
   // Verifica se il token è scaduto
+  // Ritorna true se la data attuale è dopo la data di scadenza del token
   private boolean isTokenExpired(String token) {
     try {
-      Date expiration = Jwts.parser()
-          .verifyWith(key)
-          .build()
-          .parseSignedClaims(token)
-          .getPayload()
-          .getExpiration();
+      Date expiration = extractClaims(token).getExpiration();
       return expiration.before(new Date());
     } catch (Exception e) {
       return true;

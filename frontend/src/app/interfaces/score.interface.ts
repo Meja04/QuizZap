@@ -1,7 +1,9 @@
 export interface Score {
   id: number;
+  userId?: number;
   username: string;
-  category: string;
+  categoryId: number;
+  categoryName: string;
   score: number;
   date: Date;
 }

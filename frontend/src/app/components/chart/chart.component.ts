@@ -117,8 +117,8 @@ export class ChartComponent implements OnInit {
       this.scores.forEach((score) => {
         const rangeIndex = Math.floor(score.score / step);
         const index = Math.min(rangeIndex, (max - min) / step - 1);
-        if (dataPerCategory[score.category]) {
-          dataPerCategory[score.category][index]++;
+        if (dataPerCategory[score.categoryName]) {
+          dataPerCategory[score.categoryName][index]++;
         }
       });
 

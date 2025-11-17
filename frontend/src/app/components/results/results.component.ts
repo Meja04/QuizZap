@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Question } from '../../interfaces/question.interface';
 import { ScoreService } from '../../services/score.service';
 import { AuthService } from '../../services/auth.service';
+import { Score } from '../../interfaces/score.interface';
 
 interface QuizResults {
   questions: Question[];
@@ -75,7 +76,8 @@ export class ResultsComponent implements OnInit {
 
     const scoreData = {
       username: this.username,
-      category: this.selectedCategory,
+      categoryId: this.currentCategoryId,
+      categoryName: this.selectedCategory,
       score: this.finalScore,
       date: new Date(),
     };

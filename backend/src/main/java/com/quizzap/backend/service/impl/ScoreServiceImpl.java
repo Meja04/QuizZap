@@ -42,8 +42,8 @@ public class ScoreServiceImpl implements ScoreService {
   }
 
   @Override
-  public List<ScoreDto> getScoresByCategory(String category) {
-    List<Score> scores = scoreRepository.findByCategory(category);
+  public List<ScoreDto> getScoresByCategory(String categoryName) {
+    List<Score> scores = scoreRepository.findByCategoryName(categoryName);
     return scores
         .stream()
         .map(scoreMapper::toDto)

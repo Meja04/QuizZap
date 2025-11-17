@@ -6,5 +6,5 @@ import com.quizzap.backend.dto.QuestionDto;
 
 public interface QuestionService {
 
-  List<QuestionDto> getQuestionsByCategory(String category);
+  List<QuestionDto> getQuestionsByCategory(String categoryName);
 }

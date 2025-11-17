@@ -1,9 +1,17 @@
 package com.quizzap.backend.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,6 +23,14 @@ public class Category {
   private String name;
   private String description;
   private String icon;
+
+  @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+  @JsonIgnore
+  private List<Question> questions = new ArrayList<>();
+
+  @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+  @JsonIgnore
+  private List<Score> scores = new ArrayList<>();
 
   public Category() {
   }
@@ -56,5 +72,21 @@ public class Category {
 
   public void setIcon(String icon) {
     this.icon = icon;
+  }
+
+  public List<Question> getQuestions() {
+    return questions;
+  }
+
+  public void setQuestions(List<Question> questions) {
+    this.questions = questions;
+  }
+
+  public List<Score> getScores() {
+    return scores;
+  }
+
+  public void setScores(List<Score> scores) {
+    this.scores = scores;
   }
 }

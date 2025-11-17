@@ -22,8 +22,8 @@ public class QuestionServiceImpl implements QuestionService {
   }
 
   @Override
-  public List<QuestionDto> getQuestionsByCategory(String category) {
-    List<Question> questions = questionRepository.findByCategory(category);
+  public List<QuestionDto> getQuestionsByCategory(String categoryName) {
+    List<Question> questions = questionRepository.findByCategoryName(categoryName);
     return questions
         .stream()
         .map(questionMapper::toDto)

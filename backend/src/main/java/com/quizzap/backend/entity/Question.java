@@ -4,9 +4,12 @@ import java.util.List;
 
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,12 +24,15 @@ public class Question {
   private List<String> options;
 
   private int correctOptionIndex;
-  private String category;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "category_id", nullable = false)
+  private Category category;
 
   public Question() {
   }
 
-  public Question(Long id, String question, List<String> options, int correctOptionIndex, String category) {
+  public Question(Long id, String question, List<String> options, int correctOptionIndex, Category category) {
     this.id = id;
     this.question = question;
     this.options = options;
@@ -66,11 +72,11 @@ public class Question {
     this.correctOptionIndex = correctOptionIndex;
   }
 
-  public String getCategory() {
+  public Category getCategory() {
     return category;
   }
 
-  public void setCategory(String category) {
+  public void setCategory(Category category) {
     this.category = category;
   }
 }

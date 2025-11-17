@@ -10,5 +10,5 @@ public interface ScoreService {
 
   ScoreDto saveScore(ScoreDto scoreDto);
 
-  List<ScoreDto> getScoresByCategory(String category);
+  List<ScoreDto> getScoresByCategory(String categoryName);
 }

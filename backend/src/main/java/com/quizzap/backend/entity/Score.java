@@ -3,31 +3,41 @@ package com.quizzap.backend.entity;
 import java.util.Date;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "scores", uniqueConstraints = {
-    @UniqueConstraint(columnNames = { "username", "category", "score" })
+    @UniqueConstraint(columnNames = { "user_id", "category_id", "score" })
 })
 public class Score {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  private String username;
-  private String category;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "user_id", nullable = false)
+  private User user;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "category_id", nullable = false)
+  private Category category;
+
   private int score;
   private Date date;
 
   public Score() {
   }
 
-  public Score(Long id, String username, String category, int score, Date date) {
+  public Score(Long id, User user, Category category, int score, Date date) {
     this.id = id;
-    this.username = username;
+    this.user = user;
     this.category = category;
     this.score = score;
     this.date = date;
@@ -41,19 +51,19 @@ public class Score {
     this.id = id;
   }
 
-  public String getUsername() {
-    return username;
+  public User getUser() {
+    return user;
   }
 
-  public void setUsername(String username) {
-    this.username = username;
+  public void setUser(User user) {
+    this.user = user;
   }
 
-  public String getCategory() {
+  public Category getCategory() {
     return category;
   }
 
-  public void setCategory(String category) {
+  public void setCategory(Category category) {
     this.category = category;
   }
 

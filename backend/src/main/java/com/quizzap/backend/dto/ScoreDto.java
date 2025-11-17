@@ -2,6 +2,7 @@ package com.quizzap.backend.dto;
 
 import java.util.Date;
 
-public record ScoreDto(Long id, String username, String category, int score, Date date) {
+public record ScoreDto(Long id, Long userId, String username, Long categoryId, String categoryName, int score,
+    Date date) {
 
 }

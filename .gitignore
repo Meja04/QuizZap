@@ -1,24 +1,56 @@
-# See https://docs.github.com/get-startd/getting-startd-with-git/ignoring-files for more about ignoring files.
-
 # Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+frontend/dist/
+frontend/tmp/
+frontend/out-tsc/
+frontend/bazel-out/
 
 # Node
-/node_modules
-npm-debug.log
-yarn-error.log
+frontend/node_modules/
+frontend/npm-debug.log
+frontend/yarn-error.log
 
-# IDEs and editors
+# Angular
+frontend/.angular/cache/
+frontend/.sass-cache/
+frontend/connect.lock
+frontend/coverage/
+frontend/libpeerconnection.log
+frontend/testem.log
+frontend/typings/
+
+backend/HELP.md
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+!backend/**/src/main/**/target/
+!backend/**/src/test/**/target/
+
+# Spring Tools Suite
+backend/.apt_generated
+backend/.classpath
+backend/.factorypath
+backend/.project
+backend/.settings/
+backend/.springBeans
+backend/.sts4-cache
+
+# Build
+backend/build/
+!backend/**/src/main/**/build/
+!backend/**/src/test/**/build/
+
+# NetBeans
+backend/nbproject/private/
+backend/nbbuild/
+backend/nbdist/
+backend/.nb-gradle/
+
+# IntelliJ IDEA
 .idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+*.iws
+*.iml
+*.ipr
 
 # Visual Studio Code
 .vscode/*
@@ -28,15 +60,18 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
-# Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
+# Eclipse
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-# System files
 .DS_Store
 Thumbs.db
+
+*.env.local
+.env
+
+*.log

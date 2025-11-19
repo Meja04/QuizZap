@@ -1,0 +1,26 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build output
+dist/
+.angular/
+
+# IDE
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+
+# Test
+coverage/
+.nyc_output/
+
+# Documentazione
+README.md

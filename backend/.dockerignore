@@ -1,0 +1,29 @@
+# Maven build
+target/
+.mvn/
+mvnw
+mvnw.cmd
+
+# IDE
+.idea/
+.vscode/
+.settings/
+.project
+.classpath
+*.iml
+*.iws
+*.ipr
+
+# Logs
+*.log
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentazione
+README.md
+
+# Test
+**/test/**

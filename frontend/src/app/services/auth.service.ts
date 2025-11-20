@@ -7,9 +7,13 @@ import { AuthResponse, AuthRequest } from '../interfaces/auth.interface';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/api/auth';
+  private apiUrl = '/api/auth'; // URL relativo -> usa proxy nginx
 
   constructor(private http: HttpClient) {}
+
+  private saveToken(token: string): void {
+    localStorage.setItem('token', token);
+  }
 
   register(
     username: string,
@@ -33,10 +37,6 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('token');
-  }
-
-  private saveToken(token: string): void {
-    localStorage.setItem('token', token);
   }
 
   getToken(): string | null {

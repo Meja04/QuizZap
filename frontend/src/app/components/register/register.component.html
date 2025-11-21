@@ -2,6 +2,10 @@
   <div class="auth-card">
     <h2>Registrazione</h2>
 
+    @if (error) {
+    <p class="error">{{ error }}</p>
+    }
+
     <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
       <label for="username">Username:</label>
       <input
@@ -25,10 +29,6 @@
         placeholder="Password"
         class="form-control"
       />
-
-      @if (error) {
-      <p class="error">{{ error }}</p>
-      }
 
       <button
         type="submit"

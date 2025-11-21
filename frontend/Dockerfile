@@ -1,3 +1,5 @@
+# BUILD
+
 FROM node:20-alpine AS build
 
 WORKDIR /app
@@ -9,6 +11,8 @@ RUN npm ci
 COPY . .
 
 RUN npm run build -- --configuration production
+
+#RUNTIME
 
 FROM nginx:1.25-alpine
 

@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { AuthResponse, AuthRequest } from '../interfaces/auth.interface';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = '/api/auth'; // URL relativo -> usa proxy nginx
-
+  private apiUrl = environment.apiUrl + '/auth'; // apiUrl relativo da production o dev
   constructor(private http: HttpClient) {}
 
   private saveToken(token: string): void {

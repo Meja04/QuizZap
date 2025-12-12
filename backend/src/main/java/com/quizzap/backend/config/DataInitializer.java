@@ -456,16 +456,17 @@ public class DataInitializer implements CommandLineRunner {
     }
 
     if (userRepository.count() == 0) {
-      userRepository.save(new User(null, "mario", "mario@example.com", passwordEncoder.encode("mario")));
-      userRepository.save(new User(null, "luigi", "luigi@example.com", passwordEncoder.encode("luigi")));
-      userRepository.save(new User(null, "peach", "peach@example.com", passwordEncoder.encode("peach")));
-      userRepository.save(new User(null, "bowser", "bowser@example.com", passwordEncoder.encode("bowser")));
-      userRepository.save(new User(null, "yoshi", "yoshi@example.com", passwordEncoder.encode("yoshi")));
-      userRepository.save(new User(null, "toad", "toad@example.com", passwordEncoder.encode("toad")));
-      userRepository.save(new User(null, "wario", "wario@example.com", passwordEncoder.encode("wario")));
-      userRepository.save(new User(null, "waluigi", "waluigi@example.com", passwordEncoder.encode("waluigi")));
-      userRepository.save(new User(null, "daisy", "daisy@example.com", passwordEncoder.encode("daisy")));
-      userRepository.save(new User(null, "rosalina", "rosalina@example.com", passwordEncoder.encode("rosalina")));
+      userRepository.save(new User(null, "mario", "mario@example.com", passwordEncoder.encode("mario"), true));
+      userRepository.save(new User(null, "luigi", "luigi@example.com", passwordEncoder.encode("luigi"), true));
+      userRepository.save(new User(null, "peach", "peach@example.com", passwordEncoder.encode("peach"), true));
+      userRepository.save(new User(null, "bowser", "bowser@example.com", passwordEncoder.encode("bowser"), true));
+      userRepository.save(new User(null, "yoshi", "yoshi@example.com", passwordEncoder.encode("yoshi"), true));
+      userRepository.save(new User(null, "toad", "toad@example.com", passwordEncoder.encode("toad"), true));
+      userRepository.save(new User(null, "wario", "wario@example.com", passwordEncoder.encode("wario"), true));
+      userRepository.save(new User(null, "waluigi", "waluigi@example.com", passwordEncoder.encode("waluigi"), true));
+      userRepository.save(new User(null, "daisy", "daisy@example.com", passwordEncoder.encode("daisy"), true));
+      userRepository
+          .save(new User(null, "rosalina", "rosalina@example.com", passwordEncoder.encode("rosalina"), true));
     }
 
     if (scoreRepository.count() == 0) {

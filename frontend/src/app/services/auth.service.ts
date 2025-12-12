@@ -19,11 +19,12 @@ export class AuthService {
     username: string,
     email: string,
     password: string
-  ): Observable<AuthResponse> {
-    const body: AuthRequest = { username, email, password };
-    return this.http
-      .post<AuthResponse>(`${this.apiUrl}/register`, body)
-      .pipe(tap((res) => this.saveToken(res.token)));
+  ): Observable<String> {
+    const body: AuthRequest = { username, email, password }; // object destructuring
+    return this.http.post(`${this.apiUrl}/register`, body, {
+      responseType: 'text',
+    });
+    // .pipe(tap((res) => this.saveToken(res.token)));
     // pipe() crea una pipeline per operatori rxjs
     // tap() esegue un'azione (salva token) senza modificare i dati
   }

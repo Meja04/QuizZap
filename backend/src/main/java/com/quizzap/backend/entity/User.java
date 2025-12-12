@@ -32,6 +32,9 @@ public class User {
   @Column(nullable = false)
   private String password;
 
+  @Column(name = "is_active", nullable = false, columnDefinition = "boolean default false")
+  private boolean isActive = false;
+
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
   @JsonIgnore
   private List<Score> scores = new ArrayList<>();
@@ -39,11 +42,12 @@ public class User {
   public User() {
   }
 
-  public User(Long id, String username, String email, String password) {
+  public User(Long id, String username, String email, String password, boolean isActive) {
     this.id = id;
     this.username = username;
     this.email = email;
     this.password = password;
+    this.isActive = isActive;
   }
 
   public Long getId() {
@@ -76,6 +80,14 @@ public class User {
 
   public void setPassword(String password) {
     this.password = password;
+  }
+
+  public boolean isActive() {
+    return isActive;
+  }
+
+  public void setActive(boolean isActive) {
+    this.isActive = isActive;
   }
 
   public List<Score> getScores() {

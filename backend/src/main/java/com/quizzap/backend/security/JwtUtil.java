@@ -74,4 +74,26 @@ public class JwtUtil {
       return true;
     }
   }
+
+  // PER I TOKEN DI VERIFICA EMAIL
+
+  // Genera token verifica con scadenza custom (ore)
+  public String generateVerificationToken(Long userId, long expirationMs) {
+    return Jwts.builder()
+        .claim("userId", userId) // ID utente invece di username
+        .issuedAt(new Date())
+        .expiration(new Date(System.currentTimeMillis() + expirationMs))
+        .signWith(key)
+        .compact();
+  }
+
+  // Estrae userId dal token verifica
+  public Long extractUserId(String token) {
+    try {
+      return extractClaims(token).get("userId", Long.class);
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
 }

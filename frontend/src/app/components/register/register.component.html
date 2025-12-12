@@ -2,9 +2,12 @@
   <div class="auth-card">
     <h2>Registrazione</h2>
 
-    @if (error) {
+    @if (error) { @if (error.includes('Errore') || error.includes('già in uso'))
+    {
     <p class="error">{{ error }}</p>
-    }
+    } @else {
+    <p class="success">{{ error }}</p>
+    } }
 
     <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
       <label for="username">Username:</label>

@@ -38,8 +38,10 @@ export class RegisterComponent {
     const { username, email, password } = this.registerForm.value;
 
     this.authService.register(username, email, password).subscribe({
-      next: () => this.router.navigate(['/home']),
-      error: () => (this.error = 'Errore nella registrazione'),
+      next: (response) => {
+        this.error = 'Registrazione OK! Controlla la tua email per confermare.';
+      },
+      error: (err) => (this.error = err.error || 'Errore nella registrazione'),
     });
   }
 }

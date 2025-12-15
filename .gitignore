@@ -20,9 +20,9 @@ frontend/typings/
 
 backend/HELP.md
 backend/target/
-backend/.mvn/
-backend/mvnw
-backend/mvnw.cmd
+# backend/.mvn/
+# backend/mvnw
+# backend/mvnw.cmd
 !backend/**/src/main/**/target/
 !backend/**/src/test/**/target/
 

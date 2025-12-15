@@ -1,12 +1,13 @@
 package com.quizzap.backend.service;
 
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import jakarta.mail.internet.MimeMessage;
-import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
@@ -20,7 +21,7 @@ public class EmailService {
   }
 
   @Async
-  public void sendHtmlEmail(String from, String to, String subject, String htmlContent, String inlineImagePath) {
+  public void sendHtmlEmail(String from, String to, String subject, String htmlContent) {
     try {
       MimeMessage message = mailSender.createMimeMessage();
       MimeMessageHelper helper = new MimeMessageHelper(message, true);
@@ -28,7 +29,11 @@ public class EmailService {
       helper.setTo(to);
       helper.setSubject(subject);
       helper.setText(htmlContent, true);
-      helper.addInline("logo.png", new File(inlineImagePath));
+
+      // logo in src/main/resources/assets/logo.png
+      Resource logo = new ClassPathResource("assets/logo.png");
+      helper.addInline("logo", logo);
+
       mailSender.send(message);
     } catch (Exception e) {
       System.err.println("Errore invio email HTML: " + e.getMessage());
@@ -50,18 +55,13 @@ public class EmailService {
           .replace("${username}", username)
           .replace("${verificationUrl}", verificationUrl);
 
-      // logo in src/main/resources/assets/logo.png
-      String logoPath = Objects.requireNonNull(
-          EmailService.class.getResource("/assets/logo.png")).getPath();
-
       sendHtmlEmail(
           "alfredorubino04@gmail.com",
           toEmail,
           "Conferma il tuo account QuizZap",
-          htmlContent, // Passa HTML già processato
-          logoPath);
+          htmlContent // Passa HTML già processato
+      );
     } catch (Exception e) {
-      // Per ora logga solo. Puoi migliorare più avanti.
       System.err.println("Errore invio email verifica: " + e.getMessage());
     }
   }

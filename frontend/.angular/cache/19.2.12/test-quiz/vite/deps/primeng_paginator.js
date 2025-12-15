@@ -1,4 +1,7 @@
 import {
+  BaseComponent
+} from "./chunk-SW7ZKIAX.js";
+import {
   animate,
   animation,
   sequence,
@@ -7,9 +10,6 @@ import {
   trigger,
   useAnimation
 } from "./chunk-CXYWROJ7.js";
-import {
-  BaseComponent
-} from "./chunk-SW7ZKIAX.js";
 import {
   BaseStyle
 } from "./chunk-AY2TQI3Q.js";

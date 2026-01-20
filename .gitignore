@@ -68,10 +68,17 @@ backend/.nb-gradle/
 .settings/
 *.sublime-workspace
 
+# Secrets
+backend/application-local.properties
+backend/application-secrets.properties
+.env
+.env.local
+*.env.*
+
+# Docker override
+docker-compose.override.yml
+
+# Logs
+*.log
 .DS_Store
 Thumbs.db
-
-*.env.local
-.env
-
-*.log

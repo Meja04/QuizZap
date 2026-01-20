@@ -64,4 +64,8 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!this.getToken();
   }
+
+  verifyEmail(token: string) {
+    return this.http.get(`${environment.apiUrl}/auth/confirm?token=${token}`);
+  }
 }

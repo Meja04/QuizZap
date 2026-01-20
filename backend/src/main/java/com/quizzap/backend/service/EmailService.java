@@ -1,6 +1,7 @@
 package com.quizzap.backend.service;
 
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -15,6 +16,9 @@ import java.util.Objects;
 public class EmailService {
 
   private final JavaMailSender mailSender;
+
+  @Value("${app.frontend.base-url}")
+  private String frontendBaseUrl;
 
   public EmailService(JavaMailSender mailSender) {
     this.mailSender = mailSender;
@@ -41,8 +45,7 @@ public class EmailService {
   }
 
   public void sendVerificationEmail(String toEmail, String username, String verificationToken) {
-    String verificationUrl = "http://localhost:8080/api/auth/confirm?token=" + verificationToken;
-
+    String verificationUrl = frontendBaseUrl + "/login?token=" + verificationToken;
     try {
       // Carica template e sostituisci placeholder manualmente
       String htmlTemplate = new String(

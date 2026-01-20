@@ -5,8 +5,8 @@ services:
     image: mysql:8.0
     container_name: quizzap-db
     environment:
-      MYSQL_DATABASE: quizzap
-      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_ALLOW_EMPTY_PASSWORD: "no"
     ports:
       - "3306:3306"
@@ -23,7 +23,7 @@ services:
           "-h",
           "localhost",
           "-uroot",
-          "-prootpassword",
+          "-p${MYSQL_ROOT_PASSWORD}",
         ]
       interval: 10s
       timeout: 5s
@@ -35,9 +35,12 @@ services:
       dockerfile: Dockerfile
     container_name: quizzap-backend
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/quizzap?useSSL=false&allowPublicKeyRetrieval=true
+      APP_FRONTEND_BASE_URL: ${APP_FRONTEND_BASE_URL}
+      SPRING_MAIL_USERNAME: ${SPRING_MAIL_USERNAME}
+      SPRING_MAIL_PASSWORD: ${SPRING_MAIL_PASSWORD}
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE}?useSSL=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: rootpassword
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     ports:
       - "8080:8080"

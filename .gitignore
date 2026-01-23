@@ -82,6 +82,3 @@ docker-compose.override.yml
 *.log
 .DS_Store
 Thumbs.db
-
-# Local Netlify folder
-.netlify

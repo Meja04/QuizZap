@@ -23,7 +23,7 @@ export class LoginComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],

@@ -18,7 +18,7 @@ export class AuthService {
   register(
     username: string,
     email: string,
-    password: string
+    password: string,
   ): Observable<String> {
     const body: AuthRequest = { username, email, password }; // object destructuring
     return this.http.post(`${this.apiUrl}/register`, body, {

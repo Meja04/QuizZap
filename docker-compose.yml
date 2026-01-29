@@ -29,6 +29,23 @@ services:
       timeout: 5s
       retries: 5
 
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    container_name: quizzap-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: ${SPRING_RABBITMQ_PASSWORD}
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - quizzap-network
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
   backend:
     build:
       context: ./backend
@@ -42,10 +59,13 @@ services:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_AMQP_DESERIALIZATION_TRUST_ALL: "true"
     ports:
       - "8080:8080"
     depends_on:
       mysql:
+        condition: service_healthy
+      rabbitmq:
         condition: service_healthy
     networks:
       - quizzap-network

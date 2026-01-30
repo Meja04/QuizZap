@@ -1,5 +1,6 @@
 package com.quizzap.backend.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,9 @@ public class AuthController {
   private final AuthService authService;
   private final UserRepository userRepository;
   private final JwtUtil jwtUtil;
+
+  @Value("${app.frontend.base-url:http://localhost:4200}")
+  private String frontendUrl;
 
   public AuthController(AuthService authService, UserRepository userRepository, JwtUtil jwtUtil) {
     this.authService = authService;
@@ -63,7 +67,7 @@ public class AuthController {
       if (userId == null) {
         // Token invalido -> redirect login con errore
         return ResponseEntity.status(HttpStatus.SEE_OTHER)
-            .header("Location", "http://localhost:4200/login?error=invalid_token")
+            .header("Location", frontendUrl + "/login?error=invalid_token")
             .body("Token non valido");
       }
 

@@ -1,0 +1,23 @@
+[build]
+  builder = "nixpacks"
+
+[[services]]
+  # Frontend
+  buildCommand = "cd frontend && npm ci && npm run build"
+  startCommand = "cd frontend && npx serve -s dist/test-quiz/browser -l 80"
+
+[[services.backend]]
+  sourceDirectory = "backend"
+  # Nixpacks detecta Maven → auto build JAR + java -jar
+
+[[services.mysql]]
+  image = "mysql:8.0"
+  [mysql.env]
+    MYSQL_DATABASE = "quizzap"
+    MYSQL_ROOT_PASSWORD = "root123"
+
+[[services.rabbitmq]]
+  image = "rabbitmq:3.13-management-alpine"
+  [rabbitmq.env]
+    RABBITMQ_DEFAULT_USER = "admin"
+    RABBITMQ_DEFAULT_PASS = "rabbitpwd"

@@ -4,27 +4,28 @@ import { Observable } from 'rxjs';
 import { Category } from '../interfaces/category.interface';
 import { Question } from '../interfaces/question.interface';
 import { Score } from '../interfaces/score.interface';
+import { environment } from '../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class QuizService {
-
   // JSON server
-  private url = 'http://localhost:3000';
+  private url = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(`${this.url}/categories`);
   }
 
   getQuestionsByCategory(category: string): Observable<Question[]> {
-    return this.http.get<Question[]>(`${this.url}/questions?category=${category}`);
+    return this.http.get<Question[]>(
+      `${this.url}/questions?category=${category}`,
+    );
   }
 
   getScoresByCategory(category: string): Observable<Score[]> {
     return this.http.get<Score[]>(`${this.url}/scores?category=${category}`);
   }
-
 }

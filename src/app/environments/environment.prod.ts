@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: '/api', // proxy Nginx per Docker
+  apiUrl: 'assets/db.json', // proxy Nginx per Docker
 };

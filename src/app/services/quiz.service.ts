@@ -1,31 +1,31 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Category } from '../interfaces/category.interface';
 import { Question } from '../interfaces/question.interface';
 import { Score } from '../interfaces/score.interface';
-import { environment } from '../environments/environment';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuizService {
-  // JSON server
-  private url = environment.apiUrl;
-
-  constructor(private http: HttpClient) {}
+  constructor(private dataService: DataService) {}
 
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(`${this.url}/categories`);
+    return this.dataService.getData().pipe(map((data) => data.categories));
   }
 
   getQuestionsByCategory(category: string): Observable<Question[]> {
-    return this.http.get<Question[]>(
-      `${this.url}/questions?category=${category}`,
-    );
+    return this.dataService
+      .getData()
+      .pipe(
+        map((data) => data.questions.filter((q) => q.category === category)),
+      );
   }
 
   getScoresByCategory(category: string): Observable<Score[]> {
-    return this.http.get<Score[]>(`${this.url}/scores?category=${category}`);
+    return this.dataService
+      .getData()
+      .pipe(map((data) => data.scores.filter((s) => s.category === category)));
   }
 }

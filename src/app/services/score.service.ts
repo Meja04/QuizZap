@@ -8,9 +8,7 @@ import { DataService } from './data.service';
 })
 export class ScoreService {
   private STORAGE_KEY = 'quizzap_scores';
-  private sessionScores$ = new BehaviorSubject<Score[]>(
-    this.getSessionScores(),
-  );
+  private sessionScores$ = new BehaviorSubject<Score[]>(this.getLocalScores());
 
   constructor(private dataService: DataService) {}
 
@@ -20,12 +18,11 @@ export class ScoreService {
       id: Date.now(),
     };
 
-    // Salva in sessionStorage
-    const savedScores = this.getSessionScores();
+    // Salva in localStorage
+    const savedScores = this.getLocalScores();
     savedScores.push(newScore);
-    sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(savedScores));
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(savedScores));
 
-    // Emetti nuovi scores
     this.sessionScores$.next(savedScores);
 
     return new Observable((observer) => {
@@ -43,8 +40,8 @@ export class ScoreService {
     );
   }
 
-  private getSessionScores(): Score[] {
-    const stored = sessionStorage.getItem(this.STORAGE_KEY);
+  private getLocalScores(): Score[] {
+    const stored = localStorage.getItem(this.STORAGE_KEY);
     return stored ? JSON.parse(stored) : [];
   }
 }

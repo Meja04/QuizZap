@@ -7,7 +7,7 @@ Per esplorare il codice sorgente completo e le implementazioni tecniche, consult
 - `quiz-zap-angular` — Versione completa in Angular con json-server.
 - `quiz-zap-react` — Versione completa in React con json-server.
 - `quiz-zap-fullstack` — Versione fullstack con backend dedicato (Angular + Spring Boot).
-- `demo-netlify` (questo branch) — Versione statica per deploy Netlify.
+- `quiz-zap-netlify` (questo branch) — Versione statica per deploy Netlify.
 
 La versione demo è accessibile al link: **[https://quiz-zap.netlify.app/]**.
 
